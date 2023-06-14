@@ -5,6 +5,7 @@
         <span class="largeButton">
             わーい
         </span>
+        
     </RouterLink>
 </template>
 
