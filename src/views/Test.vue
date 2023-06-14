@@ -36,6 +36,6 @@ export default {
 </script>
 
 <template>
-    <h1>ページ遷移できる</h1>
-    <h6>{{ items }}</h6>
+    <h1>ページ遷移できるね</h1>
+    <!-- <h6>{{ items }}</h6> -->
 </template>
