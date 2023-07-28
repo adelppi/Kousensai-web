@@ -1,16 +1,24 @@
+<script>
+import MenuBar from '../components/MenuBar.vue'
+export default {
+    components: {
+        MenuBar,
+    }
+}
+</script>
+
 <template>
+    <MenuBar />
     <h1>てすとぺえじ</h1>
     <h2>あんどれいのてすと</h2>
     <RouterLink to="/Test">
         <span class="largeButton">
             わーい
         </span>
-        
     </RouterLink>
 </template>
 
 <style scoped>
-
 .largeButton {
     padding: 18px 30px;
     color: white;
@@ -29,5 +37,4 @@
     background-position: right;
     border-color: #646cff;
 }
-
 </style>
