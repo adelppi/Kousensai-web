@@ -3,13 +3,17 @@ export default {
     data() {
         return {
             menus: [
-                { link: "/Test", label: "ホーム" },
+                { link: "/Home", label: "ホーム" },
                 { link: "/Test", label: "企画紹介" },
-                { link: "/Test", label: "ごあいさつ" },
+                { link: "/Greet", label: "ごあいさつ" },
                 { link: "/Test", label: "パンフレット" },
                 { link: "/Test", label: "アクセス" }
-            ]
+            ],
+            currentPage: ""
         }
+    },
+    created() {
+        this.currentPage = this.$route.path;
     }
 }
 </script>
@@ -20,7 +24,9 @@ export default {
             <ul>
                 <li v-for="menu in menus">
                     <RouterLink :to="menu.link">
-                        {{ menu.label }}
+                        <div :class="{ 'underline': menu.link === currentPage }">
+                            {{ menu.label }}
+                        </div>
                     </RouterLink>
                 </li>
             </ul>
@@ -30,6 +36,10 @@ export default {
 
 
 <style scoped>
+.underline {
+    border-bottom: 2px solid rgb(0, 119, 199);
+}
+
 .menu-bar {
     position: fixed;
     top: 0;
