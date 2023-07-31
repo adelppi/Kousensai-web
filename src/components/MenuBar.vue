@@ -3,11 +3,11 @@ export default {
     data() {
         return {
             menus: [
-                { link: "/Home", label: "ホーム" },
-                { link: "/Test", label: "企画紹介" },
-                { link: "/Greet", label: "ごあいさつ" },
-                { link: "/Test1", label: "パンフレット" },
-                { link: "/Test2", label: "アクセス" }
+                { path: "/Home", label: "ホーム" },
+                { path: "/Test", label: "企画紹介" },
+                { path: "/Greet", label: "ごあいさつ" },
+                { path: "/Test1", label: "パンフレット" },
+                { path: "/Test2", label: "アクセス" }
             ],
             currentPage: ""
         }
@@ -20,23 +20,31 @@ export default {
 
 <template>
     <header class="menu-bar">
-        <nav>
-            <ul>
-                <li v-for="menu in menus" class="menu" :class="{ 'underline': menu.link === currentPage }">
-                    <RouterLink :to="menu.link">
-                        {{ menu.label }}
-                    </RouterLink>
-                </li>
-            </ul>
-        </nav>
+        <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
+            {{ menu.label }}
+        </RouterLink>
     </header>
 </template>
 
 
 <style scoped>
-.menu {
-    padding: 1% 1%;
+.menu-bar {
+    left: 25%;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    top: 1%;
     background-color: #ffffff;
+    z-index: 100;
+}
+
+
+.menu {
+    padding: 2.5% 10% 2.5% 10%;
+    color: #000000;
+    background-color: #ffffff;
+    flex: 1;
+    white-space: nowrap;
     transition: background-color 0.25s ease-in-out;
 }
 
@@ -44,73 +52,30 @@ export default {
     background-color: #ececec;
 }
 
+.no-wrap {
+    white-space: nowrap;
+}
+
 .underline {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .underline:before {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 7.5%;
+    bottom: 5%;
     display: inline-block;
-    width: 75%;
+    width: 50%;
     height: 2px;
     transform: translateX(-50%);
-    background-color: rgb(0, 119, 199);
+    background-color: rgb(199, 90, 0);
     border-radius: 2px;
-}
-/* .underline:hover {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 7.5%;
-    display: inline-block;
-    width: 75%;
-    height: 2px;
-    transform: translateX(-50%);
-    background-color: rgb(0, 119, 199);
-    border-radius: 2px;
-} */
-
-/* 
-.underline {
-    border-bottom: 2px solid rgb(0, 119, 199);
-    transition: background-color 0.25s ease-in-out;
+    transition: width 0.25s ease-in-out;
 }
 
-.underline:hover {
-    border-bottom: 2px solid rgb(0, 119, 199);
-} */
-
-.menu-bar {
-    position: fixed;
-    top: 0;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 10px;
-    z-index: 100;
+.underline:hover:before {
+    width: 62.5%;
 }
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav li {
-    display: inline-block;
-    margin: 0 15px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #000000;
-    font-size: 18px;
-}
-
-nav a:hover {
-    color: rgb(0, 119, 199);
-}</style>
+</style>
