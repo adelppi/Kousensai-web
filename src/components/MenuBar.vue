@@ -37,7 +37,16 @@ export default {
 
 <style scoped>
 .underline {
-    border-bottom: 2px solid rgb(0, 119, 199);
+    animation: correct 0.5s ease-out 1;
+}
+
+@keyframes underline {
+    0% {
+        border-bottom: 2px solid rgb(0, 119, 199);
+    }
+    100% {
+        border-bottom: 2px solid rgb(0, 119, 199);
+    }
 }
 
 .menu-bar {
