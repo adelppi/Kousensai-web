@@ -9,13 +9,13 @@ export default {
 
 <template>
     <MenuBar />
-    <h1>てすとぺえじ</h1>
-    <h2>あんどれいのてすと</h2>
-    <RouterLink to="/Test">
+    <h1>ホーム</h1>
+    <h2>最初に開く画面</h2>
+    <!-- <RouterLink to="/Test">
         <span class="largeButton">
             わーい
         </span>
-    </RouterLink>
+    </RouterLink> -->
 </template>
 
 <style scoped>

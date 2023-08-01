@@ -4,10 +4,10 @@ export default {
         return {
             menus: [
                 { path: "/Home", label: "ホーム" },
-                { path: "/Test", label: "企画紹介" },
-                { path: "/Greet", label: "ごあいさつ" },
-                { path: "/Test1", label: "パンフレット" },
-                { path: "/Test2", label: "アクセス" }
+                { path: "/Introduction", label: "企画紹介" },
+                { path: "/Greeting", label: "ごあいさつ" },
+                { path: "/Brochure", label: "パンフレット" },
+                { path: "/Access", label: "アクセス" }
             ],
             currentPage: ""
         }
@@ -75,7 +75,7 @@ export default {
     transition: width 0.25s ease-in-out;
 }
 
-.underline:hover:before {
+/* .underline:hover:before {
     width: 62.5%;
-}
+} */
 </style>
