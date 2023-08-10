@@ -4,9 +4,8 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/Kousensai-web',
-  // base: '/',
-  // build: {
-  //   outDir: '/',
-  // },
+  build: {
+    outDir: '../',
+  },
   plugins: [vue()],
 })
