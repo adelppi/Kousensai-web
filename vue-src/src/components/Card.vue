@@ -1,9 +1,11 @@
 <script>
 export default {
+    props: {
+        name: String,
+        description: String
+    },
     data() {
         return {
-            name: "企画名",
-            content: "企画概要"
         }
     },
     created() {
@@ -19,7 +21,7 @@ export default {
                 {{ name }}
             </div>
             <div class="card__overviewtext">
-                {{ content }}
+                {{ description }}
             </div>
         </div>
     </div>
@@ -28,20 +30,22 @@ export default {
 
 <style scoped>
 .card {
+    margin-top: 12%;
     width: 288px;
     height: auto;
 }
 
-.card-skin .card__textbox {
-    background: #333333;
-    color: #ffffff;
+.card-skin{
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
 }
 
 .card__imgframe {
     width: 100%;
     height: auto;
     padding-top: 56.25%;
-    background: url(https://placehold.jp/640x360.png) no-repeat center;
+    background: url(https://placehold.jp/3d4070/ffffff/500x500.png) no-repeat center;
     background-size: cover;
     box-sizing: border-box;
 }
