@@ -8,10 +8,10 @@ import Test from '../views/Test.vue'
 
 const router = createRouter({
     history: createWebHistory(),
-    base: '/',
+    base: '/Kousensai-web/',
     routes: [
         {
-            path: '/',
+            path: '/Kousensai-web',
             redirect: '/Home'
         },
         {
