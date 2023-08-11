@@ -1,12 +1,8 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* line-height: 1.5; */
   font-weight: 400;
-
-  /* color-scheme: light dark; */
   color: #213547;
-  background-color: #e8f8ff;
-
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,16 +14,19 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  margin-right: auto;
+  margin-left: auto;
   width: 100%;
-  background-color: #333;
-  color: #fff;
+  background-color: #53ceff;
   padding: 10px;
-  text-align: center;
 }
 
 body {
-  margin: 0;
-  place-items: center;
+  background-color: #e8f8ff;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
   min-width: 320px;
   min-height: 100vh;
 }

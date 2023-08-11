@@ -20,6 +20,10 @@ export default {
 
 <template>
     <div class="menu-bar">
+        <RouterLink class="logo" to="/Home">
+            <img src="../assets/nelnel.jpg" alt="Logo" style="width: 75px;">
+        </RouterLink>
+
         <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
             {{ menu.label }}
         </RouterLink>
@@ -29,26 +33,30 @@ export default {
 
 <style scoped>
 .menu-bar {
-    /* justify-content: center; */
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.logo {
+    margin-right: 10%;
+    color: #000000;
 }
 
 .menu {
-    padding: 1% 5% 1% 5%;
+    padding: 1% 5%;
     color: #000000;
     background-color: #ffffff;
-    flex: 1;
+    /* flex: 1; */
     white-space: nowrap;
     transition: background-color 0.25s ease-in-out;
 }
 
 .menu:hover {
     background-color: #ececec;
-}
-
-.no-wrap {
-    white-space: nowrap;
 }
 
 .underline {
