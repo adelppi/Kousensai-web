@@ -19,35 +19,19 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="menu-bar">
-            <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
-                {{ menu.label }}
-            </RouterLink>
-        </div>
+    <div class="menu-bar">
+        <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
+            {{ menu.label }}
+        </RouterLink>
     </div>
 </template>
 
 
 <style scoped>
-.container {
-  height: 250px;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: aqua;
-  position: fixed;
-}
-
 .menu-bar {
-    justify-content: center;
+    /* justify-content: center; */
     display: flex;
-    /* position: relative; */
-    /* top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background-color: #ff0000; */
+
 }
 
 .menu {
@@ -86,4 +70,5 @@ export default {
     transition: transform 0.25s ease-in-out;
 }
 
-@media screen and (max-width: 450px) {}</style>
+@media screen and (max-width: 450px) {}
+</style>
