@@ -8,11 +8,14 @@ export default {
 </script>
 
 <template>
-    <MenuBar />
-    <h1>ごあいさつ</h1>
-    <h2>こんにちは</h2>
+    <header>
+        <MenuBar />
+    </header>
+
+    <body>
+        <h1>ごあいさつ</h1>
+        <h2>こんにちは</h2>
+    </body>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

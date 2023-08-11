@@ -8,9 +8,14 @@ export default {
 </script>
 
 <template>
-    <MenuBar />
-    <h1>ホーム</h1>
-    <h2>最初に開く画面</h2>
+    <header>
+        <MenuBar />
+    </header>
+
+    <body>
+        <h1>ホーム</h1>
+        <h2>最初に開く画面</h2>
+    </body>
 </template>
 
 <style scoped></style>

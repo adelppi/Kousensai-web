@@ -19,16 +19,16 @@ export default {
 </script>
 
 <template>
-    <header class="menu-bar">
+    <div class="menu-bar">
         <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
             {{ menu.label }}
         </RouterLink>
-    </header>
+    </div>
 </template>
 
 
 <style scoped>
-.menu-bar {
+/* .menu-bar {
     left: 25%;
     justify-content: center;
     display: flex;
@@ -36,10 +36,21 @@ export default {
     top: 1%;
     background-color: #ffffff;
     z-index: 100;
+} */
+.menu-bar {
+    justify-content: center;
+    display: flex;
+    /* position: fixed; */
+    position: sticky;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: #ff0000; */
 }
 
 .menu {
-    padding: 2.5% 10% 2.5% 10%;
+    padding: 1% 5% 1% 5%;
     color: #000000;
     background-color: #ffffff;
     flex: 1;
@@ -74,6 +85,4 @@ export default {
     transition: transform 0.25s ease-in-out;
 }
 
-@media screen and (max-width: 450px) {
-}
-</style>
+@media screen and (max-width: 450px) {}</style>
