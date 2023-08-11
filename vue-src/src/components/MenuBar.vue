@@ -38,7 +38,6 @@ export default {
     z-index: 100;
 }
 
-
 .menu {
     padding: 2.5% 10% 2.5% 10%;
     color: #000000;
@@ -72,10 +71,9 @@ export default {
     transform: translateX(-50%);
     background-color: rgb(199, 90, 0);
     border-radius: 2px;
-    transition: width 0.25s ease-in-out;
+    transition: transform 0.25s ease-in-out;
 }
 
-/* .underline:hover:before {
-    width: 62.5%;
-} */
+@media screen and (max-width: 450px) {
+}
 </style>
