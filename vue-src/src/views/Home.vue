@@ -8,9 +8,7 @@ export default {
 </script>
 
 <template>
-    <header>
-        <MenuBar />
-    </header>
+    <MenuBar />
 
     <body>
         <h1>ホーム</h1>

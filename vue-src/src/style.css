@@ -10,22 +10,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
-  background-color: #53ceff;
-  padding: 10px;
-}
-
 body {
   background-color: #e8f8ff;
-  margin-top: 5%;
+  margin-top: 0;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 0;
   width: 75%;
   min-width: 320px;
   min-height: 100vh;
@@ -105,4 +94,16 @@ button:focus-visible {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+@media (max-width: 750px) {
+  body {
+    background-color: #e8f8ff;
+    margin-top: 7.5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    min-width: 320px;
+    min-height: 100vh;
+  }
 }
