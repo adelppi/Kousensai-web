@@ -13,6 +13,7 @@ export default {
     <body>
         <h1>ホーム</h1>
         <h2>最初に開く画面</h2>
+        <h2>メモ: ブランチ切るところから</h2>
     </body>
 </template>
 
