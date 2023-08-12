@@ -9,11 +9,20 @@ export default {
                 { path: "/Brochure", label: "パンフレット" },
                 { path: "/Access", label: "アクセス" }
             ],
-            currentPage: ""
+            currentPage: "",
+            isMobile: false,
+            ok: window.innerWidth
         }
     },
     created() {
         this.currentPage = this.$route.path;
+        this.checkIfMobile()
+        window.addEventListener('resize', this.checkIfMobile);
+    },
+    methods: {
+        checkIfMobile() {
+            this.isMobile = window.innerWidth <= 750;
+        }
     }
 }
 </script>
@@ -23,8 +32,10 @@ export default {
         <RouterLink class="logo" to="/Home">
             <img src="../assets/nelnel.jpg" alt="Logo" style="width: 75px;">
         </RouterLink>
-
-        <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }" :to="menu.path">
+        {{ isMobile }}
+        {{ ok }}
+        <RouterLink v-if="!isMobile" v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }"
+            :to="menu.path">
             {{ menu.label }}
         </RouterLink>
     </div>
