@@ -27,34 +27,53 @@ export default {
 </script>
 
 <template>
-    <div class="menu-bar-vertical">
-        <RouterLink to="/Home">
-            <img src="../assets/nelnel.jpg" alt="Logo" style="width: 125px;">
-        </RouterLink>
-
-        <div class="spacer"></div>
-
-        <RouterLink v-for="menu in menus" :to="menu.path">
-            <div class="text">
-                {{ menu.label }}
-            </div>
-        </RouterLink>
+    <div class="menu-bar">
+        <div class="menu-bar-nav">
+            <RouterLink to="/Home">
+                <img src="../assets/logo.svg" style="width: 100px;">
+            </RouterLink>
+            <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
+                <div class="menu-link">
+                    <span class="link-text">{{ menu.label }}</span>
+                </div>
+            </RouterLink>
+        </div>
     </div>
 </template>
 
 
 <style scoped>
-.menu-bar-vertical {
+.menu-bar {
+    width: 20rem;
+    height: 100vh;
+    position: fixed;
+    background-color: #333;
+}
+
+.menu-bar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-item {
     width: 100%;
-    margin-top: 50%;
-    margin-left: 25%;
 }
 
-.spacer {
-    height: 100px;
+.menu-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: white;
+    text-decoration: none;
 }
 
-.text {
-    font-size: 25px;
+.link-text {
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

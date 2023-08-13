@@ -32,18 +32,16 @@ export default {
 </script>
 
 <template>
-    <div class="layout">
-        <div class="left-column">
-            <MenuBar />
-        </div>
-        <div class="right-column">
+    <body>
+        <MenuBar />
+        <main>
             <h1>企画紹介</h1>
             <h2>企画一覧</h2>
             <div v-for="i in projects">
                 <Card :name="i.name" :description="i.description" />
             </div>
-        </div>
-    </div>
+        </main>
+    </body>
 </template>
 
 <style scoped></style>

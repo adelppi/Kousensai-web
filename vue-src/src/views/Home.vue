@@ -8,15 +8,13 @@ export default {
 </script>
 
 <template>
-    <div class="layout">
-        <div class="left-column">
-            <MenuBar />
-        </div>
-        <div class="right-column">
+    <body>
+        <MenuBar />
+        <main>
             <h1>ホーム</h1>
             <h2>最初に開く画面</h2>
-        </div>
-    </div>
+        </main>
+    </body>
 </template>
 
 <style scoped></style>

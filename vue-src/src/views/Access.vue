@@ -8,11 +8,9 @@ export default {
 </script>
 
 <template>
-    <div class="layout">
-        <div class="left-column">
-            <MenuBar />
-        </div>
-        <div class="right-column">
+    <body>
+        <MenuBar />
+        <main>
             <h1>アクセス</h1>
             <h2>所在地</h2>
             産業技術高等専門学校荒川キャンパス
@@ -43,12 +41,8 @@ export default {
 
             <h2>車</h2>
             駐車場にご用意がございませんので、お車でのご来場はご遠慮くださいますようお願いいたします。
-        </div>
-    </div>
+        </main>
+    </body>
 </template>
 
-<style scoped>
-/* .{
-    text-align: left;
-} */
-</style>
+<style scoped></style>
