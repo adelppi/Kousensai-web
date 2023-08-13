@@ -27,93 +27,34 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div v-if="isMobile" class="menu-bar-horizontal">
-            <RouterLink class="logo" to="/Home">
-                <img src="../assets/nelnel.jpg" alt="Logo" style="width: 75px;">
-            </RouterLink>
-            <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }"
-                :to="menu.path">
-                <div class="text">
-                    {{ menu.label }}
-                </div>
-            </RouterLink>
-        </div>
-        <div v-else class="menu-bar-vertical">
-            <RouterLink class="logo" to="/Home">
-                <img src="../assets/nelnel.jpg" alt="Logo" style="width: 75px;">
-            </RouterLink>
-            <RouterLink v-for="menu in menus" class="menu" :class="{ 'underline': menu.path === currentPage }"
-                :to="menu.path">
+    <div class="menu-bar-vertical">
+        <RouterLink to="/Home">
+            <img src="../assets/nelnel.jpg" alt="Logo" style="width: 125px;">
+        </RouterLink>
+
+        <div class="spacer"></div>
+
+        <RouterLink v-for="menu in menus" :to="menu.path">
+            <div class="text">
                 {{ menu.label }}
-            </RouterLink>
-        </div>
+            </div>
+        </RouterLink>
     </div>
 </template>
 
 
 <style scoped>
 .menu-bar-vertical {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-bar-horizontal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
     width: 100%;
-    background-color: rgb(150, 150, 150)
+    margin-top: 50%;
+    margin-left: 25%;
 }
 
-.logo {
-    margin-right: 5%;
-    color: #000000;
+.spacer {
+    height: 100px;
 }
 
 .text {
-    font-size: 12px;
-}
-
-.menu {
-    /* padding: 1% 3%; */
-    color: #000000;
-    /* background-color: #ffffff; */
-    /* flex: 1; */
-    white-space: nowrap;
-    transition: background-color 0.25s ease-in-out;
-}
-
-.menu:hover {
-    background-color: #ececec;
-}
-
-.underline {
-    position: relative;
-    display: inline-block;
-}
-
-.underline:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -25%;
-    display: inline-block;
-    width: 75%;
-    height: 2px;
-    transform: translateX(-50%);
-    background-color: rgb(199, 90, 0);
-    border-radius: 2px;
-    transition: transform 0.25s ease-in-out;
+    font-size: 25px;
 }
 </style>

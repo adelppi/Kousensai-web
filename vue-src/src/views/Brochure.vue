@@ -8,14 +8,15 @@ export default {
 </script>
 
 <template>
-    <header>
-        <MenuBar />
-    </header>
-
-    <body>
-        <h1>パンフレット</h1>
-        <h2>パンフレットのPDFとか</h2>
-    </body>
+    <div class="layout">
+        <div class="left-column">
+            <MenuBar />
+        </div>
+        <div class="right-column">
+            <h1>パンフレット</h1>
+            <h2>パンフレットのPDFとか</h2>
+        </div>
+    </div>
 </template>
 
 <style scoped></style>

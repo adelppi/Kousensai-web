@@ -8,13 +8,15 @@ export default {
 </script>
 
 <template>
-    <MenuBar />
-
-    <body>
-        <h1>ホーム</h1>
-        <h2>最初に開く画面</h2>
-        <h2>メモ: ブランチ切るところから</h2>
-    </body>
+    <div class="layout">
+        <div class="left-column">
+            <MenuBar />
+        </div>
+        <div class="right-column">
+            <h1>ホーム</h1>
+            <h2>最初に開く画面</h2>
+        </div>
+    </div>
 </template>
 
 <style scoped></style>
