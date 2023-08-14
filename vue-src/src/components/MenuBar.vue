@@ -74,13 +74,19 @@ export default {
 }
 
 .link-text {
-    /* background-color: antiquewhite; */
     margin-left: auto;
     margin-right: auto;
+    color: #ffffff;
+    text-decoration: inherit;
+}
+
+.link-text:hover {
+    color: #222;
+    background-color: #ffffff;
+    transition: all 0.25s;
 }
 
 .spacer {
     margin-bottom: 5rem;
 }
-
 </style>
