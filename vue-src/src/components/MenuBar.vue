@@ -32,6 +32,7 @@ export default {
             <RouterLink to="/Home">
                 <img src="../assets/logo.svg" style="width: 100px;">
             </RouterLink>
+            <div class="spacer"></div>
             <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
                 <div class="menu-link">
                     <span class="link-text">{{ menu.label }}</span>
@@ -44,10 +45,10 @@ export default {
 
 <style scoped>
 .menu-bar {
-    width: 20rem;
+    width: 15rem;
     height: 100vh;
     position: fixed;
-    background-color: #333;
+    background-color: #222;
 }
 
 .menu-bar-nav {
@@ -73,7 +74,13 @@ export default {
 }
 
 .link-text {
+    /* background-color: antiquewhite; */
     margin-left: auto;
     margin-right: auto;
 }
+
+.spacer {
+    margin-bottom: 5rem;
+}
+
 </style>
