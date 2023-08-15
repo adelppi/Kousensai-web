@@ -7,7 +7,8 @@ export default {
                 { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
-                { path: "/Access", label: "アクセス", icon: "location_on" }
+                { path: "/Access", label: "アクセス", icon: "location_on" },
+                { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
             ],
             currentPage: "",
             isMobile: false,
@@ -75,24 +76,24 @@ export default {
 .menu-item {
     display: flex;
     width: 62.5%;
-    padding: 1rem;
+    padding: 0.75rem;
     margin-bottom: 1rem;
     margin-left: 2rem;
     color: #ffffff;
     transition: all 0.1s ease-out;
 }
 
-.menu-bar:hover .menu-item {
-    margin-left: 1rem;
-}
-
 .menu-item:hover {
-    padding: 2rem;
-    margin-left: 0;
+    padding: 1.75rem;
     color: #222;
     background-color: #ffffff;
     transition: all 0.3s ease-out;
 }
+
+.menu-bar:hover .menu-item {
+    margin-left: 1rem;
+}
+
 
 .menu-link {
     display: flex;
@@ -110,11 +111,6 @@ export default {
 
 .link-icon {
     padding: 3rem;
-}
-
-.menu-bar:hover .link-icon {
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .link-text {
@@ -166,5 +162,4 @@ export default {
 /* モバイルのとき */
 @media only screen and (max-width: 600px) {}
 
-/* モバイルでないとき */
-@media only screen and (min-width: 600px) {}</style>
+</style>

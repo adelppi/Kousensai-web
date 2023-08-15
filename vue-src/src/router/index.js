@@ -4,6 +4,7 @@ import Introduction from '../views/Introduction.vue'
 import Greeting from '../views/Greeting.vue'
 import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
+import Vote from '../views/Vote.vue'
 import Test from '../views/Test.vue'
 
 const router = createRouter({
@@ -33,6 +34,10 @@ const router = createRouter({
         {
             path: '/Access',
             component: Access
+        },
+        {
+            path: '/Vote',
+            component: Vote
         },
         {
             path: '/Test',
