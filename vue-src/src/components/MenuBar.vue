@@ -40,7 +40,7 @@ export default {
             <div class="spacer"></div>
             <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
                 <div class="menu-link">
-                    <div class="menu-icon">
+                    <div class="menu-icon" :class="{ 'menu-icon-background': menu.path === currentPage }">
                         <span class="material-symbols-outlined">{{ menu.icon }}</span>
                     </div>
                     <span class="link-text">{{ menu.label }}</span>
@@ -100,22 +100,34 @@ export default {
     text-decoration: none;
 }
 
+.menu-icon-background {
+    margin-right: 0rem;
+    padding: 0.25rem;
+    color: #222;
+    background-color:#ffffff;
+    border-radius: 25%;
+    transition: margin-right 0.2s ease;
+}
+
 .menu-icon {
     margin-right: 0rem;
+    padding: 0.25rem;
+    border-radius: 25%;
     transition: margin-right 0.2s ease;
 }
 
 .menu-bar:hover .menu-icon {
     margin-right: 1.5rem;
 }
-
-.link-icon {
-    padding: 3rem;
+.menu-item:hover .menu-icon {
+    padding: 0rem;
 }
 
 .link-text {
     white-space: nowrap;
     text-decoration: inherit;
+    margin-top: auto;
+    margin-bottom: auto;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -161,5 +173,4 @@ export default {
 
 /* モバイルのとき */
 @media only screen and (max-width: 600px) {}
-
 </style>

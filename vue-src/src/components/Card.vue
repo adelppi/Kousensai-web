@@ -15,7 +15,7 @@ export default {
 
 <template>
     <div class="card">
-        <h1>{{ name }}</h1>
+        <h2>{{ name }}</h2>
         <h2>{{ description }}</h2>
     </div>
 </template>
