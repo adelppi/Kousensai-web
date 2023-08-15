@@ -31,15 +31,17 @@ export default {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
     <div class="menu-bar">
         <div class="menu-bar-nav">
-            <RouterLink to="/Home">
-                <img src="../assets/logo.svg" style="width: 100px;">
-            </RouterLink>
+            <div class="logo-container">
+                <RouterLink to="/Home">
+                    <img src="../assets/logo.svg" class="logo">
+                </RouterLink>
+            </div>
             <div class="spacer"></div>
             <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
                 <div class="menu-link">
-                    <span class="material-symbols-outlined">
-                        {{ menu.icon }}
-                    </span>
+                    <div class="menu-icon">
+                        <span class="material-symbols-outlined">{{ menu.icon }}</span>
+                    </div>
                     <span class="link-text">{{ menu.label }}</span>
                 </div>
             </RouterLink>
@@ -50,72 +52,119 @@ export default {
 
 <style scoped>
 .menu-bar {
+    width: 7.5rem;
+    height: 100vh;
     position: fixed;
     background-color: #222;
+    transition: all 0.2s ease;
+}
+
+.menu-bar:hover {
+    width: 15rem;
 }
 
 .menu-bar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .menu-item {
+    display: flex;
     width: 62.5%;
-    padding: 0.5rem;
-    margin-bottom: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
     color: #ffffff;
+    transition: all 0.1s ease-out;
+}
+
+.menu-bar:hover .menu-item {
+    margin-left: 1rem;
 }
 
 .menu-item:hover {
+    padding: 2rem;
+    margin-left: 0;
     color: #222;
     background-color: #ffffff;
-    transition: all 0.25s;
+    transition: all 0.3s ease-out;
 }
 
 .menu-link {
     display: flex;
-    align-items: center;
     text-decoration: none;
 }
 
+.menu-icon {
+    margin-right: 0rem;
+    transition: margin-right 0.2s ease;
+}
+
+.menu-bar:hover .menu-icon {
+    margin-right: 1.5rem;
+}
+
+.link-icon {
+    padding: 3rem;
+}
+
+.menu-bar:hover .link-icon {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .link-text {
-    margin-left: auto;
-    margin-right: auto;
+    white-space: nowrap;
     text-decoration: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.menu-bar:hover .link-text {
+    opacity: 1;
+}
+
+.menu-item:hover .link-text {
+    display: block;
+    font-size: 1.25rem;
+}
+
+.menu-bar:hover .link-text {
+    display: block;
 }
 
 .spacer {
     margin-bottom: 5rem;
 }
 
-/* モバイルのとき */
-@media only screen and (max-width: 600px) {
-    .menu-bar {
-        bottom: 0;
-        width: 100vw;
-        height: 5rem;
-    }
-
-    .menu-bar-nav {
-        flex-direction: row;
-    }
-
-    .menu-link {
-        justify-content: center;
-    }
-
+.material-symbols-outlined {
+    font-size: 1.75rem;
 }
+
+.menu-item:hover .material-symbols-outlined {
+    font-size: 2rem;
+}
+
+.logo-container {
+    height: 7rem;
+}
+
+.logo {
+    margin-top: 3rem;
+    width: 3rem;
+    transition: all 0.2s ease;
+}
+
+.menu-bar:hover .logo {
+    width: 4rem;
+}
+
+/* モバイルのとき */
+@media only screen and (max-width: 600px) {}
 
 /* モバイルでないとき */
-@media only screen and (min-width: 600px) {
-    .menu-bar {
-        width: 15rem;
-        height: 100vh;
-    }
-}
-</style>
+@media only screen and (min-width: 600px) {}</style>
