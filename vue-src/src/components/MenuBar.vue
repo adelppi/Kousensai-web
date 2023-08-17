@@ -66,6 +66,7 @@ export default {
 
 .menu-bar:hover {
     width: 15rem;
+    transition: all 0.2s ease;
 }
 
 .menu-item {
@@ -73,9 +74,8 @@ export default {
     width: 62.5%;
     padding: 0.75rem;
     margin-bottom: 1rem;
-    margin-left: 2rem;
     color: #ffffff;
-    transition: all 0.1s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .menu-item:hover {
@@ -93,6 +93,12 @@ export default {
 .menu-link {
     display: flex;
     text-decoration: none;
+    transform: translateX(50%);
+    transition: all 0.2s ease;
+}
+
+.menu-bar:hover .menu-link {
+    transform: translateX(0);
 }
 
 .menu-icon-background {
@@ -119,15 +125,18 @@ export default {
 }
 
 .link-text {
+    width: 0;
     white-space: nowrap;
     text-decoration: inherit;
     margin-top: auto;
     margin-bottom: auto;
+    font-size: 0;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: all 0.1s ease;
 }
 
 .menu-bar:hover .link-text {
+    font-size: 1rem;
     opacity: 1;
 }
 
@@ -141,7 +150,7 @@ export default {
 }
 
 .spacer {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .material-symbols-outlined {
