@@ -31,22 +31,20 @@ export default {
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
     <div class="menu-bar">
-        <div class="menu-bar-nav">
-            <div class="logo-container">
-                <RouterLink to="/Home">
-                    <img src="../assets/logo.svg" class="logo">
-                </RouterLink>
-            </div>
-            <div class="spacer"></div>
-            <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
-                <div class="menu-link">
-                    <div class="menu-icon" :class="{ 'menu-icon-background': menu.path === currentPage }">
-                        <span class="material-symbols-outlined">{{ menu.icon }}</span>
-                    </div>
-                    <span class="link-text">{{ menu.label }}</span>
-                </div>
+        <div class="logo-container">
+            <RouterLink to="/Home">
+                <img src="../assets/logo.svg" class="logo">
             </RouterLink>
         </div>
+        <div class="spacer"></div>
+        <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
+            <div class="menu-link">
+                <div class="menu-icon" :class="{ 'menu-icon-background': menu.path === currentPage }">
+                    <span class="material-symbols-outlined">{{ menu.icon }}</span>
+                </div>
+                <span class="link-text">{{ menu.label }}</span>
+            </div>
+        </RouterLink>
     </div>
 </template>
 
@@ -57,20 +55,17 @@ export default {
     height: 100vh;
     position: fixed;
     background-color: #222;
-    transition: all 0.2s ease;
-}
-
-.menu-bar:hover {
-    width: 15rem;
-}
-
-.menu-bar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.2s ease;
+}
+
+.menu-bar:hover {
+    width: 15rem;
 }
 
 .menu-item {
