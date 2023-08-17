@@ -61,12 +61,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease, color 0.1 ease;
 }
 
 .menu-bar:hover {
-    width: 15rem;
-    transition: all 0.2s ease;
+    width: 17rem;
+    transition: all 0.2s ease, color 0.1s ease;
 }
 
 .menu-item {
