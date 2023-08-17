@@ -62,6 +62,7 @@ export default {
     flex-direction: column;
     align-items: center;
     transition: all 0.2s ease;
+    z-index: 100;
 }
 
 .menu-bar:hover {
