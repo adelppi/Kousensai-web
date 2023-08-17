@@ -61,12 +61,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.2s ease, color 0.1 ease;
+    transition: all 0.2s ease;
 }
 
 .menu-bar:hover {
     width: 17rem;
-    transition: all 0.2s ease, color 0.1s ease;
 }
 
 .menu-item {
@@ -75,20 +74,19 @@ export default {
     padding: 0.75rem;
     margin-bottom: 1rem;
     color: #ffffff;
-    transition: all 0.2s ease-out;
+    /* transition: all 0.2s ease; */
+    transition: background-color 0.2s ease, padding 0.2s ease, margin 0.2s ease;
 }
 
 .menu-item:hover {
     padding: 1.75rem;
     color: #222;
     background-color: #ffffff;
-    transition: all 0.3s ease-out;
 }
 
 .menu-bar:hover .menu-item {
     margin-left: 1rem;
 }
-
 
 .menu-link {
     display: flex;
@@ -120,11 +118,9 @@ export default {
 .menu-bar:hover .menu-icon {
     margin-right: 1.5rem;
 }
-.menu-item:hover .menu-icon {
-    padding: 0rem;
-}
 
 .link-text {
+    display: block;
     width: 0;
     white-space: nowrap;
     text-decoration: inherit;
@@ -132,7 +128,7 @@ export default {
     margin-bottom: auto;
     font-size: 0;
     opacity: 0;
-    transition: all 0.1s ease;
+    transition: opacity 0.2s ease, font-size 0.2s ease;
 }
 
 .menu-bar:hover .link-text {
@@ -141,12 +137,7 @@ export default {
 }
 
 .menu-item:hover .link-text {
-    display: block;
     font-size: 1.25rem;
-}
-
-.menu-bar:hover .link-text {
-    display: block;
 }
 
 .spacer {
