@@ -75,7 +75,7 @@ export default {
     padding: 0.75rem;
     margin-bottom: 1rem;
     color: #ffffff;
-    /* transition: all 0.2s ease; */
+    border-radius: 25px;
     transition: background-color 0.2s ease, padding 0.2s ease, margin 0.2s ease;
 }
 
