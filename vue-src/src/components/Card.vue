@@ -2,6 +2,7 @@
 export default {
     props: {
         name: String,
+        imagelink: String,
         description: String
     },
     data() {
@@ -15,17 +16,39 @@ export default {
 
 <template>
     <div class="card">
-        <h2>{{ name }}</h2>
-        <h2>{{ description }}</h2>
+        <img class="image" :src="imagelink">
+        <div class="info">
+            <div class="name">{{ name }}</div>
+            <div class="description">{{ description }}</div>
+        </div>
     </div>
 </template>
 
 
 <style scoped>
 .card {
-    width: 10rem;
-    height: 10rem;
+    position: relative;
+    width: clamp(200px,100%,45%);
     color: black;
     background-color: whitesmoke;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.5) -5px 5px 10px;
 }
+
+img {
+    aspect-ratio: initial;
+    width: 100%;
+}
+
+.info {
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.name {
+    font-size: x-large;
+    margin-bottom: 0.5rem;
+}
+
 </style>
