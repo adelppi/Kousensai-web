@@ -1,15 +1,5 @@
-<script>
-import MenuBar from '../components/MenuBar.vue'
-export default {
-    components: {
-        MenuBar,
-    }
-}
-</script>
-
 <template>
     <body>
-        <MenuBar />
         <main>
             <h1>アクセス</h1>
             <h2>所在地</h2>

@@ -1,9 +1,5 @@
 <script>
-import MenuBar from '../components/MenuBar.vue'
 export default {
-    components: {
-        MenuBar,
-    },
     data() {
         return {
             items: [
@@ -33,7 +29,6 @@ export default {
 
 <template>
     <body>
-        <MenuBar />
         <main>
             <h1>人気企画投票</h1>
             <h2>投票システム</h2>

@@ -1,11 +1,7 @@
 <script>
 import axios from 'axios';
-import MenuBar from '../components/MenuBar.vue';
 
 export default {
-    components: {
-    MenuBar
-},
     data() {
         return {
             items: [],
@@ -38,7 +34,6 @@ export default {
 </script>
 
 <template>
-    <MenuBar />
     <h1>ページ遷移できるね</h1>
     <!-- <h6>{{ items }}</h6> -->
 </template>
