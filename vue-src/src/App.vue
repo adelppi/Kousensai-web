@@ -8,6 +8,6 @@ export default {
 </script>
 
 <template>
-  <MenuBar />
+  <MenuBar v-if="$route.path != '/Preparing'"/>
   <router-view />
 </template>

@@ -5,6 +5,7 @@ import Greeting from '../views/Greeting.vue'
 import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
 import Vote from '../views/Vote.vue'
+import Preparing from '../views/Preparing.vue'
 import Test from '../views/Test.vue'
 
 const router = createRouter({
@@ -13,6 +14,10 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            redirect: '/Preparing'
+        },
+        {
+            path: '/Preview',
             redirect: '/Home'
         },
         {
@@ -38,6 +43,10 @@ const router = createRouter({
         {
             path: '/Vote',
             component: Vote
+        },
+        {
+            path: '/Preparing',
+            component: Preparing
         },
         {
             path: '/Test',
