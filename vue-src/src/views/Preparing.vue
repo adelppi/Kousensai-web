@@ -6,4 +6,9 @@
     </body>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+    margin: auto;
+    padding: 25%;
+}
+</style>
