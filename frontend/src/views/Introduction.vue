@@ -10,42 +10,42 @@ export default {
                 {
                     name: "企画1",
                     description: "説明1",
-                    imagelink: "/Kousensai-web/src/assets/nelnel.jpg"
+                    imagelink: "/src/assets/nelnel.jpg"
                 },
                 {
                     name: "企画2",
                     description: "説明2",
-                    imagelink: "/Kousensai-web/src/assets/reverse_nelnel.jpg"
+                    imagelink: "/src/assets/reverse_nelnel.jpg"
                 },
                 {
                     name: "企画3",
                     description: "説明3",
-                    imagelink: "/Kousensai-web/src/assets/nelnel.jpg"
+                    imagelink: "/src/assets/nelnel.jpg"
                 },
                 {
                     name: "企画4",
                     description: "説明4",
-                    imagelink: "/Kousensai-web/src/assets/reverse_nelnel.jpg"
+                    imagelink: "/src/assets/reverse_nelnel.jpg"
                 },
                 {
                     name: "企画5",
                     description: "説明5",
-                    imagelink: "/Kousensai-web/src/assets/nelnel.jpg"
+                    imagelink: "/src/assets/nelnel.jpg"
                 },
                 {
                     name: "企画6",
                     description: "説明6",
-                    imagelink: "/Kousensai-web/src/assets/reverse_nelnel.jpg"
+                    imagelink: "/src/assets/reverse_nelnel.jpg"
                 },
                 {
                     name: "企画7",
                     description: "説明7",
-                    imagelink: "/Kousensai-web/src/assets/nelnel.jpg"
+                    imagelink: "/src/assets/nelnel.jpg"
                 },
                 {
                     name: "企画8",
                     description: "説明8",
-                    imagelink: "/Kousensai-web/src/assets/reverse_nelnel.jpg"
+                    imagelink: "/src/assets/reverse_nelnel.jpg"
                 },
             ]
         }
