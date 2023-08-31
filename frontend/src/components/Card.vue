@@ -1,9 +1,12 @@
 <script>
 export default {
     props: {
-        name: String,
-        imagelink: String,
-        description: String
+        team_name: String,
+        project_name: String,
+        project_description: String,
+        project_space: String,
+        description: String,
+        imagelink: String
     },
     data() {
         return {
@@ -18,8 +21,9 @@ export default {
     <div class="card">
         <img class="image" :src="imagelink">
         <div class="info">
-            <div class="name">{{ name }}</div>
-            <div class="description">{{ description }}</div>
+            <div class="project-name">{{ project_name }}</div>
+            <div class="team-name">{{ team_name }}</div>
+            <div class="description">{{ project_description }}</div>
         </div>
     </div>
 </template>
@@ -46,7 +50,7 @@ img {
     padding: 0.5rem;
 }
 
-.name {
+.project-name {
     font-size: x-large;
     margin-bottom: 0.5rem;
 }

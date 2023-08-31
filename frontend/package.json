@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "vite-plugin-fonts": "^0.7.0",
     "vue": "^3.2.47",
     "vue-router": "^4.2.0"
