@@ -6,53 +6,80 @@ export default {
         project_description: String,
         project_space: String,
         description: String,
-        imagelink: String
+        imagelink: String,
     },
-    data() {
-        return {
-        }
-    },
-    created() {
-    }
-}
+};
 </script>
 
 <template>
     <div class="card">
-        <img class="image" :src="imagelink">
+        <div class="image-container">
+            <img class="image" :src="imagelink" alt="Project Image">
+        </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
             <div class="team-name">{{ team_name }}</div>
             <div class="description">{{ project_description }}</div>
+            <div class="project-space">{{ project_space }}</div>
+            <div class="description">{{ description }}</div>
         </div>
     </div>
 </template>
-
-
+  
 <style scoped>
 .card {
-    position: relative;
-    width: clamp(200px,100%,45%);
-    color: black;
-    background-color: whitesmoke;
-    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.5) -5px 5px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    max-width: 300px;
+    /* Set a max width for the card */
+    margin: 1rem;
+    /* Add some margin */
 }
 
-img {
-    aspect-ratio: initial;
+.image-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 75%;
+    /* 4:3 aspect ratio */
+}
+
+.image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .info {
     box-sizing: border-box;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .project-name {
-    font-size: x-large;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
+.team-name {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.project-description,
+.project-space,
+.description {
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #888;
+}
 </style>
+  

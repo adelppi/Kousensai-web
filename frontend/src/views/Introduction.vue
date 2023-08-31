@@ -44,7 +44,8 @@ export default {
             <h2>企画一覧</h2>
             <div id="project-container">
                 <Card v-for="i in projects" :team_name="i.team_name" :project_name="i.project_name"
-                    :project_description="i.project_description" :imagelink="`/src/assets/nelnel.jpg`" />
+                    :project_space="i.project_space" :project_description="i.project_description"
+                    :imagelink="`/src/assets/nelnel.jpg`" />
             </div>
         </main>
     </body>
