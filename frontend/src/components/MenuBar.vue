@@ -1,5 +1,8 @@
 <script>
 export default {
+    props: {
+        currentPage: String
+    },
     data() {
         return {
             menus: [
@@ -10,12 +13,10 @@ export default {
                 { path: "/Access", label: "アクセス", icon: "location_on" },
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
             ],
-            currentPage: "",
             isMobile: false,
         }
     },
     created() {
-        this.currentPage = this.$route.path;
         this.checkIfMobile()
         window.addEventListener("resize", this.checkIfMobile);
     },
