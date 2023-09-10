@@ -62,11 +62,13 @@ export default {
                                 ・JR常磐線・東京メトロ日比谷線<br>・つくばエクスプレス<br>
                                 &emsp;南千住駅 徒歩15分<br>
                                 </p>
+
                                 <p>
                                 ・東武伊勢崎線(東武スカイツリーライン)<br>
                                 &emsp;鐘ヶ淵駅 徒歩18分<br>
                                 &emsp;牛田駅 徒歩20分<br>
                                 </p>
+
                                 <p>
                                 ・京成電鉄<br>
                                 &emsp;京成関屋駅 徒歩20分
@@ -80,16 +82,21 @@ export default {
                             <h3>バス</h3>
 
                             <p>
+                                <p>
                                 ・都営バス<br>
                                 &emsp;都立産業技術高専荒川キャンパス前下車<br>
                                 &emsp;徒歩1分・上野松坂屋前⇔南千住駅東口<br>
+                                </p>
+
+                                <p>
                                 ・(上46系統)<br>
                                 &emsp;上野駅前から30分→南千住駅東口から8分
+                                </p>
                             </p>
 
                             <h3>自転車</h3>
                             <p>
-                                校内に駐輪場を用意しております。
+                                &emsp;校内に駐輪場を用意しております。
                             </p>
                         </div>
                     </div>
@@ -138,7 +145,7 @@ section {
 section .inner {
     width: 100%;
     display: flex;
-    padding-left: 7%;
+    padding-left: 10%;
     padding-right: 7%;
 }
 
@@ -149,7 +156,7 @@ section .adress {
 section .map {
     padding-bottom: 20px;
     width: 50%;
-    margin: auto;
+    margin-left: 20%;
 }
 
 section .box {
@@ -178,11 +185,11 @@ section .img_box {
 }
 
 #car {
-    padding-left: 7%;
+    padding-left: 10%;
 }
 
 .access {
-    width: 100%;
+    width: 50%;
 }
 
 .access p {
