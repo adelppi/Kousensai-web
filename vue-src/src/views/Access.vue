@@ -1,3 +1,5 @@
+<!-- npm run dev -->
+
 <script>
 import MenuBar from '../components/MenuBar.vue'
 export default {
