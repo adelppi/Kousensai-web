@@ -69,7 +69,7 @@ export default {
                                 </p>
                                 <p>
                                 ・京成電鉄<br>
-                                &emsp;京成関屋駅 徒歩20分"
+                                &emsp;京成関屋駅 徒歩20分
                                 </p>
                             </p>
 
@@ -111,7 +111,7 @@ export default {
 
                     <div class="img_box">
                         <img
-                        src="..\assets\000000452.jpg"
+                        src="../assets/000000452.jpg"
                         alt="アクセスmap"
                         >
                     </div>
@@ -174,7 +174,7 @@ section .img_box {
     text-align: center;
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 3%;
+    padding-bottom: 10px;
 }
 
 #car {
