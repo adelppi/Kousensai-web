@@ -13,6 +13,9 @@ export default {
 
 <template>
     <div class="card">
+        <div>
+            <img src="" alt="">
+        </div>
         <div class="image-container">
             <img class="image" :src="imagelink" alt="Project Image">
         </div>
@@ -28,6 +31,7 @@ export default {
   
 <style scoped>
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -37,7 +41,8 @@ export default {
     margin: 1rem;
     /* Add some margin */
     padding: 2rem;
-    background-color: rgb(255, 236, 88);
+    background-size: cover;
+    background-image: url('src/assets/memopaper.jpg');
     box-shadow: 5px 5px 20px black;
 }
 
