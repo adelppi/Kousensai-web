@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('projects', 'App\Http\Controllers\ProjectController');
+Route::post('/projects/{id}/increment-vote', 'App\Http\Controllers\ProjectController@incrementVote');

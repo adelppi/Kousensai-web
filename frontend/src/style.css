@@ -1,3 +1,12 @@
+/* フォント */
+
+/* 'Noto Sans JP' */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+/* 'Zen Kurenaido' */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+/* 'Shippori Mincho B1' */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+
 :root {
     font-family: 'Noto Sans JP';
     font-size: 17.5px;
