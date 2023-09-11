@@ -53,7 +53,7 @@ export default {
             axios.get('http://127.0.0.1:8000/api/projects')
                 .then(response => {
                     this.projects = response.data;
-                    // this.applyRandomStyles()
+                    this.applyRandomStyles()
                 })
                 .catch(error => {
                     console.log(error);
@@ -65,10 +65,17 @@ export default {
                 const scale = Math.random() * 0.1 + 0.95; // 0.95から1.05までのランダムな大きさ
                 const x = Math.floor(Math.random() * 21) - 10; // -10pxから10pxまでのランダムな横位置
                 const y = Math.floor(Math.random() * 21) - 10; // -10pxから10pxまでのランダムな縦位置
+                
+                const backgroundX = Math.floor(Math.random() * 100);
+                const backgroundY = Math.floor(Math.random() * 100);
+
+                const colorRotate = Math.floor(Math.random() * 360);
 
                 return {
-                    transform: `rotate(${rotate}deg) scale(${scale})`,
-                    margin: `${y}px ${10 + x}px 0`,
+                    'transform': `rotate(${rotate}deg) scale(${scale})`,
+                    'margin': `${y}px ${10 + x}px 0`,
+                    'background-position': `${backgroundX}% ${backgroundY}%`,
+                    'filter': `hue-rotate(${colorRotate}deg)`
                 };
             });
         }
@@ -106,5 +113,10 @@ export default {
     justify-content: center;
     gap: 1rem;
     background-image: url('src/assets/corkboard.webp');
+    border: 10px solid black;
+    border-image-source: url('src/assets/corkboardborder.webp');
+    border-image-repeat: repeat;
+    border-image-slice: 200;
+    border-image-width: 25px;
 }
 </style>
