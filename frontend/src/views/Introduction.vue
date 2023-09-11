@@ -15,6 +15,34 @@ export default {
                     project_description: "説明1",
                     project_space: "場所1",
                     imagelink: "/src/assets/nelnel.jpg"
+                },
+                {
+                    team_name: "企画1",
+                    project_name: "企画1",
+                    project_description: "説明1",
+                    project_space: "場所1",
+                    imagelink: "/src/assets/nelnel.jpg"
+                },
+                {
+                    team_name: "企画1",
+                    project_name: "企画1",
+                    project_description: "説明1",
+                    project_space: "場所1",
+                    imagelink: "/src/assets/nelnel.jpg"
+                },
+                {
+                    team_name: "企画1",
+                    project_name: "企画1",
+                    project_description: "説明1",
+                    project_space: "場所1",
+                    imagelink: "/src/assets/nelnel.jpg"
+                },
+                {
+                    team_name: "企画1",
+                    project_name: "企画1",
+                    project_description: "説明1",
+                    project_space: "場所1",
+                    imagelink: "/src/assets/nelnel.jpg"
                 }
             ],
             cardStyles: []
@@ -77,5 +105,6 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    background-image: url('src/assets/corkboard.webp');
 }
 </style>

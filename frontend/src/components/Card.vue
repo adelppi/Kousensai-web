@@ -30,15 +30,15 @@ export default {
 .card {
     display: flex;
     flex-direction: column;
-    border: 2px solid #ccc;
-    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
     max-width: 300px;
     /* Set a max width for the card */
     margin: 1rem;
     /* Add some margin */
+    padding: 2rem;
+    background-color: rgb(255, 236, 88);
+    box-shadow: 5px 5px 20px black;
 }
 
 .image-container {
