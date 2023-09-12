@@ -9,9 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function incrementVote($id)
+    public static function incrementVote($id)
     {
-        $project = Project::find($id);
+        $project = self::find($id);
 
         if (!$project) {
             return response()->json(['message' => '指定されたプロジェクトが見つかりません'], 404);
@@ -19,5 +19,14 @@ class Project extends Model
 
         $project->increment('vote');
         return response()->json(['message' => '投票がカウントされました']);
+    }
+
+    public static function getTopThreeProjects()
+    {
+        $topThreeProjects = self::orderBy('vote', 'desc')
+            ->take(3)
+            ->get();
+        // dd($topThreeProjects);
+        return $topThreeProjects;
     }
 }

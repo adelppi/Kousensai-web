@@ -1,6 +1,10 @@
 <script>
+import axios from 'axios'
+
 export default {
     props: {
+        id: Number,
+        vote: Number,
         team_name: String,
         project_name: String,
         project_description: String,
@@ -8,6 +12,21 @@ export default {
         description: String,
         imagelink: String,
     },
+    data() {
+        return {
+            url: ""
+        }
+    },
+    methods: {
+        incrementVote(id) {
+            this.url = "http://127.0.0.1:8000/api/projects/" + id + "/increment-vote"
+            axios.post(this.url).then(function (response) {
+                return response
+            })
+        }
+    },
+    mounted() {
+    }
 };
 </script>
 
@@ -25,6 +44,8 @@ export default {
             <div class="description">{{ project_description }}</div>
             <div class="project-space">{{ project_space }}</div>
             <div class="description">{{ description }}</div>
+            vote: {{ vote }}
+            <button v-on:click="incrementVote(id)">投票</button>
         </div>
     </div>
 </template>

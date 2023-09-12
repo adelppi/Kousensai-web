@@ -1,7 +1,14 @@
 <script>
+import axios from 'axios'
+import Card from '../components/Card.vue'
+
 export default {
+    components: {
+        Card
+    },
     data() {
         return {
+            topThreeProjects: [],
             items: [
                 { name: '企画1', votes: 0 },
                 { name: '企画2', votes: 0 },
@@ -9,6 +16,15 @@ export default {
         }
     },
     methods: {
+        fetchTopThreeProjects() {
+            axios.get('http://127.0.0.1:8000/api/getTopThreeProjects')
+                .then(response => {
+                    this.topThreeProjects = response.data
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         vote(index) {
             this.items[index].votes++;
             this.saveToLocalStorage();
@@ -18,6 +34,7 @@ export default {
         }
     },
     mounted() {
+        this.fetchTopThreeProjects()
         const savedData = localStorage.getItem('voteData');
         if (savedData) {
             this.items = JSON.parse(savedData);
@@ -32,16 +49,29 @@ export default {
         <main>
             <h1>人気企画投票</h1>
             <h2>投票システム</h2>
-            <div>
-                <ul>
-                    <li v-for="(item, index) in items" :key="index">
-                        {{ item.name }}: {{ item.votes }}
-                        <button @click="vote(index)">Vote</button>
-                    </li>
-                </ul>
+            <div id="project-container">
+                <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
+                    :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
+                    :project_description="i.project_description" :imagelink="`/src/assets/nelnel.jpg`" />
             </div>
         </main>
     </body>
 </template>
 
-<style scoped></style>
+<style scoped>
+#project-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-image: url('src/assets/corkboard.webp');
+    border: 10px solid black;
+    border-image-source: url('src/assets/corkboardborder.webp');
+    border-image-repeat: repeat;
+    border-image-slice: 200;
+    border-image-width: 25px;
+}
+</style>
