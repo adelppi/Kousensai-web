@@ -107,7 +107,7 @@
 
                     <div class="img_box">
                         <img
-                        src="../assets/000000452.jpg"
+                        src="../assets/access_map.png"
                         alt="アクセスmap"
                         >
                     </div>

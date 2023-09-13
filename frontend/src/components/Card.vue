@@ -103,7 +103,7 @@ export default {
     /* Add some margin */
     padding: 2rem;
     background-size: cover;
-    background-image: url('src/assets/memopaper.jpg');
+    background-image: url('src/assets/memopaper.png');
     box-shadow: 5px 5px 20px black;
 }
 
