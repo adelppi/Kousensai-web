@@ -65,7 +65,7 @@ export default {
             <div id="project-container">
                 <Card class="card" :style="cardStyles[index]" v-for="(i, index) in projects" :key="index" :id="i.id"
                     :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagePath="`/src/assets/nelnel.jpg`" />
+                    :project_description="i.project_description" :imagePath="'src/assets/nelnel.jpg'" />
             </div>
         </main>
     </body>
