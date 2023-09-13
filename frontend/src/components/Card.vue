@@ -69,7 +69,7 @@ export default {
             <img src="" alt="">
         </div>
         <div class="image-container">
-            <img class="image" :src="imagePath" alt="Project Image">
+            <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
