@@ -19,6 +19,11 @@ class ProjectController extends Controller
     {
         return Project::incrementVote($id);
     }
+
+    public function decrementVote($id)
+    {
+        return Project::decrementVote($id);
+    }
     
     public function getTopThreeProjects()
     {

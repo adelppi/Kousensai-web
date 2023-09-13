@@ -10,22 +10,55 @@ export default {
         project_description: String,
         project_space: String,
         description: String,
-        imagelink: String,
+        imagePath: String,
     },
     data() {
         return {
-            url: ""
+            url: "",
+            isVoteButtonDisabled: false,
+            votedProjects: []
         }
     },
     methods: {
         incrementVote(id) {
-            this.url = "http://127.0.0.1:8000/api/projects/" + id + "/increment-vote"
-            axios.post(this.url).then(function (response) {
-                return response
-            })
+            this.getVotedProjects()
+            this.url = `http://127.0.0.1:8000/api/projects/${id}/increment-vote`
+            axios.post(this.url)
+            this.pushVariableToLocalStorage(id)
+            this.checkIfVoted()
+        },
+        decrementVote(id) {
+            this.getVotedProjects()
+            this.url = `http://127.0.0.1:8000/api/projects/${id}/decrement-vote`
+            axios.post(this.url)
+            this.deleteVariableFromLocalStorage(id)
+            this.checkIfVoted()
+        },
+        getVotedProjects() {
+            const storedData = localStorage.getItem('votedProjects');
+            if (storedData) {
+                this.votedProjects = JSON.parse(storedData);
+            }
+        },
+        pushVariableToLocalStorage(id) {
+            this.votedProjects.push(id)
+            localStorage.setItem('votedProjects', JSON.stringify(this.votedProjects));
+        },
+        deleteVariableFromLocalStorage(id) {
+            this.votedProjects = this.votedProjects.filter(item => item !== id);
+            localStorage.setItem('votedProjects', JSON.stringify(this.votedProjects));
+        },
+        checkIfVoted() {
+            if (this.votedProjects.includes(this.id)) {
+                this.isVoteButtonDisabled = true
+            } else {
+                this.isVoteButtonDisabled = false
+            }
         }
     },
     mounted() {
+        this.getVotedProjects()
+        this.checkIfVoted()
     }
 };
 </script>
@@ -36,7 +69,7 @@ export default {
             <img src="" alt="">
         </div>
         <div class="image-container">
-            <img class="image" :src="imagelink" alt="Project Image">
+            <img class="image" :src="imagePath" alt="Project Image">
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
@@ -44,13 +77,20 @@ export default {
             <div class="description">{{ project_description }}</div>
             <div class="project-space">{{ project_space }}</div>
             <div class="description">{{ description }}</div>
-            vote: {{ vote }}
-            <button v-on:click="incrementVote(id)">投票</button>
+            <div v-if="isVoteButtonDisabled">
+                <button v-on:click="decrementVote(id)" class="button-voted">投票取り消し</button>
+            </div>
+            <div v-else>
+                <button v-on:click="incrementVote(id)" class="button">投票する</button>
+            </div>
         </div>
     </div>
 </template>
   
 <style scoped>
+/* 'Mochiy Pop One' */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
 .card {
     position: relative;
     display: flex;
@@ -89,7 +129,9 @@ export default {
 }
 
 .project-name {
-    font-size: 1.5rem;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.75rem;
+    color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
 }
 
@@ -106,6 +148,44 @@ export default {
 
 .description {
     color: #888;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button-voted {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7e7e7e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+
+.button-voted:hover {
+    background-color: #484848;
 }
 </style>
   

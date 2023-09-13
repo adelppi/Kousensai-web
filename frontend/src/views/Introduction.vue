@@ -8,43 +8,7 @@ export default {
     },
     data() {
         return {
-            projects: [
-                {
-                    team_name: "企画1",
-                    project_name: "企画1",
-                    project_description: "説明1",
-                    project_space: "場所1",
-                    imagelink: "/src/assets/nelnel.jpg"
-                },
-                {
-                    team_name: "企画1",
-                    project_name: "企画1",
-                    project_description: "説明1",
-                    project_space: "場所1",
-                    imagelink: "/src/assets/nelnel.jpg"
-                },
-                {
-                    team_name: "企画1",
-                    project_name: "企画1",
-                    project_description: "説明1",
-                    project_space: "場所1",
-                    imagelink: "/src/assets/nelnel.jpg"
-                },
-                {
-                    team_name: "企画1",
-                    project_name: "企画1",
-                    project_description: "説明1",
-                    project_space: "場所1",
-                    imagelink: "/src/assets/nelnel.jpg"
-                },
-                {
-                    team_name: "企画1",
-                    project_name: "企画1",
-                    project_description: "説明1",
-                    project_space: "場所1",
-                    imagelink: "/src/assets/nelnel.jpg"
-                }
-            ],
+            projects: [],
             cardStyles: []
         }
     },
@@ -53,7 +17,7 @@ export default {
             axios.get('http://127.0.0.1:8000/api/projects')
                 .then(response => {
                     this.projects = response.data
-                    // this.shuffleArray(this.projects)
+                    this.shuffleArray(this.projects)
                     this.applyRandomStyles()
                 })
                 .catch(error => {
@@ -82,7 +46,7 @@ export default {
                     'transform': `rotate(${rotate}deg) scale(${scale})`,
                     'margin': `${y}px ${10 + x}px 0`,
                     'background-position': `${backgroundX}% ${backgroundY}%`,
-                    'filter': `hue-rotate(${colorRotate}deg)`
+                    // 'filter': `hue-rotate(${colorRotate}deg)`
                 };
             });
         }
@@ -101,7 +65,7 @@ export default {
             <div id="project-container">
                 <Card class="card" :style="cardStyles[index]" v-for="(i, index) in projects" :key="index" :id="i.id"
                     :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagelink="`/src/assets/nelnel.jpg`" />
+                    :project_description="i.project_description" :imagePath="`/src/assets/nelnel.jpg`" />
             </div>
         </main>
     </body>

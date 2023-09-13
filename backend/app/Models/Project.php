@@ -14,11 +14,23 @@ class Project extends Model
         $project = self::find($id);
 
         if (!$project) {
-            return response()->json(['message' => '指定されたプロジェクトが見つかりません'], 404);
+            return response()->json(['message' => 'Couldnt find the project.'], 404);
         }
 
         $project->increment('vote');
-        return response()->json(['message' => '投票がカウントされました']);
+        return response()->json(['message' => "incremented vote (id: $id)"]);
+    }
+
+    public static function decrementVote($id)
+    {
+        $project = self::find($id);
+        
+        if (!$project) {
+            return response()->json(['message' => 'Couldnt find the project.'], 404);
+        }
+
+        $project->decrement('vote');
+        return response()->json(['message' => "decremented vote (id: $id)"]);
     }
 
     public static function getTopThreeProjects()

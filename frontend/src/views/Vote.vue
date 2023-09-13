@@ -8,11 +8,7 @@ export default {
     },
     data() {
         return {
-            topThreeProjects: [],
-            items: [
-                { name: '企画1', votes: 0 },
-                { name: '企画2', votes: 0 },
-            ]
+            topThreeProjects: []
         }
     },
     methods: {
@@ -24,21 +20,10 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-        },
-        vote(index) {
-            this.items[index].votes++;
-            this.saveToLocalStorage();
-        },
-        saveToLocalStorage() {
-            localStorage.setItem('voteData', JSON.stringify(this.items));
         }
     },
     mounted() {
         this.fetchTopThreeProjects()
-        const savedData = localStorage.getItem('voteData');
-        if (savedData) {
-            this.items = JSON.parse(savedData);
-        }
     }
 
 }
@@ -52,7 +37,7 @@ export default {
             <div id="project-container">
                 <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
                     :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagelink="`/src/assets/nelnel.jpg`" />
+                    :project_description="i.project_description" :imagePath="`/src/assets/nelnel.jpg`" />
             </div>
         </main>
     </body>
