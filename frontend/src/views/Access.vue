@@ -1,6 +1,5 @@
 <template>
     <body>
-        <MenuBar />
         <main>
             <div id="content">
                 <h1>アクセス</h1>
