@@ -1,6 +1,5 @@
 <template>
     <body>
-        <MenuBar />
         <main>
             <h1>校長挨拶</h1>
 
