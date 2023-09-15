@@ -11,6 +11,7 @@ export default {
         project_space: String,
         description: String,
         imagePath: String,
+        child_style: Object
     },
     data() {
         return {
@@ -65,7 +66,7 @@ export default {
 
 <template>
     <div class="card">
-        <div class="pin-container" style="{{ child_style }}">
+        <div class="pin-container" :style="child_style">
             <img src="" alt="pin">
         </div>
         <div class="image-container">

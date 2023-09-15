@@ -31,8 +31,8 @@ export default {
             }
         },
         applyRandomStyles() {
-            this.cardStyles = this.projects.map(() => {
-                const rotate = Math.floor(Math.random() * 21) - 10; // -10度から10度までのランダムな傾き
+            this.cardStyles = this.projects.map( () => {
+                const rotate = Math.floor(Math.random() * 10) - 5; // -10度から10度までのランダムな傾き
                 const scale = Math.random() * 0.1 + 0.95; // 0.95から1.05までのランダムな大きさ
                 const x = Math.floor(Math.random() * 21) - 10; // -10pxから10pxまでのランダムな横位置
                 const y = Math.floor(Math.random() * 21) - 10; // -10pxから10pxまでのランダムな縦位置
@@ -40,13 +40,20 @@ export default {
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
 
+                const childX = ((Math.random() * 2) + 4) * 10; // 40%から60%までのランダムなマージン
+
                 const colorRotate = Math.floor(Math.random() * 360);
 
                 return {
-                    'transform': `rotate(${rotate}deg) scale(${scale})`,
-                    'margin': `${y}px ${10 + x}px 0`,
-                    'background-position': `${backgroundX}% ${backgroundY}%`,
-                    // 'filter': `hue-rotate(${colorRotate}deg)`
+                    'parentStyle': {
+                        'transform': `rotate(${rotate}deg) scale(${scale})`,
+                        'margin': `${y}px ${10 + x}px 0`,
+                        'background-position': `${backgroundX}% ${backgroundY}%`,
+                        // 'filter': `hue-rotate(${colorRotate}deg)`
+                    },
+                    'childStyle': {
+                        'margin': `1rem auto 1rem ${childX}%`
+                    }
                 };
             });
         }
@@ -63,7 +70,7 @@ export default {
             <h1>企画紹介</h1>
             <h2>企画一覧</h2>
             <div id="project-container">
-                <Card class="card" :style="cardStyles[index]" v-for="(i, index) in projects" :key="index" :id="i.id"
+                <Card class="card" :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']" v-for="(i, index) in projects" :key="index" :id="i.id"
                     :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
                     :project_description="i.project_description" :imagePath="'src/assets/nelnel.jpg'" />
             </div>
