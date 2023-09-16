@@ -11,7 +11,16 @@ export default {
         project_space: String,
         description: String,
         imagePath: String,
-        child_style: Object
+        child_style: {
+            type: Object,
+            required: false,
+            default: {
+                'containerStyle': {
+                    'transform': 'rotate(45deg)'
+                },
+                'imageStyle': ''
+            }
+        }
     },
     data() {
         return {
