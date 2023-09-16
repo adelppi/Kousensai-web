@@ -11,7 +11,7 @@ export default {
         project_space: String,
         description: String,
         imagePath: String,
-        child_style: String
+        child_style: Object
     },
     data() {
         return {
@@ -66,8 +66,8 @@ export default {
 
 <template>
     <div class="card">
-        <div class="pin-container" :style="child_style">
-            <img src="../assets/pin.png" width="50" alt="pin">
+        <div class="pin-container" :style="child_style['containerStyle']">
+            <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>
         <div class="image-container">
             <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
@@ -96,7 +96,6 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     transition: transform 0.2s ease-in-out;
     max-width: 300px;
     /* Set a max width for the card */
@@ -110,11 +109,12 @@ export default {
 
 .pin-container {
     position: relative;
-    margin: 1rem auto 1rem auto;
+    margin: -1rem auto 1rem auto;
     padding: 0 0 0 0;
-    background-color: #0056b3;
-    height: 20px;
-    width: 20px;
+    width: -moz-fit-content;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    z-index: 50;
 }
 
 .image-container {

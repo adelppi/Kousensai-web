@@ -39,9 +39,9 @@ export default {
 
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
-
-                const childX = Math.floor(Math.random() * 10); // 1remから10remまでのランダムなマージン 
-                const rotatePin = Math.floor(Math.random() * 100) - 30; // -30度から70度までのランダムな傾き 
+                
+                const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
+                const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
 
                 const colorRotate = Math.floor(Math.random() * 360);
 
@@ -53,10 +53,12 @@ export default {
                         // 'filter': `hue-rotate(${colorRotate}deg)` 
                     },
                     'childStyle': {
-                        "margin-left": `${childX}rem`,
-                        "margin-bottom": "1rem",
-                        "transform-origin": "0% 0%",
-                        'transform': `rotate(${rotatePin}deg)`
+                        'containerStyle': {
+                            'transform': `translateX(${childX}rem)`
+                        },
+                        'imageStyle': {
+                            'transform': `rotate(${rotatePin}deg)`
+                        }
                     }
                 };
             })
