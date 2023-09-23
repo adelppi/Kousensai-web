@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         fetchProjects() {
-            axios.get('http://127.0.0.1:8000/api/projects')
+            axios.get(import.meta.env.VITE_API_URL + '/projects')
                 .then(response => {
                     this.projects = response.data
                     this.shuffleArray(this.projects)
