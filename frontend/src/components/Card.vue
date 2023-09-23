@@ -112,7 +112,7 @@ export default {
     position: relative;
     margin: 1rem auto 1rem auto;
     padding: 0 0 0 0;
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
     height: 20px;
     width: 20px;
 }
