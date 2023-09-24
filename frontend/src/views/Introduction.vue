@@ -93,8 +93,8 @@ export default {
     justify-content: center;
     gap: 1rem;
     background-image: url('src/assets/corkboard.png');
-    border: 10px solid black;
-    border-image-source: url('src/assets/corkboardborder.png');
+    /* border: 10px solid black; */
+    /* border-image-source: url('src/assets/corkboardborder.png'); */
     border-image-repeat: repeat;
     border-image-slice: 200;
     border-image-width: 25px;

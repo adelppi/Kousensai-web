@@ -102,19 +102,10 @@ export default {
     /* Set a max width for the card */
     margin: 1rem;
     /* Add some margin */
-    padding: 0 2rem 2rem 2rem;
+    padding: 2rem;
     background-size: cover;
     background-image: url('src/assets/memopaper.png');
-    box-shadow: 5px 5px 20px black;
-}
-
-.pin-container {
-    position: relative;
-    margin: 1rem auto 1rem auto;
-    padding: 0 0 0 0;
-    /* background-color: #0056b3; */
-    height: 20px;
-    width: 20px;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
 }
 
 .image-container {
@@ -197,6 +188,5 @@ export default {
 .button-voted:hover {
     background-color: #484848;
 }
-
 </style>
   
