@@ -92,7 +92,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-image: url('src/assets/corkboard.png');
+    background-image: url('../assets/corkboard.png');
     /* border: 10px solid black; */
     /* border-image-source: url('src/assets/corkboardborder.png'); */
     border-image-repeat: repeat;
