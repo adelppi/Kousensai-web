@@ -23,14 +23,14 @@ export default {
     methods: {
         incrementVote(id) {
             this.getVotedProjects()
-            this.url = import.meta.env.VITE_API_URL + `projects/${id}/increment-vote`
+            this.url = import.meta.env.VITE_API_URL + `/projects/${id}/increment-vote`
             axios.post(this.url)
             this.pushVariableToLocalStorage(id)
             this.checkIfVoted()
         },
         decrementVote(id) {
             this.getVotedProjects()
-            this.url = import.meta.env.VITE_API_URL + `projects/${id}/decrement-vote`
+            this.url = import.meta.env.VITE_API_URL + `/projects/${id}/decrement-vote`
             axios.post(this.url)
             this.deleteVariableFromLocalStorage(id)
             this.checkIfVoted()
