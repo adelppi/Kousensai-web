@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         fetchTopThreeProjects() {
-            axios.get('http://127.0.0.1:8000/api/getTopThreeProjects')
+            axios.get(import.meta.env.VITE_API_URL + '/getTopThreeProjects')
                 .then(response => {
                     this.topThreeProjects = response.data
                 })
@@ -52,9 +52,9 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-image: url('src/assets/corkboard.webp');
+    background-image: url('../assets/corkboard.png');
     border: 10px solid black;
-    border-image-source: url('src/assets/corkboardborder.webp');
+    border-image-source: url('../assets/corkboardborder.png');
     border-image-repeat: repeat;
     border-image-slice: 200;
     border-image-width: 25px;

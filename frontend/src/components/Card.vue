@@ -32,14 +32,14 @@ export default {
     methods: {
         incrementVote(id) {
             this.getVotedProjects()
-            this.url = `http://127.0.0.1:8000/api/projects/${id}/increment-vote`
+            this.url = import.meta.env.VITE_API_URL + `/${id}/increment-vote`
             axios.post(this.url)
             this.pushVariableToLocalStorage(id)
             this.checkIfVoted()
         },
         decrementVote(id) {
             this.getVotedProjects()
-            this.url = `http://127.0.0.1:8000/api/projects/${id}/decrement-vote`
+            this.url = import.meta.env.VITE_API_URL + `/${id}/decrement-vote`
             axios.post(this.url)
             this.deleteVariableFromLocalStorage(id)
             this.checkIfVoted()
@@ -112,8 +112,8 @@ export default {
     /* Add some margin */
     padding: 0 2rem 2rem 2rem;
     background-size: cover;
-    background-image: url('src/assets/memopaper.png');
-    box-shadow: 5px 5px 20px black;
+    background-image: url('../assets/memopaper.png');
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
 }
 
 .pin-container {
@@ -206,6 +206,5 @@ export default {
 .button-voted:hover {
     background-color: #484848;
 }
-
 </style>
   

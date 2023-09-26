@@ -15,7 +15,7 @@
 }
 
 body {
-    background-color: #333;
+    background-color: #d7d7d7;
     color: white;
     margin: 0;
     padding: 0;
@@ -35,7 +35,7 @@ h1 {
     font-size: 2.5rem;
     text-align: center;
     padding: 0.25rem;
-    background-color:#222;
+    background-color:#a9a9a9;
 }
 
 /* モバイルのとき */

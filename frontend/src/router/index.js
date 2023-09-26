@@ -6,7 +6,6 @@ import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
 import Vote from '../views/Vote.vue'
 import Preparing from '../views/Preparing.vue'
-import Test from '../views/Test.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,6 +13,10 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            redirect: '/Preparing'
+        },
+        {
+            path: '/wordpress',
             redirect: '/Preparing'
         },
         {
@@ -47,10 +50,6 @@ const router = createRouter({
         {
             path: '/Preparing',
             component: Preparing
-        },
-        {
-            path: '/Test',
-            component: Test
         }
     ]
 })

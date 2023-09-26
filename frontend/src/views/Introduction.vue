@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         fetchProjects() {
-            axios.get('http://127.0.0.1:8000/api/projects')
+            axios.get(import.meta.env.VITE_API_URL + '/projects')
                 .then(response => {
                     this.projects = response.data
                     this.shuffleArray(this.projects)
@@ -94,9 +94,9 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-image: url('src/assets/corkboard.png');
-    border: 10px solid black;
-    border-image-source: url('src/assets/corkboardborder.png');
+    background-image: url('../assets/corkboard.png');
+    /* border: 10px solid black; */
+    /* border-image-source: url('src/assets/corkboardborder.png'); */
     border-image-repeat: repeat;
     border-image-slice: 200;
     border-image-width: 25px;
