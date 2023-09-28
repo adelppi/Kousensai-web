@@ -87,10 +87,14 @@ export default {
 <template>
     <body>
         <main>
+            <span v-if="moduleShown" >
+                {{ projects[shownId].id }}
+            </span>
             <Module 
                 v-if="moduleShown" 
                 @overlay-clicked="moduleShown = false"
-                :id="shownId" 
+                :id="projects[shownId].id"
+                :shownId="shownId" 
                 :vote="projects[shownId].vote"
                 :team_name="projects[shownId].team_name"
                 :project_name="projects[shownId].project_name" 

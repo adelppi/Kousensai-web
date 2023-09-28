@@ -3,7 +3,8 @@ import axios from 'axios'
 
 export default {
     props: {
-        id: Number,
+        id:Number,
+        shownId: Number,
         vote: Number,
         team_name: String,
         project_name: String,
@@ -64,7 +65,8 @@ export default {
 </script>
 
 <template>
-    <div class="module" @click="$emit('cardSelected', id)">
+    <div class="module" @click="$emit('cardSelected', shownId)">
+        {{ id }}
         <div class="image-container">
             <img class="image" :src="imagePath" alt="Project Image">
         </div>
