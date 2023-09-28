@@ -11,7 +11,16 @@ export default {
         project_space: String,
         description: String,
         imagePath: String,
-        child_style: String
+        child_style: {
+            type: Object,
+            required: false,
+            default: {
+                'containerStyle': {
+                    'transform': 'rotate(45deg)'
+                },
+                'imageStyle': ''
+            }
+        }
     },
     data() {
         return {
@@ -55,6 +64,17 @@ export default {
             } else {
                 this.isVoteButtonDisabled = false
             }
+        },
+        onCardClicked(event) {
+            event.preventDefault();
+
+            const selectedCard = event.currentTarget;
+
+            const projectName = selectedCard.getElementsByClassName('project-name')[0].innerText;
+            console.log(`Memo Clicked: ${projectName}`);
+            console.log(selectedCard);
+
+            selectedCard.classList.toggle("card-selected");
         }
     },
     mounted() {
@@ -65,9 +85,9 @@ export default {
 </script>
 
 <template>
-    <div class="card">
-        <div class="pin-container" :style="child_style">
-            <img src="../assets/pin.png" width="50" alt="pin">
+    <div class="card" v-on:click="onCardClicked($event)">
+        <div class="pin-container" :style="child_style['containerStyle']">
+            <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>
         <div class="image-container">
             <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
@@ -79,10 +99,10 @@ export default {
             <div class="project-space">{{ project_space }}</div>
             <div class="description">{{ description }}</div>
             <div v-if="isVoteButtonDisabled">
-                <button v-on:click="decrementVote(id)" class="button-voted">投票取り消し</button>
+                <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
             </div>
             <div v-else>
-                <button v-on:click="incrementVote(id)" class="button">投票する</button>
+                <button v-on:click.stop="incrementVote(id)" class="button">投票する</button>
             </div>
         </div>
     </div>
@@ -96,16 +116,29 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     transition: transform 0.2s ease-in-out;
     max-width: 300px;
     /* Set a max width for the card */
     margin: 1rem;
     /* Add some margin */
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     background-size: cover;
     background-image: url('../assets/memopaper.png');
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+.card-selected {
+    transform: none !important;
+}
+
+.pin-container {
+    position: relative;
+    margin: -1rem auto 1rem auto;
+    padding: 0 0 0 0;
+    width: -moz-fit-content;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    z-index: 50;
 }
 
 .image-container {
