@@ -2,11 +2,13 @@
 export default {
     data() {
         return {
-            password: ""
+            onigiri: "",
+            tsunamayoOnigiri: ""
         }
     },
     mounted() {
-        this.password = this.$route.params["password"]
+        this.onigiri = this.$route.params["onigiri"]
+        this.tsunamayoOnigiri = import.meta.env.VITE_LOST_FOUND_PASSWORD
     }
 }
 </script>
@@ -15,7 +17,7 @@ export default {
     <body>
         <main>
             <h1>落とし物画面</h1>
-            <div v-if="password === 'admin'">
+            <div v-if="onigiri === tsunamayoOnigiri">
                 <!-- 管理者がアクセスした場合 -->
                 おっけー
             </div>
