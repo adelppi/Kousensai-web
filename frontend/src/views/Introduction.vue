@@ -39,9 +39,9 @@ export default {
 
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
-
-                const childX = Math.floor(Math.random() * 10); // 1remから10remまでのランダムなマージン 
-                const rotatePin = Math.floor(Math.random() * 100) - 30; // -30度から70度までのランダムな傾き 
+                
+                const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
+                const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
 
                 const colorRotate = Math.floor(Math.random() * 360);
 
@@ -53,10 +53,12 @@ export default {
                         // 'filter': `hue-rotate(${colorRotate}deg)` 
                     },
                     'childStyle': {
-                        "margin-left": `${childX}rem`,
-                        "margin-bottom": "1rem",
-                        "transform-origin": "0% 0%",
-                        'transform': `rotate(${rotatePin}deg)`
+                        'containerStyle': {
+                            'transform': `translateX(${childX}rem)`
+                        },
+                        'imageStyle': {
+                            'transform': `rotate(${rotatePin}deg)`
+                        }
                     }
                 };
             })
@@ -77,7 +79,8 @@ export default {
                 <Card class="card" :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in projects" :key="index" :id="i.id" :vote="i.vote" :team_name="i.team_name"
                     :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagePath="'src/assets/nelnel.jpg'" />
+                    :project_description="i.project_description" :imagePath="'src/assets/nelnel.jpg'" 
+                    tabindex="-1"/>
             </div>
         </main>
     </body>

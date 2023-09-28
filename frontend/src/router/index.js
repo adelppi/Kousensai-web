@@ -5,6 +5,8 @@ import Greeting from '../views/Greeting.vue'
 import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
 import Vote from '../views/Vote.vue'
+import LostFound from '../views/LostFound.vue'
+import LostFoundAdmin from '../views/LostFoundAdmin.vue'
 import Preparing from '../views/Preparing.vue'
 
 const router = createRouter({
@@ -46,6 +48,14 @@ const router = createRouter({
         {
             path: '/Vote',
             component: Vote
+        },
+        {
+            path: '/LostFound',
+            component: LostFound
+        },
+        {
+            path: '/LostFoundAdmin/:password',
+            component: LostFoundAdmin
         },
         {
             path: '/Preparing',
