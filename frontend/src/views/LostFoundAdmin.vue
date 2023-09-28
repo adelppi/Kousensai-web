@@ -4,35 +4,14 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            lostItems: [
-                {
-                    name: 'something',
-                    place: 'somewhere',
-                    property: 'specialProperty'
-                },
-                {
-                    name: 'something',
-                    place: 'somewhere',
-                    property: 'specialProperty'
-                },
-                {
-                    name: 'something',
-                    place: 'somewhere',
-                    property: 'specialProperty'
-                },
-                {
-                    name: 'something',
-                    place: 'somewhere',
-                    property: 'specialProperty'
-                }
-            ],
+            lostItems: []
         }
     },
     methods: {
         fetchLostItems() {
             axios.get(import.meta.env.VITE_API_URL + '/getLostFoundItems')
                 .then(response => {
-                    this.plostItems = response.data
+                    this.lostItems = response.data
                 })
                 .catch(error => {
                     console.log(error);
