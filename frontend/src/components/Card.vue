@@ -90,7 +90,7 @@ export default {
             <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>
         <div class="image-container">
-            <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
+            <img class="image" :src="imagePath" alt="Project Image">
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
