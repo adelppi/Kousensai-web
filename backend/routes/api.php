@@ -22,3 +22,4 @@ Route::apiResource('projects', 'App\Http\Controllers\ProjectController');
 Route::post('/projects/{id}/increment-vote', 'App\Http\Controllers\ProjectController@incrementVote');
 Route::post('/projects/{id}/decrement-vote', 'App\Http\Controllers\ProjectController@decrementVote');
 Route::get('/getTopThreeProjects', 'App\Http\Controllers\ProjectController@getTopThreeProjects');
+Route::get('/getLostFound', 'App\Http\Controllers\LostFoundController@getLostFound');
