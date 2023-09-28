@@ -22,6 +22,15 @@ export default {
         this.fetchLostItems();
     }
 }
+
+// adding lost item to api
+// {
+//     "name": "a",
+//     "place": "b",
+//     "property": "c"
+// }
+// /api/addLostItem/
+
 </script>
 
 <template>
