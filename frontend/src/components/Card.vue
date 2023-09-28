@@ -4,6 +4,7 @@ import axios from 'axios'
 export default {
     props: {
         id: Number,
+        index: Number,
         vote: Number,
         team_name: String,
         project_name: String,
@@ -71,7 +72,7 @@ export default {
 </script>
 
 <template>
-    <div class="card" @click="$emit('cardSelected', id)">
+    <div class="card" @click="$emit('cardSelected', index)">
         <div class="pin-container" :style="child_style['containerStyle']">
             <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>

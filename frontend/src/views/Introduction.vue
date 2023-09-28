@@ -102,8 +102,11 @@ export default {
                 <Card 
                     :style="cardStyles[index]['parentStyle']" 
                     :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in projects" :key="index" 
-                    :id="i.id" :vote="i.vote" 
+                    v-for="(i, index) in projects" 
+                    :key="index"
+                    :index="index" 
+                    :id="i.id" 
+                    :vote="i.vote" 
                     :project_name="i.project_name" 
                     :imagePath="'src/assets/nelnel.jpg'" 
                     @card-selected="showModule"
