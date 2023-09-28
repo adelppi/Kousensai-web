@@ -9,7 +9,8 @@ export default {
     data() {
         return {
             projects: [],
-            cardStyles: []
+            cardStyles: [],
+            extra: ""
         }
     },
     methods: {
@@ -39,7 +40,7 @@ export default {
 
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
-                
+
                 const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
                 const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
 
@@ -66,6 +67,7 @@ export default {
     },
     mounted() {
         this.fetchProjects();
+        this.extra = import.meta.env.VITE_EXTRA
     }
 }
 </script>
@@ -73,14 +75,15 @@ export default {
 <template>
     <body>
         <main>
+            {{ location }}
             <h1>企画紹介</h1>
             <h2>企画一覧</h2>
             <div id="project-container">
                 <Card class="card" :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in projects" :key="index" :id="i.id" :vote="i.vote" :team_name="i.team_name"
                     :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagePath="`/assets/thumbnails/${i.id}.png`" 
-                    tabindex="-1"/>
+                    :project_description="i.project_description" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
+                    tabindex="-1" />
             </div>
         </main>
     </body>
