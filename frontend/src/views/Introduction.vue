@@ -79,7 +79,7 @@ export default {
                 <Card class="card" :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in projects" :key="index" :id="i.id" :vote="i.vote" :team_name="i.team_name"
                     :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagePath="`/assets/thumbnails/${id}.png`" 
+                    :project_description="i.project_description" :imagePath="`/assets/thumbnails/${i.id}.png`" 
                     tabindex="-1"/>
             </div>
         </main>
