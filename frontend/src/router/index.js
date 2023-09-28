@@ -54,7 +54,7 @@ const router = createRouter({
             component: LostFound
         },
         {
-            path: '/LostFoundAdmin/:password',
+            path: '/LostFoundAdmin/:onigiri',
             component: LostFoundAdmin
         },
         {
