@@ -24,3 +24,4 @@ Route::post('/projects/{id}/decrement-vote', 'App\Http\Controllers\ProjectContro
 Route::get('/getTopThreeProjects', 'App\Http\Controllers\ProjectController@getTopThreeProjects');
 Route::get('/getLostItems', 'App\Http\Controllers\LostFoundController@getLostItems');
 Route::post('/addLostItem', 'App\Http\Controllers\LostFoundController@addLostItem');
+Route::post('/deleteLostItem', 'App\Http\Controllers\LostFoundController@deleteLostItem');

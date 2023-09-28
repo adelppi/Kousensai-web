@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class LostFoundController extends Controller
 {
-    public function getLostFound()
+    public function getLostItems()
     {
         return LostFound::all();
     }
@@ -27,5 +27,15 @@ class LostFoundController extends Controller
         $lostFound->save();
     
         return $jsonData;
+    }
+
+    public function deleteLostItem(Request $request)
+    {
+        $jsonData = $request->json()->all();
+        $id = $jsonData["id"];
+
+        LostFound::where('id', $id)->delete();
+    
+        return "deleted item (id = $id)";
     }
 }
