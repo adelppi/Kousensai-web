@@ -4,21 +4,12 @@ import axios from 'axios'
 export default {
     props: {
         id: Number,
-        index: Number,
         vote: Number,
         team_name: String,
         project_name: String,
-        imagePath: String,
-        child_style: {
-            type: Object,
-            required: false,
-            default: {
-                'containerStyle': {
-                    'transform': 'rotate(45deg)'
-                },
-                'imageStyle': ''
-            }
-        }
+        project_description: String,
+        project_space: String,
+        imagePath: String
     },
     data() {
         return {
@@ -62,8 +53,9 @@ export default {
             } else {
                 this.isVoteButtonDisabled = false
             }
-        }
+        },
     },
+    emits: ['overlayClicked'],
     mounted() {
         this.getVotedProjects()
         this.checkIfVoted()
@@ -72,15 +64,15 @@ export default {
 </script>
 
 <template>
-    <div class="card" @click="$emit('cardSelected', index)">
-        <div class="pin-container" :style="child_style['containerStyle']">
-            <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
-        </div>
+    <div class="module" @click="$emit('cardSelected', id)">
         <div class="image-container">
-            <img class="image" :src="imagePath" alt="Project Image">
+            <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
+            <div class="team-name">{{ team_name }}</div>
+            <div class="project-description">{{ project_description }}</div>
+            <div class="project-space">{{ project_space }}</div>
             <div v-if="isVoteButtonDisabled">
                 <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
             </div>
@@ -89,35 +81,38 @@ export default {
             </div>
         </div>
     </div>
+    <div class="overlay" @click="$emit('overlayClicked')"></div>
 </template>
   
 <style scoped>
-/* 'Mochiy Pop One' */
-@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 
-.card {
-    position: relative;
+.module {
+    position: fixed;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease-in-out;
-    max-width: 300px;
-    /* Set a max width for the card */
-    margin: 1rem;
-    /* Add some margin */
-    padding: 0 2rem 2rem 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-size: cover;
     background-image: url('../assets/memopaper.png');
-    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    width: 80%;
+    max-width: 400px;
 }
 
-.pin-container {
-    position: relative;
-    margin: -1rem auto 1rem auto;
-    padding: 0 0 0 0;
-    width: -moz-fit-content;
-    width: fit-content;
-    aspect-ratio: 1 / 1;
-    z-index: 50;
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
 }
 
 .image-container {
@@ -146,6 +141,20 @@ export default {
     font-size: 1.75rem;
     color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
+}
+
+.team-name {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.project-description,
+.project-space {
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #888;
 }
 
 .button {
