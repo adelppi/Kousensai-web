@@ -9,7 +9,7 @@ export default {
     },
     methods: {
         fetchLostItems() {
-            axios.get(import.meta.env.VITE_API_URL + '/getLostFoundItems')
+            axios.get(import.meta.env.VITE_API_URL + '/getLostItems')
                 .then(response => {
                     this.lostItems = response.data
                 })
