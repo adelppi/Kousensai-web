@@ -87,6 +87,7 @@ export default {
 <template>
     <body>
         <main>
+            {{ projects[shownId].id }}
             <Module 
                 v-if="moduleShown" 
                 @overlay-clicked="moduleShown = false"
@@ -96,7 +97,8 @@ export default {
                 :project_name="projects[shownId].project_name" 
                 :project_space="projects[shownId].project_space" 
                 :project_description="projects[shownId].project_description"
-                :imagePath="`${extra}/assets/thumbnails/${i.id}.png`" 
+                :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
+
                 />
             <h1>企画紹介</h1>
             <h2>企画一覧</h2>
