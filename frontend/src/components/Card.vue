@@ -7,9 +7,6 @@ export default {
         vote: Number,
         team_name: String,
         project_name: String,
-        project_description: String,
-        project_space: String,
-        description: String,
         imagePath: String,
         child_style: {
             type: Object,
@@ -64,17 +61,6 @@ export default {
             } else {
                 this.isVoteButtonDisabled = false
             }
-        },
-        onCardClicked(event) {
-            event.preventDefault();
-
-            const selectedCard = event.currentTarget;
-
-            const projectName = selectedCard.getElementsByClassName('project-name')[0].innerText;
-            console.log(`Memo Clicked: ${projectName}`);
-            console.log(selectedCard);
-
-            selectedCard.classList.toggle("card-selected");
         }
     },
     mounted() {
@@ -85,7 +71,7 @@ export default {
 </script>
 
 <template>
-    <div class="card" v-on:click="onCardClicked($event)">
+    <div class="card" @click="$emit('cardSelected', id)">
         <div class="pin-container" :style="child_style['containerStyle']">
             <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>
@@ -94,10 +80,6 @@ export default {
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
-            <div class="team-name">{{ team_name }}</div>
-            <div class="description">{{ project_description }}</div>
-            <div class="project-space">{{ project_space }}</div>
-            <div class="description">{{ description }}</div>
             <div v-if="isVoteButtonDisabled">
                 <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
             </div>
@@ -125,10 +107,6 @@ export default {
     background-size: cover;
     background-image: url('../assets/memopaper.png');
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
-}
-
-.card-selected {
-    transform: none !important;
 }
 
 .pin-container {
@@ -169,21 +147,6 @@ export default {
     margin-bottom: 0.5rem;
 }
 
-.team-name {
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-
-.project-description,
-.project-space,
-.description {
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    color: #888;
-}
-
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -221,5 +184,6 @@ export default {
 .button-voted:hover {
     background-color: #484848;
 }
+
 </style>
   

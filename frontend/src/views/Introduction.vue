@@ -1,15 +1,22 @@
 <script>
 import axios from 'axios'
 import Card from '../components/Card.vue'
+import Module from '../components/Module.vue'
 
 export default {
     components: {
-        Card
+        Card,
+        Module
     },
     data() {
         return {
             projects: [],
-            cardStyles: []
+            cardStyles: [],
+            moduleShown: false,
+            shownId: {
+                type: Number,
+                default: null
+            }
         }
     },
     methods: {
@@ -62,6 +69,11 @@ export default {
                     }
                 };
             })
+        },
+        showModule(Number) {
+            this.shownId = Number;
+            console.log(this.shownId)
+            this.moduleShown = true;
         }
     },
     mounted() {
@@ -73,20 +85,36 @@ export default {
 <template>
     <body>
         <main>
+            <Module 
+                v-if="moduleShown" 
+                @overlay-clicked="moduleShown = false"
+                :id="shownId" 
+                :vote="projects[shownId].vote"
+                :team_name="projects[shownId].team_name"
+                :project_name="projects[shownId].project_name" 
+                :project_space="projects[shownId].project_space" 
+                :project_description="projects[shownId].project_description"
+                :imagePath="'src/assets/nelnel.jpg'" 
+                />
             <h1>企画紹介</h1>
             <h2>企画一覧</h2>
             <div id="project-container">
-                <Card class="card" :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in projects" :key="index" :id="i.id" :vote="i.vote" :team_name="i.team_name"
-                    :project_name="i.project_name" :project_space="i.project_space"
-                    :project_description="i.project_description" :imagePath="'src/assets/nelnel.jpg'" 
-                    tabindex="-1"/>
+                <Card 
+                    :style="cardStyles[index]['parentStyle']" 
+                    :child_style="cardStyles[index]['childStyle']"
+                    v-for="(i, index) in projects" :key="index" 
+                    :id="i.id" :vote="i.vote" 
+                    :project_name="i.project_name" 
+                    :imagePath="'src/assets/nelnel.jpg'" 
+                    @card-selected="showModule"
+                    />
             </div>
         </main>
     </body>
 </template>
 
 <style scoped>
+
 #project-container {
     width: 100%;
     display: flex;
@@ -102,4 +130,5 @@ export default {
     border-image-slice: 200;
     border-image-width: 25px;
 }
+
 </style>
