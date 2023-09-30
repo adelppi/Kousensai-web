@@ -87,9 +87,6 @@ export default {
 <template>
     <body>
         <main>
-            <span v-if="moduleShown" >
-                {{ projects[shownId].id }}
-            </span>
             <Module 
                 v-if="moduleShown" 
                 @overlay-clicked="moduleShown = false"
