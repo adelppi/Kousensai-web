@@ -1,19 +1,11 @@
-import cv2
+from PIL import Image
 import glob
 import re
 import os
 
-for path in glob.glob("thumbails/*"):
-    img = cv2.imread(path)
-
-    number = max(re.findall(r"\d+", path))
-
-    if img.shape[0] > img.shape[1]:
-        img_resized = cv2.resize(img, (int(600/img.shape[0]*img.shape[1]), 600))
-        cv2.imwrite(f"outputs/{number}.png", img_resized)
-        os.remove(path)
-
-    else:
-        img_resized = cv2.resize(img, (600, int(600/img.shape[1]*img.shape[0])))
-        cv2.imwrite(f"outputs/{number}.png", img_resized)
+for path in glob.glob("thumbnails/*"):
+    if not "png" in path:
+        img = Image.open(path).convert('RGB')
+        number = max(re.findall(r"\d+", path))
+        img.save(f"thumbnails/{number}.png", "PNG")
         os.remove(path)
