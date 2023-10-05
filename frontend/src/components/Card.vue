@@ -122,18 +122,19 @@ export default {
 
 .image-container {
     position: relative;
-    overflow: hidden;
-    padding-top: 75%;
+    /* overflow: hidden; */
+    /* padding-top: 75%; */
+    height: fit-content;
     /* 4:3 aspect ratio */
 }
 
 .image {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    /* height: 100%; */
+    /* object-fit: cover; */
 }
 
 .info {
