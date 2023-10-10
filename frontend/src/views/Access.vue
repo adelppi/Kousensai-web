@@ -120,7 +120,7 @@
 
 section {
     border-bottom: 1px solid;
-    border-color: #ffffff;
+    border-color: #3a3939;
 }
 
 section .inner {
