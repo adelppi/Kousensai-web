@@ -4,13 +4,21 @@ import axios from 'axios'
 export default {
     props: {
         id: Number,
+        index: Number,
         vote: Number,
         team_name: String,
         project_name: String,
-        project_description: String,
-        project_space: String,
-        description: String,
         imagePath: String,
+        child_style: {
+            type: Object,
+            required: false,
+            default: {
+                'containerStyle': {
+                    'transform': 'rotate(45deg)'
+                },
+                'imageStyle': ''
+            }
+        }
     },
     data() {
         return {
@@ -22,14 +30,14 @@ export default {
     methods: {
         incrementVote(id) {
             this.getVotedProjects()
-            this.url = `http://127.0.0.1:8000/api/projects/${id}/increment-vote`
+            this.url = import.meta.env.VITE_API_URL + `/projects/${id}/increment-vote`
             axios.post(this.url)
             this.pushVariableToLocalStorage(id)
             this.checkIfVoted()
         },
         decrementVote(id) {
             this.getVotedProjects()
-            this.url = `http://127.0.0.1:8000/api/projects/${id}/decrement-vote`
+            this.url = import.meta.env.VITE_API_URL + `/projects/${id}/decrement-vote`
             axios.post(this.url)
             this.deleteVariableFromLocalStorage(id)
             this.checkIfVoted()
@@ -64,24 +72,20 @@ export default {
 </script>
 
 <template>
-    <div class="card">
-        <div>
-            <img src="" alt="">
+    <div class="card" @click="$emit('cardSelected', index)">
+        <div class="pin-container" :style="child_style['containerStyle']">
+            <img src="../assets/pin.png" width="50" alt="pin" :style="child_style['imageStyle']">
         </div>
         <div class="image-container">
-            <img class="image" src="../assets/nelnel.jpg" alt="Project Image">
+            <img class="image" :src="imagePath" alt="Project Image">
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
-            <div class="team-name">{{ team_name }}</div>
-            <div class="description">{{ project_description }}</div>
-            <div class="project-space">{{ project_space }}</div>
-            <div class="description">{{ description }}</div>
             <div v-if="isVoteButtonDisabled">
-                <button v-on:click="decrementVote(id)" class="button-voted">投票取り消し</button>
+                <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
             </div>
             <div v-else>
-                <button v-on:click="incrementVote(id)" class="button">投票する</button>
+                <button v-on:click.stop="incrementVote(id)" class="button">投票する</button>
             </div>
         </div>
     </div>
@@ -95,32 +99,42 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     transition: transform 0.2s ease-in-out;
     max-width: 300px;
     /* Set a max width for the card */
     margin: 1rem;
     /* Add some margin */
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     background-size: cover;
-    background-image: url('src/assets/memopaper.png');
-    box-shadow: 5px 5px 20px black;
+    background-image: url('../assets/memopaper.png');
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+.pin-container {
+    position: relative;
+    margin: -1rem auto 1rem auto;
+    padding: 0 0 0 0;
+    width: -moz-fit-content;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    z-index: 50;
 }
 
 .image-container {
     position: relative;
-    overflow: hidden;
-    padding-top: 75%;
+    /* overflow: hidden; */
+    /* padding-top: 75%; */
+    height: fit-content;
     /* 4:3 aspect ratio */
 }
 
 .image {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    /* height: 100%; */
+    /* object-fit: cover; */
 }
 
 .info {
@@ -133,21 +147,6 @@ export default {
     font-size: 1.75rem;
     color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
-}
-
-.team-name {
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-
-.project-description,
-.project-space,
-.description {
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    color: #888;
 }
 
 .button {
@@ -187,5 +186,6 @@ export default {
 .button-voted:hover {
     background-color: #484848;
 }
+
 </style>
   

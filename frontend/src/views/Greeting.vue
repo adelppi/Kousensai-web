@@ -1,8 +1,9 @@
 <template>
     <body>
-        <MenuBar />
         <main>
-            <h1>校長挨拶</h1>
+            <div class="title">
+                <h1>校長挨拶</h1>
+            </div>
 
             <div class="inner">
 
@@ -42,6 +43,7 @@
 
 .img_box {
     padding-top: 10%;
+    width: 40%;
 }
 
 .box {

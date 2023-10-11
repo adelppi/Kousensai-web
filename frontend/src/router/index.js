@@ -5,8 +5,9 @@ import Greeting from '../views/Greeting.vue'
 import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
 import Vote from '../views/Vote.vue'
+import LostFound from '../views/LostFound.vue'
+import LostFoundAdmin from '../views/LostFoundAdmin.vue'
 import Preparing from '../views/Preparing.vue'
-import Test from '../views/Test.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,6 +15,10 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            redirect: '/Preparing'
+        },
+        {
+            path: '/wordpress',
             redirect: '/Preparing'
         },
         {
@@ -45,12 +50,16 @@ const router = createRouter({
             component: Vote
         },
         {
-            path: '/Preparing',
-            component: Preparing
+            path: '/LostFound',
+            component: LostFound
         },
         {
-            path: '/Test',
-            component: Test
+            path: '/LostFoundAdmin/:onigiri',
+            component: LostFoundAdmin
+        },
+        {
+            path: '/Preparing',
+            component: Preparing
         }
     ]
 })
