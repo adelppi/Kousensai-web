@@ -36,7 +36,7 @@
 
 
                 <section>
-                    <h2 class="title">各種交通手段</h2>
+                    <h2 class="ttl">各種交通手段</h2>
 
                     <div class="inner">
 
@@ -100,7 +100,7 @@
 
                 <section>
 
-                    <h2 class="title">アクセスMAP</h2>
+                    <h2 class="ttl">アクセスMAP</h2>
 
                     <div class="img_box">
                         <img src="../assets/access_map.png" alt="アクセスmap">
@@ -118,14 +118,7 @@
     height: 100%;
     margin: 0 auto;
 }
-/* 
-#title {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    width: 35%;
-    border-bottom: solid;
-} */
+
 
 section {
     border-bottom: 1px solid;
@@ -159,7 +152,7 @@ section p {
 }
 
 
-section .title {
+section .ttl {
     text-align: center;
 }
 

@@ -43,6 +43,7 @@
 
 .img_box {
     padding-top: 10%;
+    width: 40%;
 }
 
 .box {
