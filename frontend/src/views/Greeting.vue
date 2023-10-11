@@ -1,7 +1,9 @@
 <template>
     <body>
         <main>
-            <h1>校長挨拶</h1>
+            <div class="title">
+                <h1>校長挨拶</h1>
+            </div>
 
             <div class="inner">
 

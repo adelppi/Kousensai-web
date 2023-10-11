@@ -100,10 +100,9 @@ export default {
                 :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
 
                 />
-            <h1>企画紹介</h1>
-            <h2>企画一覧</h2>
+            <h1 class="title">企画紹介</h1>
             <div id="project-container">
-                <Card 
+                <Card
                     :style="cardStyles[index]['parentStyle']" 
                     :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in projects" 

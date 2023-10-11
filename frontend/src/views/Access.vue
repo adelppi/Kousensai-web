@@ -2,7 +2,9 @@
     <body>
         <main>
             <div id="content">
-                <h1>アクセス</h1>
+                <div class="title">
+                    <h1>アクセス</h1>
+                </div>
 
                 <section>
 
@@ -34,7 +36,7 @@
 
 
                 <section>
-                    <h2 class="title">アクセス</h2>
+                    <h2 class="title">各種交通手段</h2>
 
                     <div class="inner">
 
@@ -116,7 +118,14 @@
     height: 100%;
     margin: 0 auto;
 }
-
+/* 
+#title {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    width: 35%;
+    border-bottom: solid;
+} */
 
 section {
     border-bottom: 1px solid;
@@ -163,6 +172,10 @@ section .img_box {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 10px;
+}
+
+section img {
+    width: 85%;
 }
 
 #car {
