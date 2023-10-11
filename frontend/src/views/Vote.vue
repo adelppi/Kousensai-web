@@ -32,8 +32,9 @@ export default {
 <template>
     <body>
         <main>
-            <h1>人気企画投票</h1>
-            <h2>投票システム</h2>
+            <div class="title">
+                <h1>人気企画投票</h1>
+            </div>
             <div id="project-container">
                 <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
                     :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"

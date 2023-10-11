@@ -2,7 +2,9 @@
     <body>
         <main>
             <div id="content">
-                <h1>アクセス</h1>
+                <div class="title">
+                    <h1>アクセス</h1>
+                </div>
 
                 <section>
 
@@ -34,7 +36,7 @@
 
 
                 <section>
-                    <h2 class="title">アクセス</h2>
+                    <h2 class="ttl">各種交通手段</h2>
 
                     <div class="inner">
 
@@ -98,7 +100,7 @@
 
                 <section>
 
-                    <h2 class="title">アクセスMAP</h2>
+                    <h2 class="ttl">アクセスMAP</h2>
 
                     <div class="img_box">
                         <img src="../assets/access_map.png" alt="アクセスmap">
@@ -120,7 +122,7 @@
 
 section {
     border-bottom: 1px solid;
-    border-color: #ffffff;
+    border-color: #3a3939;
 }
 
 section .inner {
@@ -150,7 +152,7 @@ section p {
 }
 
 
-section .title {
+section .ttl {
     text-align: center;
 }
 
@@ -163,6 +165,10 @@ section .img_box {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 10px;
+}
+
+section img {
+    width: 85%;
 }
 
 #car {
