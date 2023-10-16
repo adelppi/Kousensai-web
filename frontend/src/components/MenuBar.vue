@@ -33,13 +33,13 @@ export default {
 
             navList.classList.toggle("nav-list-shown");
 
-            navList.addEventListener("blur", function navListLostFocus(event) {
-                if (event.relatedTarget == null) {
-                    navList.classList.remove("nav-list-shown");
-                }
-                navList.removeEventListener("blur", navListLostFocus);
-                console.log("activated")
-            })
+            // navList.addEventListener("blur", function navListLostFocus(event) {
+            //     if (event.relatedTarget == null) {
+            //         navList.classList.remove("nav-list-shown");
+            //     }
+            //     navList.removeEventListener("blur", navListLostFocus);
+            //     console.log("activated")
+            // })
         },
         hideNavList() {
             const navList = document.getElementsByClassName("nav-list")[0];
@@ -119,7 +119,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
     background-color: #222;
-    transition: 0.2s ease-in-out ;
+    transition: all 0.2s ease-in-out;
     z-index: 1000;
 }
 
@@ -129,17 +129,24 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     text-wrap: nowrap;
     opacity: 0;
-    transition: 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .nav-item {
+    height: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 25px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
-    height: 3rem;
+    color: #ffffff;
+}
+
+.nav-icon {
+    color: #ffffff;
+    padding: 10px;
 }
 
 .nav-item * {
@@ -147,7 +154,7 @@ export default {
 }
 
 .nav-list-shown {
-    width: 30rem;
+    width: 18rem;
     padding-left: 2rem;
 }
 
@@ -161,78 +168,28 @@ export default {
     margin-right: 1rem;
 }
 
-.menu-item {
-    width: 62.5%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    border-radius: 25px;
+.nav-list-shown .nav-item {
+    width: 60%;
 }
 
-.menu-item:hover {
+.nav-item:hover {
     padding: 1.75rem;
     color: #222;
     background-color: #ffffff;
 }
 
-.menu-bar:hover .menu-item {
-    margin-left: 1rem;
-}
-
-.menu-link {
-    display: flex;
-    text-decoration: none;
-    transform: translateX(50%);
-    transition: all 0.2s ease;
+.nav-item:hover .nav-icon {
+    color: #222;
 }
 
 .menu-bar:hover .menu-link {
     transform: translateX(0);
 }
 
-.menu-icon-background {
-    margin-right: 0rem;
-    padding: 0.25rem;
+.nav-icon-background {
     color: #222;
     background-color:#ffffff;
     border-radius: 25%;
-    transition: margin-right 0.2s ease;
-}
-
-.menu-icon {
-    margin-right: 0rem;
-    padding: 0.25rem;
-    border-radius: 25%;
-    transition: margin-right 0.2s ease;
-}
-
-.menu-bar:hover .menu-icon {
-    margin-right: 1.5rem;
-}
-
-.link-text {
-    display: block;
-    width: 0;
-    white-space: nowrap;
-    text-decoration: inherit;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease, font-size 0.2s ease;
-}
-
-.menu-bar:hover .link-text {
-    font-size: 1rem;
-    opacity: 1;
-}
-
-.menu-item:hover .link-text {
-    font-size: 1.25rem;
-}
-
-.spacer {
-    margin-bottom: 3rem;
 }
 
 .material-symbols-outlined {
@@ -241,20 +198,6 @@ export default {
 
 .menu-item:hover .material-symbols-outlined {
     font-size: 2rem;
-}
-
-.logo-container {
-    height: 7rem;
-}
-
-.logo {
-    margin-top: 3rem;
-    width: 3rem;
-    transition: all 0.2s ease;
-}
-
-.menu-bar:hover .logo {
-    width: 4rem;
 }
 
 /* モバイルのとき */
