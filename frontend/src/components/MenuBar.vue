@@ -5,7 +5,7 @@ export default {
     },
     data() {
         return {
-            menus: [
+            navs: [
                 { path: "/Home", label: "ホーム", icon: "home" },
                 { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
@@ -14,6 +14,7 @@ export default {
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
             ],
             isMobile: false,
+            navListShown: false,
         }
     },
     created() {
@@ -23,6 +24,26 @@ export default {
     methods: {
         checkIfMobile() {
             this.isMobile = window.innerWidth <= 750;
+        },
+        hamburgerClicked() {
+            const hamburgerButton = document.getElementsByClassName("hamburger-button")[0];
+            const navList = document.getElementsByClassName("nav-list")[0];
+
+            navList.focus();
+
+            navList.classList.toggle("nav-list-shown");
+
+            navList.addEventListener("blur", function navListLostFocus(event) {
+                if (event.relatedTarget == null) {
+                    navList.classList.remove("nav-list-shown");
+                }
+                navList.removeEventListener("blur", navListLostFocus);
+                console.log("activated")
+            })
+        },
+        hideNavList() {
+            const navList = document.getElementsByClassName("nav-list")[0];
+            navList.classList.remove("nav-list-shown");
         }
     }
 }
@@ -31,53 +52,121 @@ export default {
 <template>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
-    <div class="menu-bar">
+    <div class="top-bar">
         <div class="logo-container">
             <RouterLink to="/Home">
-                <img src="../assets/logo.svg" class="logo">
+                <img src="../assets/logo.svg" alt="TMCIT Logo" class="logo-img">
             </RouterLink>
         </div>
-        <div class="spacer"></div>
-        <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
-            <div class="menu-link">
-                <div class="menu-icon" :class="{ 'menu-icon-background': menu.path === currentPage }">
-                    <span class="material-symbols-outlined">{{ menu.icon }}</span>
-                </div>
-                <span class="link-text">{{ menu.label }}</span>
+        <div class="hamburger-button-container">
+            <button class="hamburger-button" @click="hamburgerClicked">
+                <img src="../assets/logo.svg" alt="hamburger icon" class="hamburger-img">
+            </button>
+        </div>
+    </div>
+    <div class="nav-list" tabindex="0">
+        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item" @click="hideNavList($event)">
+            <div class="nav-icon" :class="{ 'nav-icon-background': nav.path === currentPage }">
+                <span class="material-symbols-outlined">{{ nav.icon }}</span>
             </div>
+            <span class="nav-text">{{ nav.label }}</span>
         </RouterLink>
     </div>
 </template>
 
 
 <style scoped>
-.menu-bar {
-    width: 7.5rem;
-    height: 100vh;
+
+.top-bar {
     position: fixed;
-    background-color: #222;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    transition: all 0.2s ease;
-    z-index: 100;
+    background-color: #222;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    z-index: 1000;
 }
 
-.menu-bar:hover {
-    width: 17rem;
+.hamburger-button {
+    position: fixed;
+    top: 0.5rem;
+    right: 0;
+    height: 3rem;
+    background: none;
+    border: none;
+}
+
+.top-bar div, .top-bar img {
+    height: 100%;
+}
+
+.nav-list {
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    height: 100vh;
+    width: 0;
+    padding-top: 0.5rem;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #222;
+    transition: 0.2s ease-in-out ;
+    z-index: 1000;
+}
+
+.nav-list * {
+    width: 0%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    text-wrap: nowrap;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    height: 3rem;
+}
+
+.nav-item * {
+    height: 100%;
+}
+
+.nav-list-shown {
+    width: 30rem;
+    padding-left: 2rem;
+}
+
+.nav-list-shown * {
+    width: 100%;
+    opacity: 100%;
+}
+
+.nav-list-shown .nav-icon {
+    width: 3rem;
+    margin-right: 1rem;
 }
 
 .menu-item {
-    display: flex;
     width: 62.5%;
     padding: 0.75rem;
     margin-bottom: 1rem;
     color: #ffffff;
     border-radius: 25px;
-    transition: background-color 0.2s ease, padding 0.2s ease, margin 0.2s ease;
 }
 
 .menu-item:hover {
