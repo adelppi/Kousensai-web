@@ -50,6 +50,7 @@ h1 {
 /* モバイルのとき */
 @media only screen and (max-width: 750px) {
     main {
-        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
