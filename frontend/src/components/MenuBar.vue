@@ -12,162 +12,59 @@ export default {
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
                 { path: "/Access", label: "アクセス", icon: "location_on" },
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
-            ],
-            isMobile: false,
-        }
-    },
-    created() {
-        this.checkIfMobile()
-        window.addEventListener("resize", this.checkIfMobile);
-    },
-    methods: {
-        checkIfMobile() {
-            this.isMobile = window.innerWidth <= 750;
+            ]
         }
     }
 }
 </script>
 
 <template>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
-    <div class="menu-bar">
-        <div class="logo-container">
-            <RouterLink to="/Home">
-                <img src="../assets/logo.svg" class="logo">
-            </RouterLink>
+    <div class="navbar">
+        <router-link to="/Home">
+            <img src="../assets/logo.svg" class="logo" />
+        </router-link>
+        <div class="menu-items">
+            <router-link v-for="(menu, index) in menus" :to="menu.path" :key="index" class="menu-item">
+                {{ menu.label }}
+            </router-link>
         </div>
-        <div class="spacer"></div>
-        <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
-            <div class="menu-link">
-                <div class="menu-icon" :class="{ 'menu-icon-background': menu.path === currentPage }">
-                    <span class="material-symbols-outlined">{{ menu.icon }}</span>
-                </div>
-                <span class="link-text">{{ menu.label }}</span>
-            </div>
-        </RouterLink>
     </div>
 </template>
 
 
 <style scoped>
-.menu-bar {
-    width: 7.5rem;
-    height: 100vh;
+.navbar {
     position: fixed;
-    background-color: #222;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    /* justify-content: space-between; */
     align-items: center;
-    transition: all 0.2s ease;
-    z-index: 100;
-}
-
-.menu-bar:hover {
-    width: 17rem;
-}
-
-.menu-item {
-    display: flex;
-    width: 62.5%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    border-radius: 25px;
-    transition: background-color 0.2s ease, padding 0.2s ease, margin 0.2s ease;
-}
-
-.menu-item:hover {
-    padding: 1.75rem;
-    color: #222;
-    background-color: #ffffff;
-}
-
-.menu-bar:hover .menu-item {
-    margin-left: 1rem;
-}
-
-.menu-link {
-    display: flex;
-    text-decoration: none;
-    transform: translateX(50%);
-    transition: all 0.2s ease;
-}
-
-.menu-bar:hover .menu-link {
-    transform: translateX(0);
-}
-
-.menu-icon-background {
-    margin-right: 0rem;
-    padding: 0.25rem;
-    color: #222;
-    background-color:#ffffff;
-    border-radius: 25%;
-    transition: margin-right 0.2s ease;
-}
-
-.menu-icon {
-    margin-right: 0rem;
-    padding: 0.25rem;
-    border-radius: 25%;
-    transition: margin-right 0.2s ease;
-}
-
-.menu-bar:hover .menu-icon {
-    margin-right: 1.5rem;
-}
-
-.link-text {
-    display: block;
-    width: 0;
-    white-space: nowrap;
-    text-decoration: inherit;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease, font-size 0.2s ease;
-}
-
-.menu-bar:hover .link-text {
-    font-size: 1rem;
-    opacity: 1;
-}
-
-.menu-item:hover .link-text {
-    font-size: 1.25rem;
-}
-
-.spacer {
-    margin-bottom: 3rem;
-}
-
-.material-symbols-outlined {
-    font-size: 1.75rem;
-}
-
-.menu-item:hover .material-symbols-outlined {
-    font-size: 2rem;
-}
-
-.logo-container {
-    height: 7rem;
+    background-color: #f8f9fa;
+    height: 10%;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 .logo {
-    margin-top: 3rem;
-    width: 3rem;
-    transition: all 0.2s ease;
+    width: 50px;
+    margin: 0 4rem;
 }
 
-.menu-bar:hover .logo {
-    width: 4rem;
+.menu-items {
+    display: flex;
 }
 
-/* モバイルのとき */
-@media only screen and (max-width: 600px) {}
+.menu-item {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-item:hover {
+    color: #007bff;
+}
 </style>

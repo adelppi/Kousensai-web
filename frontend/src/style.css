@@ -19,10 +19,12 @@ body {
     color: black;
     margin: 0;
     padding: 0;
+    margin-top: 3rem; /* うーん */
 }
 
 main {
-    margin-left: 12rem;
+    margin-top: 5rem;
+    margin-left: 4rem;
     margin-right: 4rem;
     padding: 1rem;
 }
@@ -31,23 +33,17 @@ a {
     text-decoration: inherit;
 }
 
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 0.25rem;
-    /* background-color:#a9a9a9; */
-}
-
 .title {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3rem;
     width: 25%;
     border-bottom: solid;
+    text-wrap: nowrap;
 }
 
 /* モバイルのとき */
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     main {
         margin: 0;
     }
