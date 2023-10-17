@@ -35,7 +35,7 @@ export default {
             <div class="title">
                 <h1>人気企画投票</h1>
             </div>
-            <div id="project-container">
+            <div class="project-container">
                 <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
                     :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
                     :project_description="i.project_description" :imagePath="`/src/assets/nelnel.jpg`" />
@@ -45,7 +45,7 @@ export default {
 </template>
 
 <style scoped>
-#project-container {
+.project-container {
     width: 100%;
     display: flex;
     flex-direction: row;

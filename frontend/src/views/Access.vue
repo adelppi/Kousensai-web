@@ -1,7 +1,7 @@
 <template>
     <body>
         <main>
-            <div id="content">
+            <div class="content">
                 <div class="title">
                     <h1>アクセス</h1>
                 </div>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
 
-                    <div id="car">
+                    <div class="car">
                         <h3>※ご注意※</h3>
 
                         <p>
@@ -113,7 +113,7 @@
 </template>
 
 <style scoped>
-#content {
+.content {
     width: 80%;
     height: 100%;
     margin: 0 auto;
