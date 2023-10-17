@@ -122,7 +122,6 @@ export default {
 <style scoped>
 
 .project-container {
-    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
