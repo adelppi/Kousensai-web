@@ -45,6 +45,7 @@ h1 {
     margin-bottom: 3rem;
     width: 25%;
     border-bottom: solid;
+    text-wrap: nowrap;
 }
 
 /* モバイルのとき */
