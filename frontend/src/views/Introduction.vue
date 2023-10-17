@@ -100,7 +100,7 @@ export default {
                 :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
                 />
             <h1 class="title">企画紹介</h1>
-            <div id="project-container">
+            <div class="project-container">
                 <Card
                     :style="cardStyles[index]['parentStyle']" 
                     :child_style="cardStyles[index]['childStyle']"
@@ -120,8 +120,7 @@ export default {
 
 <style scoped>
 
-#project-container {
-    width: 100%;
+.project-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

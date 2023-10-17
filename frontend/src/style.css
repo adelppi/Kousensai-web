@@ -45,6 +45,7 @@ a {
 /* モバイルのとき */
 @media only screen and (max-width: 800px) {
     main {
-        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 }

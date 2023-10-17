@@ -70,7 +70,7 @@
 </template>
   
 <style scoped>
-#content {
+.content {
     width: 80%;
     margin: 0 auto;
 }

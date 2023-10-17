@@ -26,20 +26,19 @@ export default {
             this.isMobile = window.innerWidth <= 750;
         },
         hamburgerClicked() {
-            const hamburgerButton = document.getElementsByClassName("hamburger-button")[0];
             const navList = document.getElementsByClassName("nav-list")[0];
 
             navList.focus();
 
             navList.classList.toggle("nav-list-shown");
 
-            // navList.addEventListener("blur", function navListLostFocus(event) {
-            //     if (event.relatedTarget == null) {
-            //         navList.classList.remove("nav-list-shown");
-            //     }
-            //     navList.removeEventListener("blur", navListLostFocus);
-            //     console.log("activated")
-            // })
+            navList.addEventListener("blur", function navListLostFocus(event) {
+                if (event.relatedTarget == null) {
+                    navList.classList.remove("nav-list-shown");
+                }
+                navList.removeEventListener("blur", navListLostFocus);
+                console.log("activated")
+            })
         },
         hideNavList() {
             const navList = document.getElementsByClassName("nav-list")[0];
