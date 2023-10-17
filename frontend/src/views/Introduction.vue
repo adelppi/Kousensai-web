@@ -98,7 +98,6 @@ export default {
                 :project_space="projects[shownId].project_space" 
                 :project_description="projects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
-
                 />
             <h1 class="title">企画紹介</h1>
             <div class="project-container">

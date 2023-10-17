@@ -5,199 +5,66 @@ export default {
     },
     data() {
         return {
-            navs: [
+            menus: [
                 { path: "/Home", label: "ホーム", icon: "home" },
                 { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
                 { path: "/Access", label: "アクセス", icon: "location_on" },
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
-            ],
-            isMobile: false,
-            navListShown: false,
-        }
-    },
-    created() {
-        this.checkIfMobile()
-        window.addEventListener("resize", this.checkIfMobile);
-    },
-    methods: {
-        checkIfMobile() {
-            this.isMobile = window.innerWidth <= 750;
-        },
-        hamburgerClicked() {
-            const navList = document.getElementsByClassName("nav-list")[0];
-
-            navList.focus();
-
-            navList.classList.toggle("nav-list-shown");
-
-            navList.addEventListener("blur", function navListLostFocus(event) {
-                if (event.relatedTarget == null) {
-                    navList.classList.remove("nav-list-shown");
-                }
-                navList.removeEventListener("blur", navListLostFocus);
-                console.log("activated")
-            })
-        },
-        hideNavList() {
-            const navList = document.getElementsByClassName("nav-list")[0];
-            navList.classList.remove("nav-list-shown");
+            ]
         }
     }
 }
 </script>
 
 <template>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
-    <div class="top-bar">
-        <div class="logo-container">
-            <RouterLink to="/Home">
-                <img src="../assets/logo.svg" alt="TMCIT Logo" class="logo-img">
-            </RouterLink>
+    <div class="navbar">
+        <router-link to="/Home">
+            <img src="../assets/logo.svg" class="logo" />
+        </router-link>
+        <div class="menu-items">
+            <router-link v-for="(menu, index) in menus" :to="menu.path" :key="index" class="menu-item">
+                {{ menu.label }}
+            </router-link>
         </div>
-        <div class="hamburger-button-container">
-            <button class="hamburger-button" @click="hamburgerClicked">
-                <img src="../assets/logo.svg" alt="hamburger icon" class="hamburger-img">
-            </button>
-        </div>
-    </div>
-    <div class="nav-list" tabindex="0">
-        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item" @click="hideNavList($event)">
-            <div class="nav-icon" :class="{ 'nav-icon-background': nav.path === currentPage }">
-                <span class="material-symbols-outlined">{{ nav.icon }}</span>
-            </div>
-            <span class="nav-text">{{ nav.label }}</span>
-        </RouterLink>
     </div>
 </template>
 
 
 <style scoped>
-
-.top-bar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 3rem;
-    width: 100vw;
+    right: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    /* justify-content: space-between; */
     align-items: center;
-    background-color: #222;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    background-color: #f8f9fa;
+    height: 10%;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
-.hamburger-button {
-    position: fixed;
-    top: 0.5rem;
-    right: 0;
-    height: 3rem;
-    background: none;
-    border: none;
+.logo {
+    width: 50px;
+    margin: 0 4rem;
 }
 
-.top-bar div, .top-bar img {
-    height: 100%;
-}
-
-.nav-list {
-    position: fixed;
-    top: 4rem;
-    right: 0;
-    height: 100vh;
-    width: 0;
-    padding-top: 0.5rem;
-    padding-left: 0;
+.menu-items {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #222;
-    transition: all 0.2s ease-in-out;
-    z-index: 1000;
 }
 
-.nav-list * {
-    width: 0%;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-wrap: nowrap;
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
+.menu-item {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
 }
 
-.nav-item {
-    height: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-    color: #ffffff;
+.menu-item:hover {
+    color: #007bff;
 }
-
-.nav-icon {
-    color: #ffffff;
-    padding: 10px;
-}
-
-.nav-item * {
-    height: 100%;
-}
-
-.nav-list-shown {
-    width: 18rem;
-}
-
-.nav-list-shown * {
-    width: 100%;
-    opacity: 100%;
-}
-
-.nav-list-shown .nav-icon {
-    width: 3rem;
-    margin-right: 1rem;
-}
-
-.nav-list-shown .nav-item {
-    width: 60%;
-}
-
-.nav-item:hover {
-    padding: 1.75rem;
-    color: #222;
-    background-color: #ffffff;
-}
-
-.nav-item:hover .nav-icon {
-    color: #222;
-}
-
-.menu-bar:hover .menu-link {
-    transform: translateX(0);
-}
-
-.nav-icon-background {
-    color: #222;
-    background-color:#ffffff;
-    border-radius: 25%;
-}
-
-.material-symbols-outlined {
-    font-size: 1.75rem;
-}
-
-.menu-item:hover .material-symbols-outlined {
-    font-size: 2rem;
-}
-
-/* モバイルのとき */
-@media only screen and (max-width: 600px) {}
 </style>
