@@ -4,7 +4,9 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            lostItems: []
+            lostItems: [],
+            onigiri: "",
+            tsunamayoOnigiri: ""
         }
     },
     methods: {
@@ -20,6 +22,8 @@ export default {
     },
     mounted() {
         this.fetchLostItems();
+        this.onigiri =  this.$route.params["onigiri"]
+        this.tsunamayoOnigiri = import.meta.env.VITE_LOST_FOUND_PASSWORD
     }
 }
 </script>
