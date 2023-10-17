@@ -60,7 +60,9 @@ export default {
         </div>
         <div class="hamburger-button-container">
             <button class="hamburger-button" @click="hamburgerClicked">
-                <img src="../assets/logo.svg" alt="hamburger icon" class="hamburger-img">
+                <span class="material-symbols-outlined" style="font-size: 50px;">
+                    menu
+                </span>
             </button>
         </div>
     </div>
@@ -94,6 +96,7 @@ export default {
 }
 
 .hamburger-button {
+    color: white;
     position: fixed;
     top: 0.5rem;
     right: 0;
@@ -102,7 +105,8 @@ export default {
     border: none;
 }
 
-.top-bar div, .top-bar img {
+.top-bar div,
+.top-bar img {
     height: 100%;
 }
 
@@ -188,7 +192,7 @@ export default {
 
 .nav-icon-background {
     color: #222;
-    background-color:#ffffff;
+    background-color: #ffffff;
     border-radius: 25%;
 }
 

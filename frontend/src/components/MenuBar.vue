@@ -19,15 +19,52 @@ export default {
 </script>
 
 <template>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
-    <RouterLink to="/Home">
-        <img src="../assets/logo.svg" class="logo" style="width: 50px;">
-    </RouterLink>
-    <RouterLink v-for="menu in menus" :to="menu.path" class="menu-item">
-        {{ menu.label }}
-    </RouterLink>
+    <div class="navbar">
+        <router-link to="/Home">
+            <img src="../assets/logo.svg" class="logo" />
+        </router-link>
+        <div class="menu-items">
+            <router-link v-for="(menu, index) in menus" :to="menu.path" :key="index" class="menu-item">
+                {{ menu.label }}
+            </router-link>
+        </div>
+    </div>
 </template>
 
 
-<style scoped></style>
+<style scoped>
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #f8f9fa;
+    height: 10%;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    width: 50px;
+    margin: 0 4rem;
+}
+
+.menu-items {
+    display: flex;
+}
+
+.menu-item {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-item:hover {
+    color: #007bff;
+}
+</style>

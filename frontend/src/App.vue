@@ -12,9 +12,9 @@ export default {
 		}
 	},
 	methods: {
-        checkIfMobile() {
-            this.isMobile = window.innerWidth <= 800;
-        }
+		checkIfMobile() {
+			this.isMobile = window.innerWidth <= 800;
+		}
 	},
 	mounted() {
 		this.checkIfMobile()
