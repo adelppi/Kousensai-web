@@ -91,7 +91,7 @@
                         <h3>※ご注意※</h3>
 
                         <p>
-                            駐車場の用意がございませんので、車・バイク・キックボード等での来場は<br>ご遠慮くださいますようお願いいたします。
+                            駐車場の用意がございませんので、車・バイク・キックボード等での来場はご遠慮くださいますようお願いいたします。
                             <!-- 駐車場にご用意がございませんので、公共交通機関・自転車・徒歩でのご来校をおすすめしています。 -->
                         </p>
                     </div>
@@ -119,7 +119,6 @@
     margin: 0 auto;
 }
 
-
 section {
     border-bottom: 1px solid;
     border-color: #3a3939;
@@ -128,8 +127,6 @@ section {
 section .inner {
     width: 100%;
     display: flex;
-    padding-left: 10%;
-    padding-right: 7%;
 }
 
 section .adress {
@@ -146,11 +143,6 @@ section .box {
     padding-left: 7%;
     font-size: 16px;
 }
-
-section p {
-    white-space: pre;
-}
-
 
 section .ttl {
     text-align: center;
@@ -169,10 +161,6 @@ section .img_box {
 
 section img {
     width: 85%;
-}
-
-#car {
-    padding-left: 10%;
 }
 
 .access {
