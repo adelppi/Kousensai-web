@@ -129,7 +129,9 @@ export default {
                                     </span>
                                 </button>
                             </td>
-                            <td></td><td></td><td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -144,11 +146,20 @@ export default {
 
 <style scoped>
 table {
+    font-size: 1rem;
     width: 62.5%;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 10px;
+}
+
+/* モバイルのとき */
+@media only screen and (max-width: 800px) {
+    table {
+        font-size: 0.625rem;
+        width: 90%;
+    }
 }
 
 th {
@@ -262,5 +273,4 @@ th {
     cursor: pointer;
     overflow: hidden;
     touch-action: none;
-}
-</style>
+}</style>
