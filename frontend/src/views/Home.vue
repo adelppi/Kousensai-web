@@ -1,7 +1,7 @@
 <template>
     <body>
         <main>
-            <div id="content">
+            <div class="content">
                 <img src="../assets/ignition5.png" alt="パンフレット">
             </div>
         </main>
@@ -9,7 +9,7 @@
 </template>
 
 <style scoped>
-#content {
+.content {
     width: 80%;
     height: 100%;
     margin: 0 auto;
