@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://localhost:5173/lostfoundadmin/admin -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module" src="./高専祭_files/client"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet" as="style" onload="this.rel=&#39;stylesheet&#39;" href="./高専祭_files/css2">
+
+    
+    <link rel="icon" type="image/svg+xml" href="./高専祭_files/logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高専祭</title>
+  <style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/style.css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&display=swap');
+/* フォント */
+/* 'Noto Sans JP' */
+/* 'Zen Kurenaido' */
+/* 'Shippori Mincho B1' */
+/* 'Rampart One' */
+/* 'M PLUS Rounded 1c' */
+:root {
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 17.5px;
+}
+body {
+    background-color: #d7d7d7;
+    color: black;
+    margin: 0;
+    padding: 0;
+    margin-top: 3rem; /* うーん */
+}
+main {
+    margin-top: 5rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    padding: 1rem;
+}
+a {
+    text-decoration: inherit;
+}
+.title {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    width: 25%;
+    border-bottom: solid;
+    text-wrap: nowrap;
+}
+/* モバイルのとき */
+@media only screen and (max-width: 800px) {
+    main {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/components/MenuBar.vue?vue&amp;type=style&amp;index=0&amp;scoped=476d183d&amp;lang.css">
+.navbar[data-v-476d183d] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #f8f9fa;
+    height: 10%;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.logo[data-v-476d183d] {
+    width: 50px;
+    margin: 0 4rem;
+}
+.menu-items[data-v-476d183d] {
+    display: flex;
+}
+.menu-item[data-v-476d183d] {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+}
+.menu-item[data-v-476d183d]:hover {
+    color: #007bff;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/components/MenuBarMobile.vue?vue&amp;type=style&amp;index=0&amp;scoped=4f37c97f&amp;lang.css">
+.top-bar[data-v-4f37c97f] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    z-index: 1000;
+}
+.hamburger-button[data-v-4f37c97f] {
+    color: white;
+    position: fixed;
+    top: 0.5rem;
+    right: 0;
+    height: 3rem;
+    background: none;
+    border: none;
+}
+.top-bar div[data-v-4f37c97f],
+.top-bar img[data-v-4f37c97f] {
+    height: 100%;
+}
+.nav-list[data-v-4f37c97f] {
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    height: 100vh;
+    width: 0;
+    padding-top: 0.5rem;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #222;
+    transition: all 0.2s ease-in-out;
+    z-index: 1000;
+}
+.nav-list *[data-v-4f37c97f] {
+    width: 0%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.nav-item[data-v-4f37c97f] {
+    height: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+}
+.nav-icon[data-v-4f37c97f] {
+    color: #ffffff;
+    padding: 10px;
+}
+.nav-item *[data-v-4f37c97f] {
+    height: 100%;
+}
+.nav-list-shown[data-v-4f37c97f] {
+    width: 18rem;
+    padding-left: 2rem;
+}
+.nav-list-shown *[data-v-4f37c97f] {
+    width: 100%;
+    opacity: 100%;
+}
+.nav-list-shown .nav-icon[data-v-4f37c97f] {
+    width: 3rem;
+    margin-right: 1rem;
+}
+.nav-list-shown .nav-item[data-v-4f37c97f] {
+    width: 60%;
+}
+.nav-item[data-v-4f37c97f]:hover {
+    padding: 1.75rem;
+    color: #222;
+    background-color: #ffffff;
+}
+.nav-item:hover .nav-icon[data-v-4f37c97f] {
+    color: #222;
+}
+.menu-bar:hover .menu-link[data-v-4f37c97f] {
+    transform: translateX(0);
+}
+.nav-icon-background[data-v-4f37c97f] {
+    color: #222;
+    background-color: #ffffff;
+    border-radius: 25%;
+}
+.material-symbols-outlined[data-v-4f37c97f] {
+    font-size: 1.75rem;
+}
+.menu-item:hover .material-symbols-outlined[data-v-4f37c97f] {
+    font-size: 2rem;
+}
+
+/* モバイルのとき */
+@media only screen and (max-width: 600px) {}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Home.vue?vue&amp;type=style&amp;index=0&amp;scoped=2dc54a20&amp;lang.css">
+.content[data-v-2dc54a20] {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+img[data-v-2dc54a20] {
+    width: 100%;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/components/Card.vue?vue&amp;type=style&amp;index=0&amp;scoped=c6c3362a&amp;lang.css">
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+/* 'Mochiy Pop One' */
+.card[data-v-c6c3362a] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out;
+    max-width: 300px;
+    /* Set a max width for the card */
+    margin: 1rem;
+    /* Add some margin */
+    padding: 0 2rem 2rem 2rem;
+    background-size: cover;
+    background-image: url('/src/assets/memopaper.png');
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
+}
+.pin-container[data-v-c6c3362a] {
+    position: relative;
+    margin: -1rem auto 1rem auto;
+    padding: 0 0 0 0;
+    width: -moz-fit-content;
+    width: fit-content;
+    aspect-ratio: 1 / 1;
+    z-index: 50;
+}
+.image-container[data-v-c6c3362a] {
+    position: relative;
+    /* overflow: hidden; */
+    /* padding-top: 75%; */
+    height: fit-content;
+    /* 4:3 aspect ratio */
+}
+.image[data-v-c6c3362a] {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    /* height: 100%; */
+    /* object-fit: cover; */
+}
+.info[data-v-c6c3362a] {
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.project-name[data-v-c6c3362a] {
+    font-family: 'Mochiy Pop One';
+    font-size: 1.75rem;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0.5rem;
+}
+.button[data-v-c6c3362a] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+.button[data-v-c6c3362a]:hover {
+    background-color: #0056b3;
+}
+.button-voted[data-v-c6c3362a] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7e7e7e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+.button-voted[data-v-c6c3362a]:hover {
+    background-color: #484848;
+}
+
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/components/Module.vue?vue&amp;type=style&amp;index=0&amp;scoped=2e1e29a8&amp;lang.css">
+.module[data-v-2e1e29a8] {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    background-image: url('/src/assets/memopaper.png');
+    padding: 2rem;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    width: 80%;
+    max-width: 400px;
+}
+.overlay[data-v-2e1e29a8] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+}
+.image-container[data-v-2e1e29a8] {
+    position: relative;
+    overflow: hidden;
+    padding-top: 75%;
+    /* 4:3 aspect ratio */
+}
+.image[data-v-2e1e29a8] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.info[data-v-2e1e29a8] {
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.project-name[data-v-2e1e29a8] {
+    font-family: 'Mochiy Pop One';
+    font-size: 1.75rem;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0.5rem;
+}
+.team-name[data-v-2e1e29a8] {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+.project-description[data-v-2e1e29a8],
+.project-space[data-v-2e1e29a8] {
+    margin-bottom: 0.5rem;
+}
+.description[data-v-2e1e29a8] {
+    color: #888;
+}
+.button[data-v-2e1e29a8] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+.button[data-v-2e1e29a8]:hover {
+    background-color: #0056b3;
+}
+.button-voted[data-v-2e1e29a8] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7e7e7e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+.button-voted[data-v-2e1e29a8]:hover {
+    background-color: #484848;
+}
+
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Introduction.vue?vue&amp;type=style&amp;index=0&amp;scoped=b7a2d486&amp;lang.css">
+.project-container[data-v-b7a2d486] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-image: url('/src/assets/corkboard.png');
+    /* border: 10px solid black; */
+    /* border-image-source: url('src/assets/corkboardborder.png'); */
+    border-image-repeat: repeat;
+    border-image-slice: 200;
+    border-image-width: 25px;
+}
+
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Greeting.vue?vue&amp;type=style&amp;index=0&amp;scoped=34756822&amp;lang.css">
+.inner[data-v-34756822] {
+    margin-top: 40px;
+    display: flex;
+}
+.img_box[data-v-34756822] {
+    padding-top: 10%;
+    width: 40%;
+}
+.box[data-v-34756822] {
+    padding-left: 7%;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Access.vue?vue&amp;type=style&amp;index=0&amp;scoped=df18b07a&amp;lang.css">
+.content[data-v-df18b07a] {
+    width: 80%;
+    margin: 0 auto;
+}
+section[data-v-df18b07a] {
+    margin-bottom: 40px;
+}
+section .inner[data-v-df18b07a] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+section .box[data-v-df18b07a] {
+    font-size: 16px;
+}
+section p[data-v-df18b07a] {
+    white-space: pre-wrap;
+}
+section .ttl[data-v-df18b07a] {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#car[data-v-df18b07a] {
+    margin-top: 20px;
+}
+.access[data-v-df18b07a] {
+    margin-bottom: 20px;
+}
+.access p[data-v-df18b07a] {
+    font-size: 15px;
+}
+.img_box[data-v-df18b07a] {
+    text-align: center;
+}
+img[data-v-df18b07a] {
+    max-width: 100%;
+}
+
+/* モバイルのとき */
+@media only screen and (max-width: 800px) {
+section .inner[data-v-df18b07a] {
+        display: flex;
+        flex-direction: column;
+}
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Vote.vue?vue&amp;type=style&amp;index=0&amp;scoped=8de3149b&amp;lang.css">
+.project-container[data-v-8de3149b] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-image: url('/src/assets/corkboard.png');
+    border: 10px solid black;
+    border-image-source: url('/src/assets/corkboardborder.png');
+    border-image-repeat: repeat;
+    border-image-slice: 200;
+    border-image-width: 25px;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/LostFound.vue?vue&amp;type=style&amp;index=0&amp;scoped=f6d32da8&amp;lang.css">
+table[data-v-f6d32da8] {
+    width: 62.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+th[data-v-f6d32da8] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+td[data-v-f6d32da8] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th[data-v-f6d32da8] {
+    background-color: #f2f2f2;
+}
+
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/LostFoundAdmin.vue?vue&amp;type=style&amp;index=0&amp;scoped=fe53e2f5&amp;lang.css">
+table[data-v-fe53e2f5] {
+    width: 62.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+th[data-v-fe53e2f5] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+td[data-v-fe53e2f5] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th[data-v-fe53e2f5] {
+    background-color: #f2f2f2;
+}
+.add-delete-button[data-v-fe53e2f5] {
+    display: flex;
+    font-size: 10px;
+    border-radius: 8px;
+    height: 2rem;
+    width: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.module[data-v-fe53e2f5] {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    z-index: 9999;
+    width: 60%;
+    max-width: 400px;
+}
+.module-body[data-v-fe53e2f5] {
+    margin: 0 auto;
+}
+.module-header[data-v-fe53e2f5] {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+.close-module-button[data-v-fe53e2f5] {
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    right: 2rem;
+    border: none;
+    background: none;
+}
+.close-img[data-v-fe53e2f5] {
+    height: 100%;
+    width: 100%;
+}
+.input-container[data-v-fe53e2f5] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.input-container div[data-v-fe53e2f5],
+.input-container input[data-v-fe53e2f5] {
+    height: 1rem;
+    margin: 0.5rem;
+    align-items: center;
+}
+.confirm-button[data-v-fe53e2f5] {
+    background-color: #419dff;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.material-symbols-outlined[data-v-fe53e2f5] {
+    font-size: 20px;
+}
+.overlay[data-v-fe53e2f5] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+}
+</style><style type="text/css" data-vite-dev-id="/Users/adelppi/Desktop/Saves/Scripting/Kousensai-web/frontend/src/views/Preparing.vue?vue&amp;type=style&amp;index=0&amp;scoped=77dd343b&amp;lang.css">
+*[data-v-77dd343b] {
+    color: white;
+}
+body[data-v-77dd343b] {
+    background-color: rgb(43, 43, 43);
+    height: 100vh;
+}
+h1[data-v-77dd343b] {
+    background-color: rgb(99, 99, 99);
+}
+div[data-v-77dd343b] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img[data-v-77dd343b] {
+    width: 5rem;
+}
+main[data-v-77dd343b] {
+    margin: auto;
+    padding: 25%;
+}
+@media only screen and (max-width: 750px) {
+h1[data-v-77dd343b] {
+        font-size: 1.25rem;
+}
+h2[data-v-77dd343b] {
+        font-size: 0.75rem;
+}
+}
+</style></head>
+  <body>
+    <div id="app" data-v-app=""><div data-v-476d183d="" class="navbar"><a data-v-476d183d="" href="http://localhost:5173/Home" class=""><img data-v-476d183d="" src="./高専祭_files/logo.svg" class="logo"></a><div data-v-476d183d="" class="menu-items"><a data-v-476d183d="" href="http://localhost:5173/Home" class="menu-item">ホーム</a><a data-v-476d183d="" href="http://localhost:5173/Greeting" class="menu-item">ごあいさつ</a><a data-v-476d183d="" href="http://localhost:5173/Introduction" class="menu-item">企画紹介</a><a data-v-476d183d="" href="http://localhost:5173/Brochure" class="menu-item">パンフレット</a><a data-v-476d183d="" href="http://localhost:5173/Access" class="menu-item">アクセス</a><a data-v-476d183d="" href="http://localhost:5173/Vote" class="menu-item">人気企画投票</a></div></div><!--v-if--><link data-v-fe53e2f5="" rel="stylesheet" href="./高専祭_files/css2(1)"><body data-v-fe53e2f5=""><main data-v-fe53e2f5=""><!--v-if--><h1 data-v-fe53e2f5="">落とし物画面</h1><div data-v-fe53e2f5=""><!-- 管理者がアクセスした場合 --><table data-v-fe53e2f5=""><thead data-v-fe53e2f5=""><tr data-v-fe53e2f5=""><th data-v-fe53e2f5=""></th><th data-v-fe53e2f5="">物品名</th><th data-v-fe53e2f5="">見つかった場所</th><th data-v-fe53e2f5="">特徴</th></tr></thead><tbody data-v-fe53e2f5=""><tr data-v-fe53e2f5=""><button data-v-fe53e2f5="" class="add-delete-button"><span data-v-fe53e2f5="" class="material-symbols-outlined"> remove </span></button><td data-v-fe53e2f5="">あああ</td><td data-v-fe53e2f5="">ああ</td><td data-v-fe53e2f5="">ああああ</td></tr><tr data-v-fe53e2f5=""><td data-v-fe53e2f5=""><button data-v-fe53e2f5="" class="add-delete-button"><span data-v-fe53e2f5="" class="material-symbols-outlined"> add </span></button></td></tr></tbody></table></div></main></body></div>
+    <script type="module" src="./高専祭_files/main.js"></script>
+  
+
+</body></html>

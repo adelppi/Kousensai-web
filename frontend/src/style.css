@@ -8,9 +8,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
 /* 'Rampart One' */
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
-
+/* 'M PLUS Rounded 1c' */
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&display=swap');
 :root {
-    font-family: 'Noto Sans JP';
+    font-family: 'M PLUS Rounded 1c';
     font-size: 17.5px;
 }
 

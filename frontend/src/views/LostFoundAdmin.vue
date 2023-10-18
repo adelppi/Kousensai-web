@@ -41,7 +41,7 @@ export default {
                     console.log(error);
                 });
         },
-        removeLostItem (itemId) {
+        removeLostItem(itemId) {
             const id = {
                 "id": itemId
             }
@@ -58,13 +58,16 @@ export default {
     },
     mounted() {
         this.fetchLostItems();
-        this.onigiri =  this.$route.params["onigiri"]
+        this.onigiri = this.$route.params["onigiri"]
         this.tsunamayoOnigiri = import.meta.env.VITE_LOST_FOUND_PASSWORD
     }
 }
 </script>
 
 <template>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <body>
         <main>
             <div v-if="showAddModule">
@@ -96,11 +99,10 @@ export default {
             <h1>落とし物画面</h1>
             <div v-if="onigiri === tsunamayoOnigiri">
                 <!-- 管理者がアクセスした場合 -->
-                おっけー編集しろ
-                <button class="add-item-button" @click="showAddModule = true">追加</button>
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>物品名</th>
                             <th>見つかった場所</th>
                             <th>特徴</th>
@@ -109,11 +111,25 @@ export default {
                     <tbody>
                         <tr v-for="(item) in lostItems" :key="item">
                             <td>
-                                <button @click="removeLostItem(item.id)">削除</button>
-                                {{ item.name }}
+                                <button class="add-delete-button" @click="removeLostItem(item.id)">
+                                    <span class="material-symbols-outlined">
+                                        remove
+                                    </span>
+                                </button>
                             </td>
+                            <td>{{ item.name }}</td>
                             <td>{{ item.place }}</td>
                             <td>{{ item.property }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="add-delete-button" @click="showAddModule = true">
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                </button>
+                            </td>
+                            <td></td><td></td><td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,28 +143,41 @@ export default {
 </template>
 
 <style scoped>
-
 table {
-    width: 100%;
+    width: 62.5%;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
     margin-bottom: 10px;
 }
 
 th {
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     padding: 8px;
     text-align: center;
 }
 
 td {
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
+    background-color: #fff;
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #b0b0b0;
 }
+
+.add-delete-button {
+    display: flex;
+    font-size: 10px;
+    border-radius: 8px;
+    height: 2rem;
+    width: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .module {
     position: absolute;
@@ -163,6 +192,10 @@ th {
     z-index: 9999;
     width: 60%;
     max-width: 400px;
+}
+
+.module-body {
+    margin: 0 auto;
 }
 
 .module-header {
@@ -196,10 +229,26 @@ th {
     margin-bottom: 1rem;
 }
 
-.input-container div, .input-container input {
+.input-container div,
+.input-container input {
     height: 1rem;
     margin: 0.5rem;
     align-items: center;
+}
+
+.confirm-button {
+    background-color: #419dff;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
 }
 
 .overlay {
@@ -214,5 +263,4 @@ th {
     overflow: hidden;
     touch-action: none;
 }
-
 </style>
