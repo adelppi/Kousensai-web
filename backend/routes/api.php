@@ -25,3 +25,6 @@ Route::get('/getTopThreeProjects', 'App\Http\Controllers\ProjectController@getTo
 Route::get('/getLostItems', 'App\Http\Controllers\LostFoundController@getLostItems');
 Route::post('/addLostItem', 'App\Http\Controllers\LostFoundController@addLostItem');
 Route::post('/deleteLostItem', 'App\Http\Controllers\LostFoundController@deleteLostItem');
+Route::get('/getMessage', 'App\Http\Controllers\MessageController@getMessage');
+Route::post('/addMessage', 'App\Http\Controllers\MessageController@addMessage');
+Route::post('/truncateMessage', 'App\Http\Controllers\MessageController@truncateMessage');
