@@ -36,7 +36,7 @@ export default {
 <template>
     <body>
         <main>
-            <h1>落とし物画面</h1>
+            <div class="title">落とし物画面</div>
             <table>
                 <thead>
                     <tr>

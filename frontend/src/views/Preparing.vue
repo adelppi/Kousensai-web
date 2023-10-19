@@ -4,7 +4,7 @@
             <div>
                 <img src="../assets/logo.svg">
             </div>
-            <h1>高専祭公式サイト<br>只今準備中！</h1>
+            <div class="title">高専祭公式サイト<br>只今準備中！</div>
             <div>
                 <h2>10月28日<br>10月29日<br>一般公開</h2>
             </div>
@@ -17,12 +17,8 @@
     color: white;
 }
 body {
-    background-color: rgb(43, 43, 43);
+    background-color: rgb(255, 255, 255);
     height: 100vh;
-}
-
-h1 {
-    background-color: rgb(99, 99, 99);
 }
 
 div {

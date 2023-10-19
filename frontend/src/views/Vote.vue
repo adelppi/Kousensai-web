@@ -32,9 +32,7 @@ export default {
 <template>
     <body>
         <main>
-            <div class="title">
-                <h1>人気企画投票</h1>
-            </div>
+            <div class="title">人気企画投票</div>
             <div class="project-container">
                 <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
                     :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"

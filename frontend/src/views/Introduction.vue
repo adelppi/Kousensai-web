@@ -87,6 +87,7 @@ export default {
 <template>
     <body>
         <main>
+            <div class="title">企画紹介</div>
             <Module 
                 v-if="moduleShown" 
                 @overlay-clicked="moduleShown = false"
@@ -99,7 +100,6 @@ export default {
                 :project_description="projects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
                 />
-            <h1 class="title">企画紹介</h1>
             <div class="project-container">
                 <Card
                     :style="cardStyles[index]['parentStyle']" 

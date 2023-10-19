@@ -1,15 +1,13 @@
 <template>
-    <div id="content">
-        <main>
-            <div class="title">
-                <h1>アクセス</h1>
-            </div>
+    <main>
+        <div class="title">アクセス</div>
+        <div id="content">
             <section>
                 <div class="inner">
                     <div class="address">
                         <h2>所在地</h2>
                         <p>産業技術高等専門学校荒川キャンパス</p>
-                        <p>116-8523<br />東京都荒川区南千住8-17-1<br />TEL:03-3801-0145（代表）<br />FAX:03-3801-9898</p>
+                        <p>116-8523<br>東京都荒川区南千住8-17-1<br>TEL:03-3801-0145（代表）<br>FAX:03-3801-9898</p>
                     </div>
                     <div class="map">
                         <iframe
@@ -25,28 +23,28 @@
                     <div class="access">
                         <h3>電車</h3>
                         <p>
-                            ・JR常磐線・東京メトロ日比谷線<br />
+                            ・JR常磐線・東京メトロ日比谷線<br>
                             &emsp;南千住駅 徒歩15分
                         </p>
                         <p>
-                            ・東武伊勢崎線(東武スカイツリーライン)<br />
-                            &emsp;鐘ヶ淵駅 徒歩18分<br />
+                            ・東武伊勢崎線(東武スカイツリーライン)<br>
+                            &emsp;鐘ヶ淵駅 徒歩18分<br>
                             &emsp;牛田駅 徒歩20分
                         </p>
                         <p>
-                            ・京成電鉄<br />
+                            ・京成電鉄<br>
                             &emsp;京成関屋駅 徒歩20分
                         </p>
                     </div>
                     <div class="access">
                         <h3>バス</h3>
                         <p>
-                            ・都営バス<br />
-                            &emsp;都立産業技術高専荒川キャンパス前下車<br />
+                            ・都営バス<br>
+                            &emsp;都立産業技術高専荒川キャンパス前下車<br>
                             &emsp;徒歩1分・上野松坂屋前⇔南千住駅東口
                         </p>
                         <p>
-                            ・(上46系統)<br />
+                            ・(上46系統)<br>
                             &emsp;上野駅前から30分→南千住駅東口から8分
                         </p>
                         <h3>自転車</h3>
@@ -55,8 +53,7 @@
                 </div>
                 <div id="car">
                     <h3>※ご注意※</h3>
-                    <p>駐車場の用意がございませんので、車・バイク・キックボード等での来場は<br />ご遠慮くださいますようお願いいたします。</p>
-                    <!-- 駐車場にご用意がございませんので、公共交通機関・自転車・徒歩でのご来校をおすすめしています。 -->
+                    <p>駐車場の用意がございませんので、車・バイク・キックボード等での来場は<br>ご遠慮くださいますようお願いいたします。</p>
                 </div>
             </section>
             <section>
@@ -65,12 +62,12 @@
                     <img src="../assets/access_map.png" alt="アクセスmap" style="width: 100%" />
                 </div>
             </section>
-        </main>
-    </div>
+        </div>
+    </main>
 </template>
   
 <style scoped>
-.content {
+#content {
     width: 80%;
     margin: 0 auto;
 }
@@ -79,32 +76,25 @@ section {
     margin-bottom: 40px;
 }
 
-section .inner {
+.inner {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-
-section .box {
-    font-size: 16px;
+.address,
+.map,
+.access {
+    flex: 0 0 48%;
 }
 
-section p {
-    white-space: pre-wrap;
-}
-
-section .ttl {
+.ttl {
     text-align: center;
     margin-bottom: 20px;
 }
 
 #car {
     margin-top: 20px;
-}
-
-.access {
-    margin-bottom: 20px;
 }
 
 .access p {
@@ -119,12 +109,17 @@ img {
     max-width: 100%;
 }
 
-/* モバイルのとき */
+/* Mobile */
 @media only screen and (max-width: 800px) {
-    section .inner {
+    .inner {
         display: flex;
         flex-direction: column;
     }
+
+    .address,
+    .map,
+    .access {
+        width: 100%;
+    }
 }
 </style>
-  
