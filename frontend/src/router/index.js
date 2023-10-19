@@ -6,7 +6,7 @@ import Brochure from '../views/Brochure.vue'
 import Access from '../views/Access.vue'
 import Vote from '../views/Vote.vue'
 import LostFound from '../views/LostFound.vue'
-import LostFoundAdmin from '../views/LostFoundAdmin.vue'
+import Admin from '../views/Administrator.vue'
 import Preparing from '../views/Preparing.vue'
 
 const router = createRouter({
@@ -54,8 +54,8 @@ const router = createRouter({
             component: LostFound
         },
         {
-            path: '/LostFoundAdmin/:onigiri',
-            component: LostFoundAdmin
+            path: '/Admin/:onigiri',
+            component: Admin
         },
         {
             path: '/Preparing',

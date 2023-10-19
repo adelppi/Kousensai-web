@@ -5,6 +5,8 @@ export default {
     data() {
         return {
             lostItems: [],
+            message: "",
+            inputMessage: "",
             onigiri: "",
             tsunamayoOnigiri: "",
             showAddModule: false,
@@ -48,16 +50,48 @@ export default {
 
             axios.post(import.meta.env.VITE_API_URL + '/deleteLostItem', id)
                 .then(response => {
-                    console.log(response.data);
+                    console.log(response);
                     this.fetchLostItems();
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
+        fetchMessage() {
+            axios.get(import.meta.env.VITE_API_URL + '/getMessage')
+                .then(response => {
+                    this.message = response.data[0]["content"]
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        addMessage() {
+            axios.post(import.meta.env.VITE_API_URL + '/addMessage', {
+                "content": this.inputMessage
+            })
+                .then(response => {
+                    console.log(response)
+                    this.fetchMessage()
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        truncateMessage() {
+            axios.post(import.meta.env.VITE_API_URL + '/truncateMessage')
+                .then(response => {
+                    console.log(response)
+                    this.fetchMessage()
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     },
     mounted() {
         this.fetchLostItems();
+        this.fetchMessage();
         this.onigiri = this.$route.params["onigiri"]
         this.tsunamayoOnigiri = import.meta.env.VITE_LOST_FOUND_PASSWORD
     }
@@ -70,35 +104,20 @@ export default {
 
     <body>
         <main>
-            <div v-if="showAddModule">
-                <div class="module" @click="$emit('cardSelected', shownId)">
-                    <div class="module-header">
-                        <div class="module-title">新規 落とし物</div>
-                        <button class="close-module-button" @click="showAddModule = false">
-                            <img class="close-img" src="../assets/logo.svg" alt="x">
-                        </button>
-                    </div>
-                    <div class="module-body">
-                        <div class="input-container">
-                            <div class="input-title">物品名</div>
-                            <input type="text" class="name-input">
-                        </div>
-                        <div class="input-container">
-                            <div class="input-title">見つかった場所</div>
-                            <input type="text" class="place-input">
-                        </div>
-                        <div class="input-container">
-                            <div class="input-title">特徴</div>
-                            <input type="text" class="property-input">
-                        </div>
-                        <button class="confirm-button" @click="addLostItem($event.target.parentNode)">追加</button>
-                    </div>
-                </div>
-                <div class="overlay" @click="showAddModule = false"></div>
-            </div>
-            <h1>落とし物画面</h1>
+            <div class="title">管理者画面</div>
             <div v-if="onigiri === tsunamayoOnigiri">
                 <!-- 管理者がアクセスした場合 -->
+                <h3>※高専祭実行委員のみがアクセスできる画面です。</h3>
+
+                <h2>メッセージの更新</h2>
+                message: {{ message }}<br>
+                inputMessage: {{ inputMessage }}<br>
+                <input v-model="inputMessage" :placeholder="message">
+                <button @click="addMessage()">更新</button>
+                <button @click="truncateMessage()">削除</button>
+
+
+                <h2>落とし物の登録</h2>
                 <table>
                     <thead>
                         <tr>
@@ -135,10 +154,40 @@ export default {
                         </tr>
                     </tbody>
                 </table>
+                <div v-if="showAddModule">
+                    <div class="module" @click="$emit('cardSelected', shownId)">
+                        <div class="module-header">
+                            <div class="module-title">新規 落とし物</div>
+                            <button class="close-module-button" @click="showAddModule = false">
+                                <img class="close-img" src="../assets/logo.svg" alt="x">
+                            </button>
+                        </div>
+                        <div class="module-body">
+                            <div class="input-container">
+                                物品名
+                                <input type="text" class="name-input">
+                            </div>
+                            <div class="input-container">
+                                見つかった場所
+                                <input type="text" class="place-input">
+                            </div>
+                            <div class="input-container">
+                                特徴
+                                <input type="text" class="property-input">
+                            </div>
+                            <button class="confirm-button" @click="addLostItem($event.target.parentNode)">追加</button>
+                        </div>
+                    </div>
+                    <div class="overlay" @click="showAddModule = false"></div>
+                </div>
+
+
+
+
             </div>
             <div v-else>
                 <!-- 管理者以外がアクセスした場合 -->
-                管理者のみがアクセス可能です。
+                <h3>管理者のみがアクセス可能です。</h3>
             </div>
         </main>
     </body>
@@ -206,7 +255,7 @@ th {
 }
 
 .module-body {
-    margin: 0 auto;
+    margin: 0 10%;
 }
 
 .module-header {
@@ -234,24 +283,17 @@ th {
 
 .input-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
     margin-bottom: 1rem;
-}
-
-.input-container div,
-.input-container input {
-    height: 1rem;
-    margin: 0.5rem;
-    align-items: center;
+    color: #5a5a5a;
 }
 
 .confirm-button {
     background-color: #419dff;
     color: #fff;
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    padding: 0.5rem;
     border: none;
     border-radius: 4px;
     margin-top: 1rem;
@@ -273,4 +315,5 @@ th {
     cursor: pointer;
     overflow: hidden;
     touch-action: none;
-}</style>
+}
+</style>

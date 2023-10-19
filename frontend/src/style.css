@@ -10,23 +10,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 /* 'M PLUS Rounded 1c' */
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&display=swap');
+
 :root {
     font-family: 'M PLUS Rounded 1c';
     font-size: 17.5px;
 }
 
 body {
-    background-color: #d7d7d7;
+    background-color: #fff8f3;
     color: black;
-    margin: 0 20rem;
+    margin: 0;
     padding: 0;
-    margin-top: 3rem; /* うーん */
+    margin-top: 6rem;
+    /* うーん */
 }
 
 main {
-    margin-top: 5rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin: 0rem 17.5%;
     padding: 1rem;
 }
 
@@ -34,17 +34,22 @@ a {
     text-decoration: inherit;
 }
 
+
 .title {
-    /* color: #364e96;
-    padding: 0.5em 0;
-    border-top: solid 3px #364e96;
-    border-bottom: solid 3px #364e96; */
+    margin: 3rem;
+    color: #000000;
+    text-align: center;
+    font-size: 3rem;
+    padding: 0.25em;
+    border-top: solid 2px #6cb4e4;
+    border-bottom: solid 2px #6cb4e4;
+    /* background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px); */
+    /* background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px); */
 }
 
 /* モバイルのとき */
 @media only screen and (max-width: 800px) {
     main {
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0;
     }
 }
