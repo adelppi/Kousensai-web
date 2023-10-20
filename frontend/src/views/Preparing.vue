@@ -13,9 +13,6 @@
 </template>
 
 <style scoped>
-* {
-    color: white;
-}
 body {
     background-color: rgb(255, 255, 255);
     height: 100vh;
