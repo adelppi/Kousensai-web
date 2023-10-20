@@ -6,10 +6,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 /* 'Shippori Mincho B1' */
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+/* 'Shippori Antique B1' */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 /* 'Rampart One' */
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 /* 'M PLUS Rounded 1c' */
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&family=M+PLUS+Rounded+1c&family=Mochiy+Pop+One&display=swap');
+/* 'Bebas Neue' */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
     font-family: 'M PLUS Rounded 1c';
