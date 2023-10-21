@@ -24,7 +24,8 @@ export default {
             <img src="../assets/logo.svg" class="logo" />
         </router-link>
         <div class="menu-items">
-            <router-link v-for="(menu, index) in menus" :to="menu.path" :key="index" class="menu-item">
+            <router-link v-for="(menu, index) in menus" :to="menu.path" :key="index" class="menu-item"
+                :class="{ 'menu-item-underlined': menu.path === currentPage }">
                 {{ menu.label }}
             </router-link>
         </div>
@@ -40,10 +41,9 @@ export default {
     right: 0;
     display: flex;
     justify-content: space-around;
-    /* justify-content: space-between; */
     align-items: center;
     background-color: #f8f9fa;
-    height: 10%;
+    height: 6rem;
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -62,6 +62,14 @@ export default {
     margin: 0 1rem;
     text-decoration: none;
     color: #333;
+}
+
+.menu-item-underlined {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 0.1rem solid;
+    color: #007bff;
 }
 
 .menu-item:hover {
