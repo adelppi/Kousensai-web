@@ -57,6 +57,10 @@ a {
 
 /* モバイルのとき */
 @media only screen and (max-width: 800px) {
+    
+    body {
+        margin: 4rem 0 3rem 0;
+    } 
     main {
         margin: 0;
         padding-top: 0;
