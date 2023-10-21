@@ -32,13 +32,12 @@ export default {
 
             navList.classList.toggle("nav-list-shown");
 
-            navList.addEventListener("blur", function navListLostFocus(event) {
-                if (event.relatedTarget == null) {
-                    navList.classList.remove("nav-list-shown");
-                }
-                navList.removeEventListener("blur", navListLostFocus);
-                console.log("activated")
-            })
+            // navList.addEventListener("blur", function navListLostFocus(event) {
+            //     if (event.relatedTarget == null) {
+            //         navList.classList.remove("nav-list-shown");
+            //     }
+            //     navList.removeEventListener("blur", navListLostFocus);
+            // })
         },
         hideNavList() {
             const navList = document.getElementsByClassName("nav-list")[0];
@@ -66,8 +65,8 @@ export default {
         </div>
     </div>
     <div class="nav-list" tabindex="0">
-        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item" @click="hideNavList($event)">
-            <div class="nav-icon" :class="{ 'nav-icon-background': nav.path === currentPage }">
+        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item" :class="{ 'nav-item-selected': nav.path === currentPage }" @click="hideNavList($event)">
+            <div class="nav-icon">
                 <span class="material-symbols-outlined">{{ nav.icon }}</span>
             </div>
             <span class="nav-text">{{ nav.label }}</span>
@@ -88,14 +87,15 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .hamburger-button {
-    color: white;
+    color: #222;
     position: fixed;
     top: 0.5rem;
     right: 0;
@@ -121,7 +121,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #222;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
     z-index: 1000;
 }
@@ -140,15 +141,16 @@ export default {
 
 .nav-item {
     height: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     border-radius: 25px;
     display: flex;
     flex-direction: row;
-    color: #ffffff;
+    padding: 1rem;
+    color: #222;
 }
 
 .nav-icon {
-    color: #ffffff;
+    color: #222;
     padding: 10px;
 }
 
@@ -158,7 +160,6 @@ export default {
 
 .nav-list-shown {
     width: 18rem;
-    padding-left: 2rem;
 }
 
 .nav-list-shown * {
@@ -175,32 +176,18 @@ export default {
     width: 60%;
 }
 
-.nav-item:hover {
-    padding: 1.75rem;
-    color: #222;
-    background-color: #ffffff;
-}
-
-.nav-item:hover .nav-icon {
-    color: #222;
-}
-
-.menu-bar:hover .menu-link {
-    transform: translateX(0);
-}
-
-.nav-icon-background {
-    color: #222;
-    background-color: #ffffff;
-    border-radius: 25%;
+.nav-item-selected {
+    color: white;
+    background-color: #6cb4e4;
 }
 
 .material-symbols-outlined {
     font-size: 1.75rem;
 }
 
-.menu-item:hover .material-symbols-outlined {
-    font-size: 2rem;
+.nav-item-selected .material-symbols-outlined,
+.nav-item-selected .t {
+    color: white;
 }
 
 /* モバイルのとき */
