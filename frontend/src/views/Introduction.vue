@@ -17,6 +17,7 @@ export default {
                 type: Number,
                 default: null
             },
+            keyword: "",
             extra: ""
         }
     },
@@ -80,6 +81,21 @@ export default {
     mounted() {
         this.fetchProjects();
         this.extra = import.meta.env.VITE_EXTRA
+    },
+    computed: {
+        filteredProjects() {
+            const keyword = this.keyword.toLowerCase();
+            return this.projects.filter(project => {
+                const projectName = project.project_name.toLowerCase();
+                const projectDescription = project.project_description.toLowerCase();
+                const projectSpace = project.project_space.toLowerCase();
+                return (
+                    projectName.includes(keyword) ||
+                    projectDescription.includes(keyword) ||
+                    projectSpace.includes(keyword)
+                );
+            });
+        }
     }
 }
 </script>
@@ -88,38 +104,40 @@ export default {
     <body>
         <main>
             <div class="title">企画紹介</div>
-            <Module 
-                v-if="moduleShown" 
-                @overlay-clicked="moduleShown = false"
-                :id="projects[shownId].id"
-                :shownId="shownId" 
-                :vote="projects[shownId].vote"
-                :team_name="projects[shownId].team_name"
-                :project_name="projects[shownId].project_name" 
-                :project_space="projects[shownId].project_space" 
-                :project_description="projects[shownId].project_description"
-                :imagePath="`${extra}/assets/thumbnails/${projects[shownId].id}.png`" 
-                />
+            <h2>キーワードを入力して企画を検索しよう！</h2>
+            <input type="text" class="search-box" placeholder="キーワード" v-model="keyword">
+            <div v-if="keyword">
+                検索結果: 
+                <span v-if="filteredProjects.length === 0">
+                    ヒットしませんでした...
+                </span>
+                <span v-else>
+                    {{ filteredProjects.length }}件
+                </span>
+            </div>
+
+            <div class="spacer"></div>
+
+            <Module v-if="moduleShown" @overlay-clicked="moduleShown = false" :id="filteredProjects[shownId].id"
+                :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
+                :project_name="filteredProjects[shownId].project_name"
+                :project_space="filteredProjects[shownId].project_space"
+                :project_description="filteredProjects[shownId].project_description"
+                :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
             <div class="project-container">
-                <Card
-                    :style="cardStyles[index]['parentStyle']" 
-                    :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in projects" 
-                    :key="index"
-                    :index="index" 
-                    :id="i.id" 
-                    :vote="i.vote" 
-                    :project_name="i.project_name" 
-                    :imagePath="`${extra}/assets/thumbnails/${i.id}.png`" 
-                    @card-selected="showModule"
-                    />
+                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
+                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
+                    @card-selected="showModule" />
             </div>
         </main>
     </body>
 </template>
 
 <style scoped>
-
+.spacer {
+    margin: 4rem 0rem;
+}
 .project-container {
     display: flex;
     flex-direction: row;
@@ -127,7 +145,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-image: url('../assets/corkboard.png');
+    /* background-image: url('../assets/corkboard.png'); */
     /* border: 10px solid black; */
     /* border-image-source: url('src/assets/corkboardborder.png'); */
     border-image-repeat: repeat;
@@ -135,4 +153,12 @@ export default {
     border-image-width: 25px;
 }
 
+
+.search-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
 </style>

@@ -44,6 +44,7 @@ export default {
 
 .card-header {
     width: 100%;
+    font-size: 1.5rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

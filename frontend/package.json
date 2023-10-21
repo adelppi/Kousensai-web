@@ -12,6 +12,7 @@
     "axios": "^1.5.0",
     "vite-plugin-fonts": "^0.7.0",
     "vue": "^3.2.47",
+    "vue-pdf": "^4.3.0",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
