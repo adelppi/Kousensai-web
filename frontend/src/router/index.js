@@ -13,9 +13,13 @@ const router = createRouter({
     history: createWebHistory(),
     base: '/',
     routes: [
+        // {
+        //     path: '/',
+        //     redirect: '/Preparing'
+        // },
         {
             path: '/',
-            redirect: '/Preparing'
+            redirect: '/Home'
         },
         {
             path: '/wordpress',
