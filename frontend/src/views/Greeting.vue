@@ -27,6 +27,7 @@
 </template>
 
 <style scoped>
+
 .container {
     display: flex;
     flex-direction: row;

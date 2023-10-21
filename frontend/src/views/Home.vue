@@ -8,14 +8,14 @@ export default {
     },
     data() {
         return {
-            message: "",
+            infos: [],
         }
     },
     methods: {
-        fetchMessage() {
+        fetchInfos() {
             axios.get(import.meta.env.VITE_API_URL + '/getMessage')
                 .then(response => {
-                    this.message = response.data[0]["content"]
+                    this.infos = response.data
                 })
                 .catch(error => {
                     console.log(error);
@@ -23,7 +23,7 @@ export default {
         }
     },
     mounted() {
-        this.fetchMessage();
+        this.fetchInfos();
     }
 }
 </script>
@@ -35,6 +35,18 @@ export default {
         </header>
         <main>
             <!-- <InformationCard :title="message" :content="'aaa'" /> -->
+            <div v-if="infos!=[]" class="info-section">
+                <h3 class="title">お知らせ</h3>
+                <div class="infos-container">
+                    <InformationCard
+                        v-for="info in infos" 
+                        :key="info.id" 
+                        :id="info.id"
+                        :title="info.title"
+                        :content="info.content"
+                        :timestamp="info.timestamp"/>
+                </div>
+            </div>
         </main>
     </body>
 </template>
@@ -58,4 +70,15 @@ header {
         letter-spacing: 0.5rem;
     }
 }
+
+.infos-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 </style>
