@@ -43,7 +43,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     background-color: #f8f9fa;
-    height: 10%;
+    height: 6rem;
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;

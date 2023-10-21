@@ -31,36 +31,46 @@ export default {
 <template>
     <body>
         <header>
-            <div class="head-container">
+            <img src="../assets/banner_w_text.png">
+            <!-- <div class="head-container">
                 <div class="ignition">
                     Ignition
                 </div>
                 <div class="large-text">
                     第59回 高専祭🔥
                 </div>
-            </div>
+            </div> -->
         </header>
         <main>
+            <!-- <img src="../assets/logo.gif" class="gif" > -->
             <!-- <img src="../assets/ignition5.png" alt="わああ"> -->
             <!-- <InformationCard :title="message" :content="'aaa'" /> -->
         </main>
         <svg>
             <filter id="grain">
-                <feTurbulence
-                type="turbulence"
-                baseFrequency="0.6"
-                />
+                <feTurbulence type="turbulence" baseFrequency="0.6" />
             </filter>
         </svg>
     </body>
 </template>
 
 <style scoped>
+
+main {
+    height: 200vh;
+}
+
 header {
-    background: rgb(135, 154, 242);
-    background: linear-gradient(56deg, rgba(135, 154, 242, 1) 0%, rgba(211, 32, 139, 1) 45%, rgba(253, 160, 0, 1) 100%);
     display: flex;
     flex-direction: column;
+}
+
+.gif {
+    position: absolute;
+    top: 20rem;
+    right: 0;
+    width: 50%;
+    /* margin-left: 75%; */
 }
 .head-container {
     margin: 0rem 17.5%;
@@ -70,28 +80,25 @@ header {
     font-family: 'Bebas Neue';
     align-items: center;
     font-size: 12rem;
-    animation: stretch 1.5s;
+    animation: stretch 1s ease-out;
     color: rgb(25, 25, 25);
     letter-spacing: 0.5rem;
 }
 
 @keyframes stretch {
-    from {
+    0% {
         letter-spacing: 10rem;
     }
 
-    to {
+    100% {
         letter-spacing: 0.5rem;
     }
 }
 
 .large-text {
     font-family: 'Shippori Antique B1';
-    font-size: 5rem;
+    font-size: 4rem;
     color: #ffffff;
 }
 
-img {
-    width: 100%;
-}
 </style>
