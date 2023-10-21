@@ -301,6 +301,7 @@ th {
     z-index: 9999;
     width: 35%;
     max-width: 400px;
+    min-width: 300px;
 }
 
 .module-body {
