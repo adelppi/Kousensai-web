@@ -34,6 +34,7 @@ export default {
 
 .card {
     width: 45%;
+    min-width: 300px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
