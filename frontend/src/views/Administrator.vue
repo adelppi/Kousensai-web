@@ -9,9 +9,13 @@ export default {
             inputMessage: "",
             onigiri: "",
             tsunamayoOnigiri: "",
-            addModuleShown: false,
-            editModuleShown: false,
+            addLFModuleShown: false,
+            editLFModuleShown: false,
+            addMessageModuleShown: false,
+            editMessageModuleShown: false,
             selectedItemId: 0,
+            messageTitle: "",
+            messageContent: ""
         }
     },
     methods: {
@@ -39,13 +43,13 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.fetchLostItems();
-                    this.addModuleShown = false;
+                    this.addLFModuleShown = false;
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        removeLostItem(itemId) {
+        deleteLostItem(itemId) {
             console.log(itemId);
 
             const id = {
@@ -56,17 +60,20 @@ export default {
                 .then(response => {
                     console.log(response);
                     this.fetchLostItems();
-                    this.editModuleShown = false;
+                    this.editLFModuleShown = false;
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
         editLostItem(parentNode) {
-            this.removeLostItem(this.selectedItemId);
+            this.deleteLostItem(this.selectedItemId);
             this.addLostItem(parentNode);
         },
-        showEditModule(item) {
+        showMessageEditModule() {
+            this.editMessageModuleShown = true;
+        },
+        showLFEditModule(item) {
             const editModule = document.querySelector("#edit-module");
             this.selectedItemId = item.id;
 
@@ -78,7 +85,7 @@ export default {
             placeInput.value = item.place;
             propertyInput.value = item.property;
 
-            this.editModuleShown = true;
+            this.editLFModuleShown = true;
         },
         fetchMessage() {
             axios.get(import.meta.env.VITE_API_URL + '/getMessage')
@@ -101,8 +108,11 @@ export default {
                     console.log(error);
                 });
         },
-        truncateMessage() {
-            axios.post(import.meta.env.VITE_API_URL + '/truncateMessage')
+        deleteMessage(itemId) {
+            const id = {
+                "id": itemId
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/deleteMessage', id)
                 .then(response => {
                     console.log(response)
                     this.fetchMessage()
@@ -132,16 +142,110 @@ export default {
                 <!-- 管理者がアクセスした場合 -->
                 <h3>※高専祭実行委員のみがアクセスできる画面です。</h3>
 
-                <h2>メッセージの更新</h2>
-                message: {{ message }}<br>
+                <h2>お知らせの更新</h2>
+                <p>クリックして削除・編集ができます。</p>
+                {{ messageTitle }}
+                {{ messageContent }}
+                <!-- message: {{ message }}<br>
                 inputMessage: {{ inputMessage }}<br>
                 <input v-model="inputMessage" :placeholder="message">
                 <button @click="addMessage()">更新</button>
-                <button @click="truncateMessage()">削除</button>
+                <button @click="deleteMessage()">削除</button> -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>見出し</th>
+                            <th>本文</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item) in lostItems" :key="item" @click="showMessageEditModule(item)">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.place }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-button-container">
+                    <button class="add-button" @click="addMessageModuleShown = true">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                    </button>
+                </div>
+
+
+
+                <div v-show="addMessageModuleShown">
+                    <div id="edit-module" class="module">
+                        <div class="module-header">
+                            <div class="module-title">お知らせ追加</div>
+                            <button class="close-module-button" @click="addMessageModuleShown = false">
+                                <span class="material-symbols-outlined close-img">
+                                    close
+                                </span>
+                            </button>
+                        </div>
+                        <div class="module-body">
+                            <div class="input-container">
+                                見出し
+                                <input type="text" v-model="messageTitle">
+                            </div>
+                            <div class="input-container">
+                                本文
+                                <textarea v-model="messageContent"></textarea>
+                            </div>
+                            <div class="confirm-button-container">
+                                <button class="confirm-button"
+                                    @click="">追加</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay" @click="addMessageModuleShown = false"></div>
+                </div>
+
+                <div v-show="editMessageModuleShown">
+                    <div id="edit-module" class="module">
+                        <div class="module-header">
+                            <div class="module-title">お知らせ編集</div>
+                            <button class="close-module-button" @click="editMessageModuleShown = false">
+                                <span class="material-symbols-outlined close-img">
+                                    close
+                                </span>
+                            </button>
+                        </div>
+                        <div class="module-body">
+                            <div class="input-container">
+                                見出し
+                                <input type="text" v-model="messageTitle">
+                            </div>
+                            <div class="input-container">
+                                本文
+                                <textarea v-model="messageContent"></textarea>
+                            </div>
+                            <div class="confirm-button-container">
+                                <button class="confirm-button" @click="">編集</button>
+                                <button class="confirm-button" @click="">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay" @click="editMessageModuleShown = false"></div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <h2>落とし物の登録</h2>
-                <p>クリックして削除・編集ができる</p>
+                <p>クリックして削除・編集ができます。</p>
 
                 <table>
                     <thead>
@@ -152,28 +256,29 @@ export default {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item) in lostItems" :key="item" @click="showEditModule(item)">
+                        <tr v-for="(item) in lostItems" :key="item" @click="showLFEditModule(item)">
                             <td>{{ item.name }}</td>
                             <td>{{ item.place }}</td>
                             <td>{{ item.property }}</td>
                         </tr>
                     </tbody>
                 </table>
-
                 <div class="add-button-container">
-                    <button class="add-button" @click="addModuleShown = true">
+                    <button class="add-button" @click="addLFModuleShown = true">
                         <span class="material-symbols-outlined">
                             add
                         </span>
                     </button>
                 </div>
 
-                <div v-if="addModuleShown">
+                <div v-if="addLFModuleShown">
                     <div class="module add-module">
                         <div class="module-header">
                             <div class="module-title">落とし物追加</div>
-                            <button class="close-module-button" @click="addModuleShown = false">
-                                <img class="close-img" src="../assets/logo.svg" alt="x">
+                            <button class="close-module-button" @click="addLFModuleShown = false">
+                                <span class="material-symbols-outlined close-img">
+                                    close
+                                </span>
                             </button>
                         </div>
                         <div class="module-body">
@@ -190,19 +295,22 @@ export default {
                                 <input type="text" class="property-input">
                             </div>
                             <div class="confirm-button-container">
-                                <button class="confirm-button" @click="addLostItem($event.target.parentNode.parentNode)">追加</button>
+                                <button class="confirm-button"
+                                    @click="addLostItem($event.target.parentNode.parentNode)">追加</button>
                             </div>
                         </div>
                     </div>
-                    <div class="overlay" @click="addModuleShown = false"></div>
+                    <div class="overlay" @click="addLFModuleShown = false"></div>
                 </div>
 
-                <div v-show="editModuleShown">
+                <div v-show="editLFModuleShown">
                     <div id="edit-module" class="module">
                         <div class="module-header">
                             <div class="module-title">落とし物編集</div>
-                            <button class="close-module-button" @click="editModuleShown = false">
-                                <img class="close-img" src="../assets/logo.svg" alt="x">
+                            <button class="close-module-button" @click="editLFModuleShown = false">
+                                <span class="material-symbols-outlined close-img">
+                                    close
+                                </span>
                             </button>
                         </div>
                         <div class="module-body">
@@ -219,12 +327,13 @@ export default {
                                 <input type="text" class="property-input">
                             </div>
                             <div class="confirm-button-container">
-                                <button class="confirm-button" @click="editLostItem($event.target.parentNode.parentNode)">編集</button>
-                                <button class="confirm-button" @click="removeLostItem(selectedItemId)">削除</button>
+                                <button class="confirm-button"
+                                    @click="editLostItem($event.target.parentNode.parentNode)">編集</button>
+                                <button class="confirm-button" @click="deleteLostItem(selectedItemId)">削除</button>
                             </div>
                         </div>
                     </div>
-                    <div class="overlay" @click="editModuleShown = false"></div>
+                    <div class="overlay" @click="editLFModuleShown = false"></div>
                 </div>
 
             </div>
@@ -287,6 +396,11 @@ th {
     background-color: #f2f2f2;
 }
 
+tbody tr:hover {
+    cursor: pointer;
+    color: #676767;
+}
+
 .module {
     position: fixed;
     display: flex;
@@ -329,6 +443,11 @@ th {
 .close-img {
     height: 100%;
     width: 100%;
+}
+
+.close-img:hover {
+    color: #419dff;
+    cursor: pointer;
 }
 
 .input-container {
@@ -376,5 +495,4 @@ th {
     overflow: hidden;
     touch-action: none;
 }
-
 </style>
