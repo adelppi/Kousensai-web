@@ -288,7 +288,7 @@ th {
 }
 
 .module {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     top: 50%;
