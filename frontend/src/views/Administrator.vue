@@ -36,7 +36,7 @@ export default {
             document.querySelector(".name-input").value = ""
             document.querySelector(".place-input").value = ""
             document.querySelector(".property-input").value = ""
-            
+
             const item = {
                 "name": itemName,
                 "place": itemPlace,
@@ -354,6 +354,11 @@ export default {
 </template>
 
 <style scoped>
+main {
+    margin: 0rem 20%;
+    padding: 1rem;
+}
+
 table {
     font-size: 1rem;
     width: 100%;
@@ -364,6 +369,11 @@ table {
 
 /* モバイルのとき */
 @media only screen and (max-width: 800px) {
+    main {
+        margin: 0;
+        padding-top: 0;
+    }
+
     table {
         font-size: 0.625rem;
     }
@@ -406,7 +416,7 @@ th {
 
 tbody tr:hover {
     cursor: pointer;
-    color: #676767;
+    color: #419dff;
 }
 
 .module {
@@ -487,6 +497,11 @@ tbody tr:hover {
     margin-top: 1rem;
     cursor: pointer;
 }
+
+.confirm-button:hover {
+    background-color: #2a6fb8;
+}
+
 .delete-button {
     font-family: 'M PLUS Rounded 1c';
     background-color: #ff3333;
@@ -498,6 +513,10 @@ tbody tr:hover {
     border-radius: 4px;
     margin-top: 1rem;
     cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #b02424;
 }
 
 .material-symbols-outlined {
