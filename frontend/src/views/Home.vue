@@ -61,6 +61,7 @@ header {
     background: linear-gradient(56deg, rgba(135, 154, 242, 1) 0%, rgba(211, 32, 139, 1) 45%, rgba(253, 160, 0, 1) 100%);
     display: flex;
     flex-direction: column;
+    padding-bottom: 1rem;
 }
 .head-container {
     margin: 0rem 17.5%;
@@ -94,4 +95,16 @@ header {
 img {
     width: 100%;
 }
+
+/* モバイルのとき */
+@media only screen and (max-width: 800px) {
+    .ignition {
+        font-size: 4rem;
+    }
+
+    .large-text {
+        font-size: 1.5rem;
+    }
+}
+
 </style>
