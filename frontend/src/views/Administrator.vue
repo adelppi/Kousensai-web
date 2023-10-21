@@ -5,15 +5,15 @@ export default {
     data() {
         return {
             lostItems: [],
-            message: "",
-            inputMessage: "",
+            messages: [],
             onigiri: "",
             tsunamayoOnigiri: "",
             addLFModuleShown: false,
             editLFModuleShown: false,
             addMessageModuleShown: false,
             editMessageModuleShown: false,
-            selectedItemId: 0,
+            selectedLFId: 0,
+            selectedMessageId: 0,
             messageTitle: "",
             messageContent: ""
         }
@@ -67,15 +67,16 @@ export default {
                 });
         },
         editLostItem(parentNode) {
-            this.deleteLostItem(this.selectedItemId);
+            this.deleteLostItem(this.selectedLFId);
             this.addLostItem(parentNode);
         },
-        showMessageEditModule() {
+        showMessageEditModule(item) {
             this.editMessageModuleShown = true;
+            this.selectedMessageId = item.id;
         },
         showLFEditModule(item) {
             const editModule = document.querySelector("#edit-module");
-            this.selectedItemId = item.id;
+            this.selectedLFId = item.id;
 
             const nameInput = document.querySelector(".name-input");
             const placeInput = document.querySelector(".place-input");
@@ -90,7 +91,7 @@ export default {
         fetchMessage() {
             axios.get(import.meta.env.VITE_API_URL + '/getMessage')
                 .then(response => {
-                    this.message = response.data[0]["content"]
+                    this.messages = response.data
                 })
                 .catch(error => {
                     console.log(error);
@@ -98,7 +99,8 @@ export default {
         },
         addMessage() {
             axios.post(import.meta.env.VITE_API_URL + '/addMessage', {
-                "content": this.inputMessage
+                "title": this.messageTitle,
+                "content": this.messageContent
             })
                 .then(response => {
                     console.log(response)
@@ -107,6 +109,7 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+            this.addMessageModuleShown = false
         },
         deleteMessage(itemId) {
             const id = {
@@ -120,6 +123,23 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+            this.editMessageModuleShown = false
+        },
+        updateMessage(itemId) {
+            const data = {
+                "id": itemId,
+                "title": this.messageTitle,
+                "content": this. messageContent
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/updateMessage', data)
+                .then(response => {
+                    console.log(response)
+                    this.fetchMessage()
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            this.editMessageModuleShown = false
         }
     },
     mounted() {
@@ -144,13 +164,6 @@ export default {
 
                 <h2>お知らせの更新</h2>
                 <p>クリックして削除・編集ができます。</p>
-                {{ messageTitle }}
-                {{ messageContent }}
-                <!-- message: {{ message }}<br>
-                inputMessage: {{ inputMessage }}<br>
-                <input v-model="inputMessage" :placeholder="message">
-                <button @click="addMessage()">更新</button>
-                <button @click="deleteMessage()">削除</button> -->
                 <table>
                     <thead>
                         <tr>
@@ -159,21 +172,20 @@ export default {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item) in lostItems" :key="item" @click="showMessageEditModule(item)">
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.place }}</td>
+                        <tr v-for="(item) in messages" :key="item" @click="showMessageEditModule(item)">
+                            <td style="width: 8rem;">{{ item.title }}</td>
+                            <td>{{ item.content }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="add-button-container">
-                    <button class="add-button" @click="addMessageModuleShown = true">
+                    <button class="add-button"
+                        @click="addMessageModuleShown = true; messageTitle = ''; messageContent = '';">
                         <span class="material-symbols-outlined">
                             add
                         </span>
                     </button>
                 </div>
-
-
 
                 <div v-show="addMessageModuleShown">
                     <div id="edit-module" class="module">
@@ -192,11 +204,10 @@ export default {
                             </div>
                             <div class="input-container">
                                 本文
-                                <textarea v-model="messageContent"></textarea>
+                                <textarea rows="6" v-model="messageContent"></textarea>
                             </div>
                             <div class="confirm-button-container">
-                                <button class="confirm-button"
-                                    @click="">追加</button>
+                                <button class="confirm-button" @click="addMessage()">追加</button>
                             </div>
                         </div>
                     </div>
@@ -220,11 +231,11 @@ export default {
                             </div>
                             <div class="input-container">
                                 本文
-                                <textarea v-model="messageContent"></textarea>
+                                <textarea rows="6" v-model="messageContent"></textarea>
                             </div>
                             <div class="confirm-button-container">
-                                <button class="confirm-button" @click="">編集</button>
-                                <button class="confirm-button" @click="">削除</button>
+                                <button class="confirm-button" @click="updateMessage(selectedMessageId)">編集</button>
+                                <button class="confirm-button" @click="deleteMessage(selectedMessageId)">削除</button>
                             </div>
                         </div>
                     </div>
@@ -237,7 +248,7 @@ export default {
 
 
 
-
+                <div class="spacer"></div>
 
 
 
@@ -257,8 +268,8 @@ export default {
                     </thead>
                     <tbody>
                         <tr v-for="(item) in lostItems" :key="item" @click="showLFEditModule(item)">
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.place }}</td>
+                            <td style="width: 8rem;">{{ item.name }}</td>
+                            <td style="width: 8rem;">{{ item.place }}</td>
                             <td>{{ item.property }}</td>
                         </tr>
                     </tbody>
@@ -284,15 +295,15 @@ export default {
                         <div class="module-body">
                             <div class="input-container">
                                 物品名
-                                <input type="text" class="name-input">
+                                <input type="text" class="name-input" >
                             </div>
                             <div class="input-container">
                                 見つかった場所
-                                <input type="text" class="place-input">
+                                <input type="text" class="place-input" >
                             </div>
                             <div class="input-container">
                                 特徴
-                                <input type="text" class="property-input">
+                                <input type="text" class="property-input" >
                             </div>
                             <div class="confirm-button-container">
                                 <button class="confirm-button"
@@ -329,7 +340,7 @@ export default {
                             <div class="confirm-button-container">
                                 <button class="confirm-button"
                                     @click="editLostItem($event.target.parentNode.parentNode)">編集</button>
-                                <button class="confirm-button" @click="deleteLostItem(selectedItemId)">削除</button>
+                                <button class="confirm-button" @click="deleteLostItem(selectedLFId)">削除</button>
                             </div>
                         </div>
                     </div>
@@ -468,6 +479,7 @@ tbody tr:hover {
 }
 
 .confirm-button {
+    font-family: 'M PLUS Rounded 1c';
     background-color: #419dff;
     color: #fff;
     font-size: 1.25rem;
@@ -481,6 +493,10 @@ tbody tr:hover {
 
 .material-symbols-outlined {
     font-size: 20px;
+}
+
+.spacer {
+    height: 3rem;
 }
 
 .overlay {

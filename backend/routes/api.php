@@ -27,4 +27,5 @@ Route::post('/addLostItem', 'App\Http\Controllers\LostFoundController@addLostIte
 Route::post('/deleteLostItem', 'App\Http\Controllers\LostFoundController@deleteLostItem');
 Route::get('/getMessage', 'App\Http\Controllers\MessageController@getMessage');
 Route::post('/addMessage', 'App\Http\Controllers\MessageController@addMessage');
-Route::post('/truncateMessage', 'App\Http\Controllers\MessageController@truncateMessage');
+Route::post('/updateMessage', 'App\Http\Controllers\MessageController@updateMessage');
+Route::post('/deleteMessage', 'App\Http\Controllers\MessageController@deleteMessage');
