@@ -33,11 +33,12 @@ export default {
     <body>
         <main>
             <div class="title">人気企画投票</div>
-            <div class="project-container">
+            <h2>始まるまでしばしお待ちを....</h2>
+            <!-- <div class="project-container">
                 <Card class="card" v-for="(i, index) in topThreeProjects" :key="index" :id="i.id" :vote="i.vote"
                     :team_name="i.team_name" :project_name="i.project_name" :project_space="i.project_space"
                     :project_description="i.project_description" :imagePath="`/src/assets/nelnel.jpg`" />
-            </div>
+            </div> -->
         </main>
     </body>
 </template>
