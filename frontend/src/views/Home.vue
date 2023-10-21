@@ -64,14 +64,6 @@ header {
     display: flex;
     flex-direction: column;
 }
-
-.gif {
-    position: absolute;
-    top: 20rem;
-    right: 0;
-    width: 50%;
-    /* margin-left: 75%; */
-}
 .head-container {
     margin: 0rem 17.5%;
 }
@@ -99,6 +91,18 @@ header {
     font-family: 'Shippori Antique B1';
     font-size: 4rem;
     color: #ffffff;
+}
+
+
+/* モバイルのとき */
+@media only screen and (max-width: 800px) {
+    .ignition {
+        font-size: 4rem;
+    }
+
+    .large-text {
+        font-size: 1.5rem;
+    }
 }
 
 </style>

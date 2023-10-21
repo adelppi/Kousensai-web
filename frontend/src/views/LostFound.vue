@@ -37,6 +37,8 @@ export default {
     <body>
         <main>
             <div class="title">落とし物画面</div>
+
+            <div class="text">落とし物があった場合は、、、</div>
             <table>
                 <thead>
                     <tr>
@@ -58,8 +60,14 @@ export default {
 </template>
 
 <style scoped>
+
+.text {
+    padding: 0 2rem 1rem 2rem;
+    font-size: 1em;
+}
+
 table {
-    width: 62.5%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
@@ -67,13 +75,13 @@ table {
 }
 
 th {
-    border: 1px solid #ddd;
+    border: 1px solid #222;
     padding: 8px;
     text-align: center;
 }
 
 td {
-    border: 1px solid #ddd;
+    border: 1px solid #222;
     padding: 8px;
     text-align: left;
 }

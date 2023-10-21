@@ -9,7 +9,9 @@ export default {
             inputMessage: "",
             onigiri: "",
             tsunamayoOnigiri: "",
-            showAddModule: false,
+            addModuleShown: false,
+            editModuleShown: false,
+            selectedItemId: 0,
         }
     },
     methods: {
@@ -23,9 +25,9 @@ export default {
                 });
         },
         addLostItem(parentNode) {
-            const itemName = parentNode.getElementsByClassName("name-input")[0].value;
-            const itemPlace = parentNode.getElementsByClassName("place-input")[0].value;
-            const itemProperty = parentNode.getElementsByClassName("property-input")[0].value;
+            const itemName = parentNode.querySelector(".name-input").value;
+            const itemPlace = parentNode.querySelector(".place-input").value;
+            const itemProperty = parentNode.querySelector(".property-input").value;
 
             const item = {
                 "name": itemName,
@@ -37,13 +39,15 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.fetchLostItems();
-                    this.showAddModule = false;
+                    this.addModuleShown = false;
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
         removeLostItem(itemId) {
+            console.log(itemId);
+
             const id = {
                 "id": itemId
             }
@@ -52,10 +56,29 @@ export default {
                 .then(response => {
                     console.log(response);
                     this.fetchLostItems();
+                    this.editModuleShown = false;
                 })
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        editLostItem(parentNode) {
+            this.removeLostItem(this.selectedItemId);
+            this.addLostItem(parentNode);
+        },
+        showEditModule(item) {
+            const editModule = document.querySelector("#edit-module");
+            this.selectedItemId = item.id;
+
+            const nameInput = document.querySelector(".name-input");
+            const placeInput = document.querySelector(".place-input");
+            const propertyInput = document.querySelector(".property-input");
+
+            nameInput.value = item.name;
+            placeInput.value = item.place;
+            propertyInput.value = item.property;
+
+            this.editModuleShown = true;
         },
         fetchMessage() {
             axios.get(import.meta.env.VITE_API_URL + '/getMessage')
@@ -118,47 +141,38 @@ export default {
 
 
                 <h2>落とし物の登録</h2>
+                <p>クリックして削除・編集ができる</p>
+
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
                             <th>物品名</th>
                             <th>見つかった場所</th>
                             <th>特徴</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item) in lostItems" :key="item">
-                            <td>
-                                <button class="add-delete-button" @click="removeLostItem(item.id)">
-                                    <span class="material-symbols-outlined">
-                                        remove
-                                    </span>
-                                </button>
-                            </td>
+                        <tr v-for="(item) in lostItems" :key="item" @click="showEditModule(item)">
                             <td>{{ item.name }}</td>
                             <td>{{ item.place }}</td>
                             <td>{{ item.property }}</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <button class="add-delete-button" @click="showAddModule = true">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </button>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
-                <div v-if="showAddModule">
-                    <div class="module" @click="$emit('cardSelected', shownId)">
+
+                <div class="add-button-container">
+                    <button class="add-button" @click="addModuleShown = true">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                    </button>
+                </div>
+
+                <div v-if="addModuleShown">
+                    <div class="module add-module">
                         <div class="module-header">
-                            <div class="module-title">新規 落とし物</div>
-                            <button class="close-module-button" @click="showAddModule = false">
+                            <div class="module-title">落とし物追加</div>
+                            <button class="close-module-button" @click="addModuleShown = false">
                                 <img class="close-img" src="../assets/logo.svg" alt="x">
                             </button>
                         </div>
@@ -175,14 +189,43 @@ export default {
                                 特徴
                                 <input type="text" class="property-input">
                             </div>
-                            <button class="confirm-button" @click="addLostItem($event.target.parentNode)">追加</button>
+                            <div class="confirm-button-container">
+                                <button class="confirm-button" @click="addLostItem($event.target.parentNode.parentNode)">追加</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="overlay" @click="showAddModule = false"></div>
+                    <div class="overlay" @click="addModuleShown = false"></div>
                 </div>
 
-
-
+                <div v-show="editModuleShown">
+                    <div id="edit-module" class="module">
+                        <div class="module-header">
+                            <div class="module-title">落とし物編集</div>
+                            <button class="close-module-button" @click="editModuleShown = false">
+                                <img class="close-img" src="../assets/logo.svg" alt="x">
+                            </button>
+                        </div>
+                        <div class="module-body">
+                            <div class="input-container">
+                                物品名
+                                <input type="text" class="name-input">
+                            </div>
+                            <div class="input-container">
+                                見つかった場所
+                                <input type="text" class="place-input">
+                            </div>
+                            <div class="input-container">
+                                特徴
+                                <input type="text" class="property-input">
+                            </div>
+                            <div class="confirm-button-container">
+                                <button class="confirm-button" @click="editLostItem($event.target.parentNode.parentNode)">編集</button>
+                                <button class="confirm-button" @click="removeLostItem(selectedItemId)">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay" @click="editModuleShown = false"></div>
+                </div>
 
             </div>
             <div v-else>
@@ -196,18 +239,16 @@ export default {
 <style scoped>
 table {
     font-size: 1rem;
-    width: 62.5%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
-    margin-bottom: 10px;
 }
 
 /* モバイルのとき */
 @media only screen and (max-width: 800px) {
     table {
         font-size: 0.625rem;
-        width: 90%;
     }
 }
 
@@ -217,7 +258,25 @@ th {
     text-align: center;
 }
 
+.add-button-container {
+    height: 2rem;
+    border: 1px solid #000000;
+    border-top: none;
+    background-color: #fff;
+    padding: 8px;
+}
+
+.add-button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 td {
+    height: 2rem;
     border: 1px solid #000000;
     background-color: #fff;
     padding: 8px;
@@ -225,33 +284,24 @@ td {
 }
 
 th {
-    background-color: #b0b0b0;
+    background-color: #f2f2f2;
 }
-
-.add-delete-button {
-    display: flex;
-    font-size: 10px;
-    border-radius: 8px;
-    height: 2rem;
-    width: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 
 .module {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid #ccc;
+    border-radius: 20px;
     background-color: #f2f2f2;
     z-index: 9999;
-    width: 60%;
+    width: 35%;
     max-width: 400px;
+    min-width: 300px;
 }
 
 .module-body {
@@ -289,11 +339,21 @@ th {
     color: #5a5a5a;
 }
 
+.confirm-button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
 .confirm-button {
     background-color: #419dff;
     color: #fff;
     font-size: 1.25rem;
-    padding: 0.5rem;
+    font-weight: bold;
+    padding: 0 1rem 0 1rem;
     border: none;
     border-radius: 4px;
     margin-top: 1rem;
@@ -316,4 +376,5 @@ th {
     overflow: hidden;
     touch-action: none;
 }
+
 </style>
