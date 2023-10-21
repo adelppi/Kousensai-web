@@ -32,12 +32,12 @@ export default {
 
             navList.classList.toggle("nav-list-shown");
 
-            // navList.addEventListener("blur", function navListLostFocus(event) {
-            //     if (event.relatedTarget == null) {
-            //         navList.classList.remove("nav-list-shown");
-            //     }
-            //     navList.removeEventListener("blur", navListLostFocus);
-            // })
+            navList.addEventListener("blur", function navListLostFocus(event) {
+                if (event.relatedTarget == null) {
+                    navList.classList.remove("nav-list-shown");
+                }
+                navList.removeEventListener("blur", navListLostFocus);
+            })
         },
         hideNavList() {
             const navList = document.getElementsByClassName("nav-list")[0];
