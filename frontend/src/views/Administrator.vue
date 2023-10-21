@@ -33,6 +33,10 @@ export default {
             const itemPlace = parentNode.querySelector(".place-input").value;
             const itemProperty = parentNode.querySelector(".property-input").value;
 
+            document.querySelector(".name-input").value = ""
+            document.querySelector(".place-input").value = ""
+            document.querySelector(".property-input").value = ""
+            
             const item = {
                 "name": itemName,
                 "place": itemPlace,
@@ -71,6 +75,8 @@ export default {
             this.addLostItem(parentNode);
         },
         showMessageEditModule(item) {
+            this.messageContent = item["content"]
+            this.messageTitle = item["title"]
             this.editMessageModuleShown = true;
             this.selectedMessageId = item.id;
         },
@@ -129,7 +135,7 @@ export default {
             const data = {
                 "id": itemId,
                 "title": this.messageTitle,
-                "content": this. messageContent
+                "content": this.messageContent
             }
             axios.post(import.meta.env.VITE_API_URL + '/updateMessage', data)
                 .then(response => {
@@ -167,13 +173,13 @@ export default {
                 <table>
                     <thead>
                         <tr>
-                            <th>見出し</th>
+                            <th style="width:8rem;">見出し</th>
                             <th>本文</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item) in messages" :key="item" @click="showMessageEditModule(item)">
-                            <td style="width: 8rem;">{{ item.title }}</td>
+                            <td>{{ item.title }}</td>
                             <td>{{ item.content }}</td>
                         </tr>
                     </tbody>
@@ -235,7 +241,7 @@ export default {
                             </div>
                             <div class="confirm-button-container">
                                 <button class="confirm-button" @click="updateMessage(selectedMessageId)">編集</button>
-                                <button class="confirm-button" @click="deleteMessage(selectedMessageId)">削除</button>
+                                <button class="delete-button" @click="deleteMessage(selectedMessageId)">削除</button>
                             </div>
                         </div>
                     </div>
@@ -243,16 +249,7 @@ export default {
                 </div>
 
 
-
-
-
-
-
                 <div class="spacer"></div>
-
-
-
-
 
 
                 <h2>落とし物の登録</h2>
@@ -261,15 +258,15 @@ export default {
                 <table>
                     <thead>
                         <tr>
-                            <th>物品名</th>
-                            <th>見つかった場所</th>
+                            <th style="width: 8rem;">物品名</th>
+                            <th style="width: 8rem;">見つかった場所</th>
                             <th>特徴</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item) in lostItems" :key="item" @click="showLFEditModule(item)">
-                            <td style="width: 8rem;">{{ item.name }}</td>
-                            <td style="width: 8rem;">{{ item.place }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.place }}</td>
                             <td>{{ item.property }}</td>
                         </tr>
                     </tbody>
@@ -295,15 +292,15 @@ export default {
                         <div class="module-body">
                             <div class="input-container">
                                 物品名
-                                <input type="text" class="name-input" >
+                                <input type="text" class="name-input">
                             </div>
                             <div class="input-container">
                                 見つかった場所
-                                <input type="text" class="place-input" >
+                                <input type="text" class="place-input">
                             </div>
                             <div class="input-container">
                                 特徴
-                                <input type="text" class="property-input" >
+                                <input type="text" class="property-input">
                             </div>
                             <div class="confirm-button-container">
                                 <button class="confirm-button"
@@ -340,7 +337,7 @@ export default {
                             <div class="confirm-button-container">
                                 <button class="confirm-button"
                                     @click="editLostItem($event.target.parentNode.parentNode)">編集</button>
-                                <button class="confirm-button" @click="deleteLostItem(selectedLFId)">削除</button>
+                                <button class="delete-button" @click="deleteLostItem(selectedLFId)">削除</button>
                             </div>
                         </div>
                     </div>
@@ -481,6 +478,18 @@ tbody tr:hover {
 .confirm-button {
     font-family: 'M PLUS Rounded 1c';
     background-color: #419dff;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.delete-button {
+    font-family: 'M PLUS Rounded 1c';
+    background-color: #ff3333;
     color: #fff;
     font-size: 1.25rem;
     font-weight: bold;
