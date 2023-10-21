@@ -249,7 +249,6 @@ table {
 @media only screen and (max-width: 800px) {
     table {
         font-size: 0.625rem;
-        width: 90%;
     }
 }
 
