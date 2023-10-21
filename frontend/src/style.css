@@ -21,7 +21,7 @@
 }
 
 body {
-    margin: 6rem 0 0 0;
+    margin: 6rem 0 3rem 0;
     padding: 0;
     background-color: #f8f9fa;
     color: black;
@@ -30,7 +30,7 @@ body {
 }
 
 main {
-    margin: 0rem 17.5%;
+    margin: 0rem 10%;
     padding: 1rem;
 }
 
