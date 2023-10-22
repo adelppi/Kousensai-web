@@ -88,11 +88,13 @@ export default {
             return this.projects.filter(project => {
                 const teamName = project.team_name.toLowerCase();
                 const projectName = project.project_name.toLowerCase();
+                const projectTeam = project.team_name.toLowerCase();
                 const projectDescription = project.project_description.toLowerCase();
                 const projectSpace = project.project_space.toLowerCase();
                 return (
                     teamName.includes(keyword) ||
                     projectName.includes(keyword) ||
+                    projectTeam.includes(keyword) ||
                     projectDescription.includes(keyword) ||
                     projectSpace.includes(keyword)
                 );
@@ -115,11 +117,11 @@ export default {
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
                 </div>
+                <div v-if="keyword" style="left: 0;">
+                    検索結果: {{ filteredProjects.length }}件
+                </div>
             </div>
 
-            <div v-if="keyword">
-                検索結果: {{ filteredProjects.length }}件
-            </div>
 
             <div class="spacer"></div>
 
@@ -168,6 +170,7 @@ export default {
 }
 
 .search-box {
+    box-sizing: border-box;
     width: 30rem;
     padding: 10px;
     font-size: 1.5rem;

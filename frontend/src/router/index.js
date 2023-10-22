@@ -11,6 +11,11 @@ import Preparing from '../views/Preparing.vue'
 
 const router = createRouter({
     history: createWebHistory(),
+    scrollBehavior() {
+        return new Promise((resolve) => {
+            resolve({ left: 0, top: 0 })
+        })
+    },
     base: '/',
     routes: [
         // {
