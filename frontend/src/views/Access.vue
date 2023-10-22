@@ -65,7 +65,7 @@
                 </section>
             </div>
         </main>
-    </body>>
+    </body>
 </template>
   
 <style scoped>

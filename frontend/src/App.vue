@@ -29,5 +29,5 @@ export default {
 	<MenuBar :currentPage="$route.path" v-if="$route.path != '/Preparing' && !isMobile" />
 	<MenuBarMobile :currentPage="$route.path" v-if="$route.path != '/Preparing' && isMobile" />
 	<router-view />
-	<Footer />
+	<Footer></Footer>
 </template>
