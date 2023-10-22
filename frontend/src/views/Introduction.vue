@@ -111,7 +111,7 @@ export default {
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
                     <span class="material-symbols-outlined shuffle-button"
-                        @click="shuffleArray(projects)">restart_alt</span>
+                        @click="shuffleArray(projects)">sort</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件

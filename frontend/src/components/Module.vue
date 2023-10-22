@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default {
     props: {
-        id:Number,
+        id: Number,
         shownId: Number,
         vote: Number,
         team_name: String,
@@ -66,32 +66,40 @@ export default {
 
 <template>
     <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,1,0" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,1,0" />
 
     <div class="module" @click="$emit('cardSelected', shownId)">
         <div class="module-header">
             <div class="project-name">{{ project_name }}</div>
+            <div class="team-name">{{ team_name }}</div>
             <button class="close-module-button" @click="$emit('closeModuleEvent')">
                 <span class="material-symbols-outlined"> close </span>
             </button>
         </div>
+
         <div class="module-body">
             <div class="image-container">
                 <img class="image" :src="imagePath" alt="Project Image">
             </div>
-            <div class="team-name">{{ team_name }}</div>
             <div class="project-description">{{ project_description }}</div>
-            <div class="button-container">
-                <div v-if="isVoteButtonDisabled">
-                    <button v-on:click.stop="decrementVote(id)" class="vote-button button-voted">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </button>
-                </div>
-                <div v-else>
-                    <button v-on:click.stop="incrementVote(id)" class="vote-button">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </button>
-                </div>
+        </div>
+
+        <div class="module-footer">
+            <div class="project-space">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+                {{ project_space }}
+            </div>
+            <div v-if="isVoteButtonDisabled">
+                <button v-on:click.stop="decrementVote(id)" class="vote-button button-voted">
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
+            </div>
+            <div v-else>
+                <button v-on:click.stop="incrementVote(id)" class="vote-button">
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
             </div>
         </div>
     </div>
@@ -99,7 +107,6 @@ export default {
 </template>
   
 <style scoped>
-
 .module {
     box-sizing: border-box;
     position: fixed;
@@ -132,22 +139,30 @@ export default {
 
 .module-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
 }
 
 .project-name {
     width: 100%;
     font-family: 'Mochiy Pop One';
+    font-size: 1.5rem;
     color: rgb(0, 0, 0);
 }
 
 .close-module-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
     height: 2rem;
     width: 2rem;
     border: none;
     background: none;
+}
+
+.close-module-button:hover {
+    color: #838383;
 }
 
 .close-module-button span {
@@ -162,9 +177,8 @@ export default {
 .image-container {
     position: relative;
     overflow: hidden;
-    padding-top: 75%;
-    margin-bottom: 0.5rem;
-    /* 4:3 aspect ratio */
+    padding-top: 65%;
+    /* 4:3 aspect ratio ?*/
 }
 
 .image {
@@ -185,14 +199,15 @@ export default {
     margin-bottom: 0.5rem;
 }
 
-.description {
-    color: #888;
+.project-description {
+    padding: 1rem 0;
+    /* background-color: rgb(255, 255, 255); */
 }
 
-.button-container {
+.module-footer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -204,7 +219,7 @@ export default {
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 3px 3px 0 3px ;
+    padding: 3px 3px 0 3px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -236,7 +251,10 @@ export default {
     .module * {
         font-size: 1rem;
     }
-}
 
+    .project-name {
+        font-size: 1.25rem;
+    }
+}
 </style>
   
