@@ -191,7 +191,6 @@ export default {
 @media only screen and (max-width: 800px) {
     .search-box {
         font-size: 0.75rem;
-        padding: 0;
         height: 2rem;
         width: 15rem;
     }
