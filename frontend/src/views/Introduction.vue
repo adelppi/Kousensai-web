@@ -171,7 +171,7 @@ export default {
 
 .search-box {
     box-sizing: border-box;
-    width: 100%;
+    width: 30rem;
     padding: 10px;
     font-size: 1.5rem;
     border: 2px solid #ddd;
