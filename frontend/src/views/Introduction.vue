@@ -18,7 +18,8 @@ export default {
                 default: null
             },
             keyword: "",
-            extra: ""
+            extra: "",
+            searchBoxShown: false,
         }
     },
     methods: {
@@ -105,13 +106,12 @@ export default {
 </script>
 
 <template>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <body>
         <main>
             <div class="title">企画紹介</div>
-            <div class="input-container">
+            <button @click="searchBoxShown = !searchBoxShown">検索</button>
+            <div class="input-container" v-if="searchBoxShown">
                 <h3>キーワードを入力して企画を検索しよう！</h3>
                 <div style="display: flex;">
                     <span class="material-symbols-outlined">search</span>
@@ -181,11 +181,6 @@ export default {
 
 .material-symbols-outlined {
     font-size: 3rem;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
 }
 
 @media only screen and (max-width: 800px) {
