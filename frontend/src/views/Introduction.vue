@@ -115,11 +115,11 @@ export default {
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
                 </div>
+                <div v-if="keyword" style="left: 0;">
+                    検索結果: {{ filteredProjects.length }}件
+                </div>
             </div>
 
-            <div v-if="keyword">
-                検索結果: {{ filteredProjects.length }}件
-            </div>
 
             <div class="spacer"></div>
 

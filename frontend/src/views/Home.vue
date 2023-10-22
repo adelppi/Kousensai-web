@@ -52,10 +52,6 @@ export default {
 </template>
 
 <style scoped>
-main {
-    height: 200vh;
-}
-
 header {
     display: flex;
     flex-direction: column;

@@ -17,7 +17,7 @@
 
 :root {
     font-family: 'M PLUS Rounded 1c';
-    font-size: 17.5px;
+    font-size: 18px;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
     background-color: #f8f9fa;
     color: black;
     overflow-x: hidden;
-    /* うーん */
+    min-height: 100vh;
 }
 
 main {
