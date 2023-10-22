@@ -19,7 +19,6 @@ export default {
             },
             keyword: "",
             extra: "",
-            searchBoxShown: false,
         }
     },
     methods: {
@@ -52,8 +51,6 @@ export default {
 
                 const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
                 const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
-
-                const colorRotate = Math.floor(Math.random() * 360);
 
                 return {
                     'parentStyle': {
@@ -106,16 +103,15 @@ export default {
 </script>
 
 <template>
-
     <body>
         <main>
             <div class="title">企画紹介</div>
-            <button @click="searchBoxShown = !searchBoxShown">検索</button>
-            <div class="input-container" v-if="searchBoxShown">
-                <h3>キーワードを入力して企画を検索しよう！</h3>
+            <div class="input-container">
                 <div style="display: flex;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
+                    <span class="material-symbols-outlined shuffle-button"
+                        @click="shuffleArray(projects)">restart_alt</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件
@@ -131,17 +127,29 @@ export default {
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
-            <div class="project-container">
-                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+                <div class="project-container">
+                    <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
                     :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
                     @card-selected="showModule" />
-            </div>
-        </main>
-    </body>
-</template>
+                </div>
+            </main>
+        </body>
+    </template>
 
 <style scoped>
+.shuffle-button {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+.shuffle-button:hover {
+    background-color: #ddd;
+}
+
 .spacer {
     margin: 4rem 0rem;
 }
@@ -192,6 +200,11 @@ export default {
 
     .material-symbols-outlined {
         font-size: 2rem;
+    }
+
+    .shuffle-button {
+        width: 2rem;
+        height: 2rem;
     }
 }
 </style>

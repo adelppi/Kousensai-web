@@ -35,6 +35,7 @@ export default {
 
 <style scoped>
 .navbar {
+    font-size: 1rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -74,5 +75,10 @@ export default {
 
 .menu-item:hover {
     color: #007bff;
+}
+@media only screen and (max-width: 960px) {
+    .navbar{
+        font-size: 0.7rem;
+    }
 }
 </style>
