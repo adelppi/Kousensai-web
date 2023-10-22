@@ -200,7 +200,7 @@ export default {
     box-sizing: border-box;
     height: 2rem;
     width: 2rem;
-    background-color: #cacaca;
+    background-color: transparent;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -218,6 +218,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .button-voted {
