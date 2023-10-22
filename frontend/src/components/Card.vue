@@ -81,12 +81,12 @@ export default {
         </div>
         <div class="info">
             <div class="project-name">{{ project_name }}</div>
-            <div v-if="isVoteButtonDisabled">
+            <!-- <div v-if="isVoteButtonDisabled">
                 <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
             </div>
             <div v-else>
                 <button v-on:click.stop="incrementVote(id)" class="button">投票する</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -108,6 +108,11 @@ export default {
     background-size: cover;
     background-image: url('../assets/memopaper.png');
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+.card:hover{
+    color: #0056b3;
+    /* transform: scale(2); */
 }
 
 .pin-container {
@@ -139,7 +144,7 @@ export default {
 
 .info {
     box-sizing: border-box;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .project-name {
@@ -147,6 +152,23 @@ export default {
     font-size: 1.75rem;
     color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease-in-out;
+        max-width: 150px;
+    }
+
+    .project-name {
+        font-family: 'Mochiy Pop One';
+        font-size: 1rem;
+        color: rgb(0, 0, 0);
+        margin-bottom: 0.5rem;
+    }
 }
 
 .button {
@@ -186,6 +208,5 @@ export default {
 .button-voted:hover {
     background-color: #484848;
 }
-
 </style>
   

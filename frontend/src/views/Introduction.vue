@@ -86,10 +86,12 @@ export default {
         filteredProjects() {
             const keyword = this.keyword.toLowerCase();
             return this.projects.filter(project => {
+                const teamName = project.team_name.toLowerCase();
                 const projectName = project.project_name.toLowerCase();
                 const projectDescription = project.project_description.toLowerCase();
                 const projectSpace = project.project_space.toLowerCase();
                 return (
+                    teamName.includes(keyword) ||
                     projectName.includes(keyword) ||
                     projectDescription.includes(keyword) ||
                     projectSpace.includes(keyword)
@@ -101,19 +103,22 @@ export default {
 </script>
 
 <template>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <body>
         <main>
             <div class="title">企画紹介</div>
-            <h2>キーワードを入力して企画を検索しよう！</h2>
-            <input type="text" class="search-box" placeholder="キーワード" v-model="keyword">
+            <div class="input-container">
+                <h3>キーワードを入力して企画を検索しよう！</h3>
+                <div style="display: flex;">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
+                </div>
+            </div>
+
             <div v-if="keyword">
-                検索結果: 
-                <span v-if="filteredProjects.length === 0">
-                    ヒットしませんでした...
-                </span>
-                <span v-else>
-                    {{ filteredProjects.length }}件
-                </span>
+                検索結果: {{ filteredProjects.length }}件
             </div>
 
             <div class="spacer"></div>
@@ -138,6 +143,7 @@ export default {
 .spacer {
     margin: 4rem 0rem;
 }
+
 .project-container {
     display: flex;
     flex-direction: row;
@@ -153,12 +159,42 @@ export default {
     border-image-width: 25px;
 }
 
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
 .search-box {
-    width: 100%;
+    width: 30rem;
     padding: 10px;
     font-size: 1.5rem;
     border: 2px solid #ddd;
     border-radius: 10px;
+    margin: 0rem auto;
+}
+
+.material-symbols-outlined {
+    font-size: 3rem;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+@media only screen and (max-width: 800px) {
+    .search-box {
+        font-size: 0.75rem;
+        padding: 0;
+        height: 2rem;
+        width: 15rem;
+    }
+
+    .material-symbols-outlined {
+        font-size: 2rem;
+    }
 }
 </style>
