@@ -50,7 +50,7 @@ export default {
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
 
-                const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
+                const childX = Math.floor(Math.random() * 20) - 10; // -20%から20%までのランダムなマージン 
                 const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
 
                 const colorRotate = Math.floor(Math.random() * 360);
@@ -58,13 +58,13 @@ export default {
                 return {
                     'parentStyle': {
                         'transform': `rotate(${rotate}deg) scale(${scale})`,
-                        'margin': `${y}px ${10 + x}px 0`,
+                        'margin': `${y}px ${5 + x}px 0`,
                         'background-position': `${backgroundX}% ${backgroundY}%`,
                         // 'filter': `hue-rotate(${colorRotate}deg)` 
                     },
                     'childStyle': {
                         'containerStyle': {
-                            'transform': `translateX(${childX}rem)`
+                            'transform': `translateX(-${50 + childX}%)`
                         },
                         'imageStyle': {
                             'transform': `rotate(${rotatePin}deg)`
@@ -175,9 +175,9 @@ button {
     /* background-image: url('../assets/corkboard.png'); */
     /* border: 10px solid black; */
     /* border-image-source: url('src/assets/corkboardborder.png'); */
-    border-image-repeat: repeat;
-    border-image-slice: 200;
-    border-image-width: 25px;
+    /* border-image-repeat: repeat; */
+    /* border-image-slice: 200; */
+    /* border-image-width: 25px; */
 }
 
 .input-container {
