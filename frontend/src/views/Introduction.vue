@@ -87,10 +87,12 @@ export default {
             const keyword = this.keyword.toLowerCase();
             return this.projects.filter(project => {
                 const projectName = project.project_name.toLowerCase();
+                const projectTeam = project.team_name.toLowerCase();
                 const projectDescription = project.project_description.toLowerCase();
                 const projectSpace = project.project_space.toLowerCase();
                 return (
                     projectName.includes(keyword) ||
+                    projectTeam.includes(keyword) ||
                     projectDescription.includes(keyword) ||
                     projectSpace.includes(keyword)
                 );
@@ -155,6 +157,7 @@ export default {
 
 
 .search-box {
+    box-sizing: border-box;
     width: 100%;
     padding: 10px;
     font-size: 1.5rem;
