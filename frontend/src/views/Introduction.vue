@@ -88,11 +88,13 @@ export default {
             return this.projects.filter(project => {
                 const teamName = project.team_name.toLowerCase();
                 const projectName = project.project_name.toLowerCase();
+                const projectTeam = project.team_name.toLowerCase();
                 const projectDescription = project.project_description.toLowerCase();
                 const projectSpace = project.project_space.toLowerCase();
                 return (
                     teamName.includes(keyword) ||
                     projectName.includes(keyword) ||
+                    projectTeam.includes(keyword) ||
                     projectDescription.includes(keyword) ||
                     projectSpace.includes(keyword)
                 );
@@ -168,7 +170,8 @@ export default {
 }
 
 .search-box {
-    width: 30rem;
+    box-sizing: border-box;
+    width: 100%;
     padding: 10px;
     font-size: 1.5rem;
     border: 2px solid #ddd;
