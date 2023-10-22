@@ -1,10 +1,12 @@
 <script>
 import MenuBar from './components/MenuBar.vue'
 import MenuBarMobile from './components/MenuBarMobile.vue'
+import Footer from './components/Footer.vue'
 export default {
 	components: {
 		MenuBar,
 		MenuBarMobile,
+		Footer
 	},
 	data() {
 		return {
@@ -27,4 +29,5 @@ export default {
 	<MenuBar :currentPage="$route.path" v-if="$route.path != '/Preparing' && !isMobile" />
 	<MenuBarMobile :currentPage="$route.path" v-if="$route.path != '/Preparing' && isMobile" />
 	<router-view />
+	<Footer />
 </template>
