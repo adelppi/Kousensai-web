@@ -168,11 +168,11 @@ export default {
     .pin-container {
         box-sizing: border-box;
         position: fixed;
-        top: -1.5rem;
+        top: -1rem;
         left: 50%;
         padding: 0 0 0 0;
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         z-index: 50;
     }
 

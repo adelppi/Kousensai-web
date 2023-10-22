@@ -161,19 +161,16 @@ export default {
 
 .image-container {
     position: relative;
-    overflow: hidden;
-    padding-top: 75%;
+    height: 31vh;
+    width: 100%;
     margin-bottom: 0.5rem;
-    /* 4:3 aspect ratio */
+    overflow: hidden;
 }
 
 .image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    width: 100%;
+    object-fit: contain;
 }
 
 .team-name {

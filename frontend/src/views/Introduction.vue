@@ -125,7 +125,12 @@ export default {
                 </div>
             </div>
 
-            <div class="spacer"></div>
+            <div class="project-container">
+                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
+                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
+                    @card-selected="showModule" />
+            </div>
 
             <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
                 :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
@@ -133,12 +138,6 @@ export default {
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
-            <div class="project-container">
-                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
-                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
-                    @card-selected="showModule" />
-            </div>
         </main>
     </body>
 </template>
@@ -166,11 +165,12 @@ button {
 }
 
 .project-container {
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 1rem;
     /* background-image: url('../assets/corkboard.png'); */
     /* border: 10px solid black; */
