@@ -118,10 +118,9 @@ export default {
                 </div>
             </div>
 
-
             <div class="spacer"></div>
 
-            <Module v-if="moduleShown" @overlay-clicked="moduleShown = false" :id="filteredProjects[shownId].id"
+            <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
                 :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
                 :project_name="filteredProjects[shownId].project_name"
                 :project_space="filteredProjects[shownId].project_space"
@@ -152,6 +151,22 @@ export default {
 
 .spacer {
     margin: 4rem 0rem;
+}
+
+.button-container {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    height: 2rem;
+    background-color: #6cb4e4;
+    color: white;
 }
 
 .project-container {
