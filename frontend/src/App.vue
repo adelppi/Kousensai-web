@@ -26,8 +26,11 @@ export default {
 </script>
 
 <template>
+	<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+	
 	<MenuBar :currentPage="$route.path" v-if="$route.path != '/Preparing' && !isMobile" />
 	<MenuBarMobile :currentPage="$route.path" v-if="$route.path != '/Preparing' && isMobile" />
 	<router-view />
-	<Footer />
+	<Footer></Footer>
 </template>

@@ -18,7 +18,7 @@ export default {
                 default: null
             },
             keyword: "",
-            extra: ""
+            extra: "",
         }
     },
     methods: {
@@ -51,8 +51,6 @@ export default {
 
                 const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
                 const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
-
-                const colorRotate = Math.floor(Math.random() * 360);
 
                 return {
                     'parentStyle': {
@@ -105,45 +103,70 @@ export default {
 </script>
 
 <template>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
     <body>
         <main>
             <div class="title">企画紹介</div>
             <div class="input-container">
-                <h3>キーワードを入力して企画を検索しよう！</h3>
                 <div style="display: flex;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
+                    <span class="material-symbols-outlined shuffle-button"
+                        @click="shuffleArray(projects)">sort</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件
                 </div>
             </div>
 
-
             <div class="spacer"></div>
 
-            <Module v-if="moduleShown" @overlay-clicked="moduleShown = false" :id="filteredProjects[shownId].id"
+            <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
                 :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
                 :project_name="filteredProjects[shownId].project_name"
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
-            <div class="project-container">
-                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+                <div class="project-container">
+                    <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
                     :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
                     @card-selected="showModule" />
-            </div>
-        </main>
-    </body>
-</template>
+                </div>
+            </main>
+        </body>
+    </template>
 
 <style scoped>
+.shuffle-button {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+.shuffle-button:hover {
+    background-color: #ddd;
+}
+
 .spacer {
     margin: 4rem 0rem;
+}
+
+.button-container {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    height: 2rem;
+    background-color: #6cb4e4;
+    color: white;
 }
 
 .project-container {
@@ -181,23 +204,22 @@ export default {
 
 .material-symbols-outlined {
     font-size: 3rem;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
 }
 
 @media only screen and (max-width: 800px) {
     .search-box {
         font-size: 0.75rem;
-        padding: 0;
         height: 2rem;
         width: 15rem;
     }
 
     .material-symbols-outlined {
         font-size: 2rem;
+    }
+
+    .shuffle-button {
+        width: 2rem;
+        height: 2rem;
     }
 }
 </style>

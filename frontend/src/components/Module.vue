@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default {
     props: {
-        id:Number,
+        id: Number,
         shownId: Number,
         vote: Number,
         team_name: String,
@@ -56,7 +56,7 @@ export default {
             }
         },
     },
-    emits: ['overlayClicked'],
+    emits: ['closeModuleEvent'],
     mounted() {
         this.getVotedProjects()
         this.checkIfVoted()
@@ -65,30 +65,50 @@ export default {
 </script>
 
 <template>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,1,0" />
+
     <div class="module" @click="$emit('cardSelected', shownId)">
-        {{ id }}
-        <div class="image-container">
-            <img class="image" :src="imagePath" alt="Project Image">
-        </div>
-        <div class="info">
+        <div class="module-header">
             <div class="project-name">{{ project_name }}</div>
             <div class="team-name">{{ team_name }}</div>
+            <button class="close-module-button" @click="$emit('closeModuleEvent')">
+                <span class="material-symbols-outlined"> close </span>
+            </button>
+        </div>
+
+        <div class="module-body">
+            <div class="image-container">
+                <img class="image" :src="imagePath" alt="Project Image">
+            </div>
             <div class="project-description">{{ project_description }}</div>
-            <div class="project-space">{{ project_space }}</div>
+        </div>
+
+        <div class="module-footer">
+            <div class="project-space">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+                {{ project_space }}
+            </div>
             <div v-if="isVoteButtonDisabled">
-                <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
+                <button v-on:click.stop="decrementVote(id)" class="vote-button button-voted">
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
             </div>
             <div v-else>
-                <button v-on:click.stop="incrementVote(id)" class="button">投票する</button>
+                <button v-on:click.stop="incrementVote(id)" class="vote-button">
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
             </div>
         </div>
     </div>
-    <div class="overlay" @click="$emit('overlayClicked')"></div>
+    <div class="overlay" @click="$emit('closeModuleEvent')"></div>
 </template>
   
 <style scoped>
-
 .module {
+    box-sizing: border-box;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -97,7 +117,7 @@ export default {
     transform: translate(-50%, -50%);
     background-size: cover;
     background-image: url('../assets/memopaper.png');
-    padding: 2rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
     border: 1px solid #ccc;
     z-index: 9999;
     width: 80%;
@@ -117,11 +137,48 @@ export default {
     touch-action: none;
 }
 
+.module-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.project-name {
+    width: 100%;
+    font-family: 'Mochiy Pop One';
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+.close-module-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    background: none;
+}
+
+.close-module-button:hover {
+    color: #838383;
+}
+
+.close-module-button span {
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.module-body {
+    margin-top: 0.5rem;
+}
+
 .image-container {
     position: relative;
     overflow: hidden;
-    padding-top: 75%;
-    /* 4:3 aspect ratio */
+    padding-top: 65%;
+    /* 4:3 aspect ratio ?*/
 }
 
 .image {
@@ -133,69 +190,71 @@ export default {
     object-fit: cover;
 }
 
-.info {
-    box-sizing: border-box;
-    padding: 1rem;
-}
-
-.project-name {
-    font-family: 'Mochiy Pop One';
-    font-size: 1.75rem;
-    color: rgb(0, 0, 0);
-    margin-bottom: 0.5rem;
-}
-
 .team-name {
     color: #666;
     margin-bottom: 0.5rem;
 }
 
-.project-description,
 .project-space {
     margin-bottom: 0.5rem;
 }
 
-.description {
-    color: #888;
+.project-description {
+    padding: 1rem 0;
+    /* background-color: rgb(255, 255, 255); */
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #0074d9;
+.module-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-button {
+    box-sizing: border-box;
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
     color: #fff;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Mochiy Pop One';
-    font-size: 1.25rem;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.1s ease;
+    padding: 3px 3px 0 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: 0.1s ease;
 }
 
-.button:hover {
-    background-color: #0056b3;
+.vote-button span {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .button-voted {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #7e7e7e;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Mochiy Pop One';
-    font-size: 1.25rem;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.1s ease;
+    color: #ff8e8e;
+    transition: 0.1s ease;
 }
 
-.button-voted:hover {
-    background-color: #484848;
-}
+@media only screen and (max-width: 800px) {
+    .module {
+        max-width: 90vw;
+        max-height: 80vh;
+        font-size: 1rem;
+    }
 
+    .module * {
+        font-size: 1rem;
+    }
+
+    .project-name {
+        font-size: 1.25rem;
+    }
+}
 </style>
   

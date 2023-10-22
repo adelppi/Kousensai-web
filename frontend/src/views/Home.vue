@@ -31,7 +31,7 @@ export default {
 <template>
     <body>
         <header>
-            <img src="../assets/banner.png">
+            <img src="../assets/banner.gif">
         </header>
         <main>
             <!-- <InformationCard :title="message" :content="'aaa'" /> -->
