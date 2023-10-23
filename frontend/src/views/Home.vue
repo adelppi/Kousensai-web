@@ -34,17 +34,23 @@ export default {
             <img src="../assets/banner.png">
         </header>
         <main>
-            <!-- <InformationCard :title="message" :content="'aaa'" /> -->
-            <div v-if="infos!=[]" class="info-section">
+            <h3 class="title">ご来場のみなさまへ</h3>
+            <p>
+                今年度の高専祭は3年ぶりの「一般公開」となります。どなたでもご来場いただけます。
+                コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。
+                10/28・29 9:00~16:00(最終入場15:30)にて開催いたします。
+                お車・バイクでのご来場はご遠慮ください。アクセスについては
+                <router-link to="/Access" style="display: flex; flex-direction: row;">こちら
+                    <span class="material-symbols-outlined">
+                        link
+                    </span>
+                </router-link>をご確認ください。
+            </p>
+            <div v-if="infos != []" class="info-section">
                 <h3 class="title">お知らせ</h3>
                 <div class="infos-container">
-                    <InformationCard
-                        v-for="info in infos" 
-                        :key="info.id" 
-                        :id="info.id"
-                        :title="info.title"
-                        :content="info.content"
-                        :timestamp="info.timestamp"/>
+                    <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
+                        :content="info.content" :timestamp="info.timestamp" />
                 </div>
             </div>
         </main>
@@ -76,5 +82,4 @@ header {
     flex-wrap: wrap;
     gap: 1rem;
 }
-
 </style>

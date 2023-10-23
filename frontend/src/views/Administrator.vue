@@ -4,10 +4,9 @@ import axios from 'axios'
 export default {
     data() {
         return {
+            authenticated: false,
             lostItems: [],
             messages: [],
-            onigiri: "",
-            tsunamayoOnigiri: "",
             addLFModuleShown: false,
             editLFModuleShown: false,
             addMessageModuleShown: false,
@@ -19,6 +18,17 @@ export default {
         }
     },
     methods: {
+        authentication(password) {
+            axios.post(import.meta.env.VITE_API_URL + '/authentication', {
+                "password": password
+            })
+                .then(response => {
+                    this.authenticated = response.data
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         fetchLostItems() {
             axios.get(import.meta.env.VITE_API_URL + '/getLostItems')
                 .then(response => {
@@ -151,8 +161,7 @@ export default {
     mounted() {
         this.fetchLostItems();
         this.fetchMessage();
-        this.onigiri = this.$route.params["onigiri"]
-        this.tsunamayoOnigiri = import.meta.env.VITE_LOST_FOUND_PASSWORD
+        this.authenticated = this.authentication(this.$route.params["password"])
     }
 }
 </script>
@@ -161,7 +170,7 @@ export default {
     <body>
         <main>
             <div class="title">管理者画面</div>
-            <div v-if="onigiri === tsunamayoOnigiri">
+            <div v-if="authenticated">
                 <!-- 管理者がアクセスした場合 -->
                 <h3>※高専祭実行委員のみがアクセスできる画面です。</h3>
 
