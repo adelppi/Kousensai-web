@@ -47,7 +47,10 @@ export default {
                     <span class="material-symbols-outlined">
                         open_in_new
                     </span>
-                </router-link>をご確認ください。
+                </router-link>
+                <budoux-ja>
+                    をご確認ください。
+                </budoux-ja>
             </p>
             <div v-if="infos != []" class="info-section">
                 <h3 class="title">お知らせ</h3>
