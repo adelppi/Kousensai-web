@@ -42,6 +42,7 @@ a {
 .title {
     width: -moz-fit-content;
     width: fit-content;
+    width: 25rem;
     margin: 2rem auto 3rem auto;
     color: #000000;
     text-align: center;

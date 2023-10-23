@@ -8,11 +8,22 @@ export default {
     },
     data() {
         return {
+            formattedTimestamp: "",
         }
     },
     methods: {
+        formatTimestamp() {
+            const date = new Date(Date.parse(this.timestamp));
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            this.formattedTimestamp = `${year}年${month}月${day}日 ${hours}時${minutes}分`;
+        }
     },
     mounted() {
+        this.formatTimestamp()
     }
 };
 </script>
@@ -21,7 +32,7 @@ export default {
     <div class="card">
         <div class="card-header">
             <div class="card-title">{{ title }}</div>
-            <div class="card-timestamp">{{ timestamp }}</div>
+            <div class="card-timestamp">{{ formattedTimestamp }}</div>
         </div>
         <div class="line-break"></div>
         <div class="card-body">
@@ -31,7 +42,6 @@ export default {
 </template>
   
 <style scoped>
-
 .card {
     width: 45%;
     min-width: 300px;
@@ -49,11 +59,14 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
+.card-timestamp {
+    font-size: 1rem;
+    color: #a1a1a1;
+}
 
 .line-break {
     width: 80%;
     border: 1px solid #ddd;
 }
-
 </style>
   

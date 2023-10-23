@@ -9,7 +9,7 @@ class MessageController extends Controller
 {
     public function getMessage()
     {
-        return Message::all();
+        return Message::all()->reverse();
     }
     
     public function addMessage(Request $request)

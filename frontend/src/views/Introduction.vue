@@ -110,8 +110,7 @@ export default {
                 <div style="display: flex;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
-                    <span class="material-symbols-outlined shuffle-button"
-                        @click="shuffleArray(projects)">sort</span>
+                    <span class="material-symbols-outlined shuffle-button" @click="shuffleArray(projects)">sync</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件
@@ -126,15 +125,15 @@ export default {
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
-                <div class="project-container">
-                    <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+            <div class="project-container">
+                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
                     v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
                     :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
                     @card-selected="showModule" />
-                </div>
-            </main>
-        </body>
-    </template>
+            </div>
+        </main>
+    </body>
+</template>
 
 <style scoped>
 .shuffle-button {
@@ -145,6 +144,7 @@ export default {
     height: 3rem;
     cursor: pointer;
 }
+
 .shuffle-button:hover {
     background-color: #ddd;
 }
