@@ -29,3 +29,4 @@ Route::get('/getMessage', 'App\Http\Controllers\MessageController@getMessage');
 Route::post('/addMessage', 'App\Http\Controllers\MessageController@addMessage');
 Route::post('/updateMessage', 'App\Http\Controllers\MessageController@updateMessage');
 Route::post('/deleteMessage', 'App\Http\Controllers\MessageController@deleteMessage');
+Route::post('/authentication', 'App\Http\Controllers\PasswordController@authentication');
