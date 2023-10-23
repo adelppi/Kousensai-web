@@ -80,13 +80,7 @@ export default {
             <img class="image" :src="imagePath" alt="Project Image">
         </div>
         <div class="info">
-            <div class="project-name">{{ project_name }}</div>
-            <!-- <div v-if="isVoteButtonDisabled">
-                <button v-on:click.stop="decrementVote(id)" class="button-voted">投票取り消し</button>
-            </div>
-            <div v-else>
-                <button v-on:click.stop="incrementVote(id)" class="button">投票する</button>
-            </div> -->
+            <div class="project-name"><budoux-ja>{{ project_name }}</budoux-ja></div>
         </div>
     </div>
 </template>

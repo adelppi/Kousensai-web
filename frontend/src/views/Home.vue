@@ -35,22 +35,32 @@ export default {
             <img src="../assets/banner.png">
         </header>
         <main>
-            <h3 class="title">ご来場のみなさまへ</h3>
+            <h3 class="title">ようこそ高専祭へ🔥</h3>
             <p>
                 <budoux-ja>
                     今年度の高専祭は3年ぶりの「一般公開」となります。どなたでもご来場いただけます。<br>
                     コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。<br>
-                    10/28・29 9:00~16:00(最終入場15:30)にて開催いたします。<br>
-                    お車・バイクでのご来場はご遠慮ください。アクセスについては
                 </budoux-ja>
-                <router-link to="/Access" style="display: inline-block;">こちら
-                    <span class="material-symbols-outlined">
-                        open_in_new
-                    </span>
-                </router-link>
-                <budoux-ja>
-                    をご確認ください。
-                </budoux-ja>
+            </p>
+            <h3 class="title">ご来場のみなさまへ</h3>
+            <p>
+                <budoux-ja>高専祭は次の日程(最終入場15:30)にて開催いたします。</budoux-ja>
+                <li>10月28日 9:00~16:00</li>
+                <li>10月29日 9:00~16:00</li>
+                <br>
+            <div style="background-color: rgba(255, 255, 32, 0.617);text-align: center;">
+                <span style="font-size: 1.4rem;"><budoux-ja>※お車・バイクでのご来場はご遠慮ください。</budoux-ja></span><br>
+                <span style="font-size: 1.4rem;">※アクセスについては
+                    <router-link to="/Access" style="display: inline-block;">こちら
+                        <span class="material-symbols-outlined">
+                            open_in_new
+                        </span>
+                    </router-link>
+                    <budoux-ja>
+                        をご確認ください。
+                    </budoux-ja>
+                </span>
+            </div>
             </p>
             <div v-if="infos != []" class="info-section">
                 <h3 class="title">お知らせ</h3>
@@ -72,6 +82,10 @@ header {
 p {
     font-size: 1.2rem;
     text-align: center;
+}
+
+li {
+    font-size: 1.4rem;
 }
 
 @keyframes stretch {

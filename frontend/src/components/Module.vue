@@ -70,8 +70,8 @@ export default {
 
     <div class="module" @click="$emit('cardSelected', shownId)">
         <div class="module-header">
-            <div class="project-name">{{ project_name }}</div>
-            <div class="team-name">{{ team_name }}</div>
+            <div class="project-name"><budoux-ja>{{ project_name }}</budoux-ja></div>
+            <div class="team-name"><budoux-ja>{{ team_name }}</budoux-ja></div>
             <button class="close-module-button" @click="$emit('closeModuleEvent')">
                 <span class="material-symbols-outlined"> close </span>
             </button>
@@ -81,7 +81,7 @@ export default {
             <div class="image-container">
                 <img class="image" :src="imagePath" alt="Project Image">
             </div>
-            <div class="project-description">{{ project_description }}</div>
+            <div class="project-description"><budoux-ja>{{ project_description }}</budoux-ja></div>
         </div>
 
         <div class="module-footer">
