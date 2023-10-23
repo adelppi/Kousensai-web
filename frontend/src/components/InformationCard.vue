@@ -8,14 +8,12 @@ export default {
     },
     data() {
         return {
-            unixTimestamp: 0,
             formattedTimestamp: "",
         }
     },
     methods: {
         formatTimestamp() {
-            this.unixTimestamp = Date.parse(this.timestamp)
-            const date = new Date(this.unixTimestamp);
+            const date = new Date(Date.parse(this.timestamp));
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
             const day = date.getDate();
@@ -33,7 +31,6 @@ export default {
 <template>
     <div class="card">
         <div class="card-header">
-            {{ unixTimestamp }}
             <div class="card-title">{{ title }}</div>
             <div class="card-timestamp">{{ formattedTimestamp }}</div>
         </div>
