@@ -40,9 +40,9 @@ export default {
                 コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。
                 10/28・29 9:00~16:00(最終入場15:30)にて開催いたします。
                 お車・バイクでのご来場はご遠慮ください。アクセスについては
-                <router-link to="/Access" style="display: flex; flex-direction: row;">こちら
+                <router-link to="/Access">こちら
                     <span class="material-symbols-outlined">
-                        link
+                        open_in_new
                     </span>
                 </router-link>をご確認ください。
             </p>
@@ -50,7 +50,7 @@ export default {
                 <h3 class="title">お知らせ</h3>
                 <div class="infos-container">
                     <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
-                        :content="info.content" :timestamp="info.timestamp" />
+                        :content="info.content" :timestamp="info.updated_at" />
                 </div>
             </div>
         </main>
@@ -81,5 +81,9 @@ header {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+.material-symbols-outlined {
+    font-size: 1.2rem;
 }
 </style>
