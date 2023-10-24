@@ -42,7 +42,7 @@ a {
 .title {
     width: -moz-fit-content;
     width: fit-content;
-    width: 25rem;
+    width: 80%;
     margin: 3rem auto 2rem auto;
     color: #000000;
     text-align: center;
@@ -75,7 +75,7 @@ a {
         padding-top: 0;
     }
     .title {
-        font-size: 1.5rem;
-        width: 14rem;
+        font-size: 1.3rem;
+        width: 80%;
     }
 }
