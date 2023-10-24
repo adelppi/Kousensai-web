@@ -52,8 +52,8 @@
                             <p><budoux-ja>&emsp;校内に駐輪場を用意しております。</budoux-ja></p>
                         </div>
                     </div>
-                    <div style="background-color: rgba(255, 255, 32, 0.617);text-align: center;">
-                        <h3 style="font-size: 1.8rem;">※ご注意</h3>
+                    <div class="important-container">
+                        <h3 style="font-size: 1.8rem; margin: 0;">※ご注意</h3>
                         <p style="font-size: 1.2rem;"><budoux-ja>駐車場がございませんので、車・バイク・キックボード等での来場はご遠慮ください。</budoux-ja></p>
                     </div>
                 </section>

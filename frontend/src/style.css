@@ -56,6 +56,17 @@ a {
     /* background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px); */
 }
 
+.important-container {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgba(255, 255, 32, 0.616); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
 input,
 textarea,
 button,

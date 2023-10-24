@@ -177,7 +177,6 @@ export default {
 .image-container {
     position: relative;
     overflow: hidden;
-    padding-top: 65%;
     /* 4:3 aspect ratio ?*/
 }
 
