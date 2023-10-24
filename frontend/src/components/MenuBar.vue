@@ -77,9 +77,9 @@ export default {
 .menu-item:hover {
     color: #007bff;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1100px) {
     .navbar{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 }
 </style>

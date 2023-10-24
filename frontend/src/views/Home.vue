@@ -67,14 +67,18 @@ export default {
 
             <h3 class="title">お困りの際は</h3>
             <p>
-                お困りの際は、お近くのオレンジジャンパーか腕章をつけたスタッフにお声掛けください。<br>
-                詳しくは
-                <router-link to="/LostFound" style="display: inline-block;">こちら
+                <budoux-ja>
+                    お困りの際は、お近くのオレンジジャンパーか腕章をつけたスタッフにお声掛けください。<br>
+                    詳しくは
+                </budoux-ja>
+                <router-link to="/Help" style="display: inline-block;">こちら
                     <span class="material-symbols-outlined">
                         open_in_new
                     </span>
                 </router-link>
-                をご確認ください。
+                <budoux-ja>
+                    をご確認ください。
+                </budoux-ja>
             </p>
 
             <h3 class="title">お知らせ</h3>
@@ -144,6 +148,10 @@ li {
     }
 
     .note {
+        font-size: 1rem;
+    }
+
+    .material-symbols-outlined {
         font-size: 1rem;
     }
 }
