@@ -35,6 +35,7 @@ export default {
             <img src="../assets/banner.png">
         </header>
         <main>
+
             <h3 class="title">ようこそ高専祭へ🔥</h3>
             <p>
                 <budoux-ja>
@@ -42,6 +43,7 @@ export default {
                     コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。<br>
                 </budoux-ja>
             </p>
+
             <h3 class="title">ご来場のみなさまへ</h3>
             <p>
                 <budoux-ja>高専祭は次の日程(最終入場15:30)にて開催いたします。</budoux-ja>
@@ -64,12 +66,28 @@ export default {
                 </div>
             </div>
             </p>
-            <div v-if="infos != []" class="info-section">
-                <h3 class="title">お知らせ</h3>
+
+            <h3 class="title">お困りの際は</h3>
+            <p>
+                お困りの際は、お近くのオレンジジャンパーか腕章をつけたスタッフにお声掛けください。<br>
+                詳しくは
+                <router-link to="/LostFound" style="display: inline-block;">こちら
+                    <span class="material-symbols-outlined">
+                        open_in_new
+                    </span>
+                </router-link>
+                をご確認ください。
+            </p>
+
+            <h3 class="title">お知らせ</h3>
+            <div v-if="infos.length" class="info-section">
                 <div class="infos-container">
                     <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
                         :content="info.content" :timestamp="info.updated_at" />
                 </div>
+            </div>
+            <div v-else>
+                <p>現在、お知らせはありません。</p>
             </div>
         </main>
     </body>
