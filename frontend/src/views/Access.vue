@@ -100,7 +100,7 @@ section {
 }
 
 .access p {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .img_box {
@@ -122,6 +122,10 @@ img {
     .map,
     .access {
         width: 100%;
+    }
+
+    .access p {
+        font-size: 0.8rem;
     }
 }
 </style>

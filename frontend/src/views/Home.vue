@@ -37,23 +37,48 @@ export default {
         <main>
 
             <h3 class="title">ようこそ高専祭へ🔥</h3>
-            <p>
-                <budoux-ja>
-                    今年度の高専祭は3年ぶりの「一般公開」となります。どなたでもご来場いただけます。<br>
-                    コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。<br>
-                </budoux-ja>
-            </p>
+            <div class="section">
+                <p>
+                    <budoux-ja>
+                        今年度の高専祭は3年ぶりの「一般公開」となります。どなたでもご来場いただけます。<br>
+                        コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。<br>
+                    </budoux-ja>
+                </p>
+            </div>
 
             <h3 class="title">ご来場のみなさまへ</h3>
-            <p>
-                <budoux-ja>高専祭は次の日程(最終入場15:30)にて開催いたします。</budoux-ja>
-                <li>10月28日 9:00~16:00</li>
-                <li>10月29日 9:00~16:00</li>
-                <br>
-            <div class="important-container">
-                <span class="note"><budoux-ja>※車やバイクでのご来場はご遠慮ください。</budoux-ja></span><br>
-                <span class="note">※アクセスについては
-                    <router-link to="/Access" style="display: inline-block;">こちら
+            <div class="section">
+                <p>
+                    <budoux-ja>高専祭は次の日程(最終入場15:30)にて開催いたします。</budoux-ja>
+                    <li>10月28日 9:00~16:00</li>
+                    <li>10月29日 9:00~16:00</li>
+                    <br>
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <div style="background-color: rgba(255, 255, 32, 0.617);text-align: center; width: 75%;">
+                        <span class="note"><budoux-ja>※車やバイクでのご来場はご遠慮ください。</budoux-ja></span><br>
+                        <span class="note">※アクセスについては
+                            <router-link to="/Access" style="display: inline-block;">こちら
+                                <span class="material-symbols-outlined">
+                                    open_in_new
+                                </span>
+                            </router-link>
+                            <budoux-ja>
+                                をご確認ください。
+                            </budoux-ja>
+                        </span>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+            <h3 class="title">お困りの際は</h3>
+            <div class="section">
+                <p>
+                    <budoux-ja>
+                        お困りの際は、お近くのオレンジジャンパーか腕章をつけたスタッフにお声掛けください。<br>
+                        詳しくは
+                    </budoux-ja>
+                    <router-link to="/Help" style="display: inline-block;">こちら
                         <span class="material-symbols-outlined">
                             open_in_new
                         </span>
@@ -61,35 +86,20 @@ export default {
                     <budoux-ja>
                         をご確認ください。
                     </budoux-ja>
-                </span>
+                </p>
+
             </div>
-            </p>
-
-            <h3 class="title">お困りの際は</h3>
-            <p>
-                <budoux-ja>
-                    お困りの際は、お近くのオレンジジャンパーか腕章をつけたスタッフにお声掛けください。<br>
-                    詳しくは
-                </budoux-ja>
-                <router-link to="/Help" style="display: inline-block;">こちら
-                    <span class="material-symbols-outlined">
-                        open_in_new
-                    </span>
-                </router-link>
-                <budoux-ja>
-                    をご確認ください。
-                </budoux-ja>
-            </p>
-
             <h3 class="title">お知らせ</h3>
-            <div v-if="infos.length" class="info-section">
-                <div class="infos-container">
-                    <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
-                        :content="info.content" :timestamp="info.updated_at" />
+            <div class="section">
+                <div v-if="infos.length" class="info-section">
+                    <div class="infos-container">
+                        <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
+                            :content="info.content" :timestamp="info.updated_at" />
+                    </div>
                 </div>
-            </div>
-            <div v-else>
-                <p>現在、お知らせはありません。</p>
+                <div v-else>
+                    <p>現在、お知らせはありません。</p>
+                </div>
             </div>
         </main>
     </body>
@@ -112,6 +122,10 @@ li {
 
 .note {
     font-size: 1.4rem;
+}
+
+.section {
+    margin-bottom: 2rem;
 }
 
 @keyframes stretch {
