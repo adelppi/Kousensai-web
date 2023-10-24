@@ -50,20 +50,18 @@ export default {
                 <li>10月28日 9:00~16:00</li>
                 <li>10月29日 9:00~16:00</li>
                 <br>
-            <div style="width: 100%; display: flex; justify-content: center;">
-                <div style="background-color: rgba(255, 255, 32, 0.617);text-align: center; width: 75%;">
-                    <span class="note"><budoux-ja>※車やバイクでのご来場はご遠慮ください。</budoux-ja></span><br>
-                    <span class="note">※アクセスについては
-                        <router-link to="/Access" style="display: inline-block;">こちら
-                            <span class="material-symbols-outlined">
-                                open_in_new
-                            </span>
-                        </router-link>
-                        <budoux-ja>
-                            をご確認ください。
-                        </budoux-ja>
-                    </span>
-                </div>
+            <div class="important-container">
+                <span class="note"><budoux-ja>※車やバイクでのご来場はご遠慮ください。</budoux-ja></span><br>
+                <span class="note">※アクセスについては
+                    <router-link to="/Access" style="display: inline-block;">こちら
+                        <span class="material-symbols-outlined">
+                            open_in_new
+                        </span>
+                    </router-link>
+                    <budoux-ja>
+                        をご確認ください。
+                    </budoux-ja>
+                </span>
             </div>
             </p>
 

@@ -107,7 +107,7 @@ export default {
         <main>
             <div class="title">企画紹介</div>
             <div class="input-container">
-                <div style="display: flex;">
+                <div style="display: flex; flex-direction: row; align-items: center;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
                     <span class="material-symbols-outlined shuffle-button" @click="shuffleArray(projects)">sync</span>
@@ -136,6 +136,7 @@ export default {
 
 <style scoped>
 .shuffle-button {
+    margin-left: 0.5rem;
     background-color: #ffffff;
     border: 2px solid #ddd;
     border-radius: 8px;

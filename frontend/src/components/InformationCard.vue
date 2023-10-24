@@ -50,10 +50,13 @@ export default {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-header {
-    width: 100%;
     font-size: 1.5rem;
     flex-direction: row;
     justify-content: space-between;
