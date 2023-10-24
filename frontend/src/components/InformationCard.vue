@@ -63,10 +63,25 @@ export default {
     font-size: 1rem;
     color: #a1a1a1;
 }
+.card-content {
+    font-size: 1rem;
+}
 
 .line-break {
     width: 80%;
     border: 1px solid #ddd;
+}
+
+@media only screen and (max-width: 800px) {
+    .card-header {
+        font-size: 1.2rem;
+    }
+    .card-timestamp {
+        font-size: 0.8rem;
+    }
+    .card-content {
+        font-size: 0.8rem;
+    }
 }
 </style>
   
