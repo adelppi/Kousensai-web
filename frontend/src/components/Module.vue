@@ -145,18 +145,19 @@ export default {
 }
 
 .project-name {
-    width: 100%;
+    box-sizing: border-box;
     font-family: 'Mochiy Pop One';
     font-size: 1.5rem;
     color: rgb(0, 0, 0);
+    margin-right: 2.5rem;
 }
 
 .close-module-button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    height: 2rem;
-    width: 2rem;
+    top: 1rem;
+    right: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border: none;
     background: none;
 }
@@ -167,7 +168,7 @@ export default {
 
 .close-module-button span {
     font-weight: bolder;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .module-body {
@@ -184,6 +185,7 @@ export default {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    border: solid 1px black;
 }
 
 .team-name {
