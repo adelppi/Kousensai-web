@@ -91,7 +91,7 @@ export default {
             </div>
             <h3 class="title">お知らせ</h3>
             <div class="section">
-                <div v-if="infos.length" class="info-section">
+                <div v-if="infos['1']" class="info-section">
                     <div class="infos-container">
                         <InformationCard v-for="info in infos" :key="info.id" :id="info.id" :title="info.title"
                             :content="info.content" :timestamp="info.updated_at" />
