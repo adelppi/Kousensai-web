@@ -49,19 +49,19 @@ export default {
                 const backgroundX = Math.floor(Math.random() * 100);
                 const backgroundY = Math.floor(Math.random() * 100);
 
-                const childX = Math.floor(Math.random() * 2) - 1; // -1remから1remまでのランダムなマージン 
+                const childX = Math.floor(Math.random() * 20) - 10; // -20%から20%までのランダムなマージン 
                 const rotatePin = Math.floor(Math.random() * 90); // 0度から90度までのランダムな傾き 
 
                 return {
                     'parentStyle': {
                         'transform': `rotate(${rotate}deg) scale(${scale})`,
-                        'margin': `${y}px ${10 + x}px 0`,
+                        'margin': `${y}px ${5 + x}px 0`,
                         'background-position': `${backgroundX}% ${backgroundY}%`,
                         // 'filter': `hue-rotate(${colorRotate}deg)` 
                     },
                     'childStyle': {
                         'containerStyle': {
-                            'transform': `translateX(${childX}rem)`
+                            'transform': `translateX(-${50 + childX}%)`
                         },
                         'imageStyle': {
                             'transform': `rotate(${rotatePin}deg)`
@@ -117,7 +117,12 @@ export default {
                 </div>
             </div>
 
-            <div class="spacer"></div>
+            <div class="project-container">
+                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
+                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
+                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
+                    @card-selected="showModule" />
+            </div>
 
             <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
                 :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
@@ -125,12 +130,6 @@ export default {
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
-            <div class="project-container">
-                <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
-                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
-                    @card-selected="showModule" />
-            </div>
         </main>
     </body>
 </template>
@@ -170,18 +169,19 @@ button {
 }
 
 .project-container {
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 1rem;
     /* background-image: url('../assets/corkboard.png'); */
     /* border: 10px solid black; */
     /* border-image-source: url('src/assets/corkboardborder.png'); */
-    border-image-repeat: repeat;
-    border-image-slice: 200;
-    border-image-width: 25px;
+    /* border-image-repeat: repeat; */
+    /* border-image-slice: 200; */
+    /* border-image-width: 25px; */
 }
 
 .input-container {

@@ -96,35 +96,35 @@ export default {
     transition: transform 0.2s ease-in-out;
     max-width: 300px;
     /* Set a max width for the card */
-    margin: 1rem;
     /* Add some margin */
-    padding: 0 2rem 2rem 2rem;
+    padding: 1.5rem 1rem 1rem 1rem;
     background-size: cover;
     background-image: url('../assets/memopaper.png');
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
-.card:hover{
-    color: #0056b3;
-    /* transform: scale(2); */
-}
 
 .pin-container {
-    position: relative;
-    margin: -1rem auto 1rem auto;
+    box-sizing: border-box;
+    position: fixed;
+    top: -1.5rem;
+    left: 50%;
     padding: 0 0 0 0;
-    width: -moz-fit-content;
-    width: fit-content;
-    aspect-ratio: 1 / 1;
+    width: 3rem;
+    height: 3rem;
     z-index: 50;
 }
 
+.pin-container img {
+    height: 100%;
+    width: 100%;
+}
+
 .image-container {
+    box-sizing: border-box;
     position: relative;
-    /* overflow: hidden; */
-    /* padding-top: 75%; */
     height: fit-content;
-    /* 4:3 aspect ratio */
+    padding: 1rem;
 }
 
 .image {
@@ -149,19 +149,29 @@ export default {
 }
 
 @media only screen and (max-width: 800px) {
+
     .card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.2s ease-in-out;
-        max-width: 150px;
+        max-width: 30vw;
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .image-container {
+        padding: 0;
+    }
+
+    .pin-container {
+        box-sizing: border-box;
+        position: fixed;
+        top: -1rem;
+        left: 50%;
+        padding: 0 0 0 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        z-index: 50;
     }
 
     .project-name {
-        font-family: 'Mochiy Pop One';
-        font-size: 1rem;
-        color: rgb(0, 0, 0);
-        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
     }
 }
 
