@@ -8,6 +8,7 @@ import Vote from '../views/Vote.vue'
 import LostFound from '../views/LostFound.vue'
 import Admin from '../views/Administrator.vue'
 import Preparing from '../views/Preparing.vue'
+import Help from '../views/Help.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -65,6 +66,10 @@ const router = createRouter({
         {
             path: '/Admin/:password',
             component: Admin
+        },
+        {
+            path: '/Help',
+            component: Help
         },
         {
             path: '/Preparing',

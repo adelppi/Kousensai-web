@@ -11,7 +11,8 @@ export default {
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
                 { path: "/Access", label: "アクセス", icon: "location_on" },
-                { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" }
+                { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" },
+                { path: "/Help", label:"お困りの際は", icon: "help" }
             ]
         }
     }
@@ -76,9 +77,9 @@ export default {
 .menu-item:hover {
     color: #007bff;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1100px) {
     .navbar{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 }
 </style>

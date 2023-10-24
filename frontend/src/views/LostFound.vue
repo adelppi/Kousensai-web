@@ -36,9 +36,13 @@ export default {
 <template>
     <body>
         <main>
-            <div class="title">落とし物画面</div>
+            <div class="title">落とし物一覧</div>
 
-            <div class="text">落とし物があった場合は、、、</div>
+            <p>
+                <budoux-ja>
+                    落とし物のをお探しの際は、２階本部にお越しください。
+                </budoux-ja>
+            </p>
             <table>
                 <thead>
                     <tr>
@@ -60,7 +64,6 @@ export default {
 </template>
 
 <style scoped>
-
 .text {
     padding: 0 2rem 1rem 2rem;
     font-size: 1em;
@@ -90,4 +93,14 @@ th {
     background-color: #f2f2f2;
 }
 
+p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    p {
+        font-size: 0.8rem;
+    }
+}
 </style>
