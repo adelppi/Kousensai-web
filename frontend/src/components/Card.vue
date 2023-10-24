@@ -100,6 +100,7 @@ export default {
     padding: 1.5rem 1rem 1rem 1rem;
     background-size: cover;
     background-image: url('../assets/memopaper.png');
+    /* background-color: rgb(255, 255, 159); */
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
@@ -134,6 +135,7 @@ export default {
     width: 100%;
     /* height: 100%; */
     /* object-fit: cover; */
+    border: solid 1px black;
 }
 
 .info {
