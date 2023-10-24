@@ -138,6 +138,10 @@ export default {
 
 .info {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     /* padding: 1rem; */
 }
 
@@ -146,6 +150,7 @@ export default {
     font-size: 1.75rem;
     color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
