@@ -9,6 +9,7 @@ import LostFound from '../views/LostFound.vue'
 import Admin from '../views/Administrator.vue'
 import Preparing from '../views/Preparing.vue'
 import Help from '../views/Help.vue'
+import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,10 +20,6 @@ const router = createRouter({
     },
     base: '/',
     routes: [
-        // {
-        //     path: '/',
-        //     redirect: '/Preparing'
-        // },
         {
             path: '/',
             redirect: '/Home'
@@ -40,7 +37,7 @@ const router = createRouter({
             component: Home
         },
         {
-            path: '/Introduction',
+            path: '/Introduction/:state?',
             component: Introduction
         },
         {
@@ -64,7 +61,7 @@ const router = createRouter({
             component: LostFound
         },
         {
-            path: '/Admin/:password',
+            path: '/Admin/:password?',
             component: Admin
         },
         {
@@ -74,6 +71,10 @@ const router = createRouter({
         {
             path: '/Preparing',
             component: Preparing
+        },
+        {
+            path: '/:catchAll(.*)',
+            component: NotFound
         }
     ]
 })
