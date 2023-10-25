@@ -37,7 +37,7 @@ const router = createRouter({
             component: Home
         },
         {
-            path: '/Introduction/:state?',
+            path: '/Introduction/:password?',
             component: Introduction
         },
         {

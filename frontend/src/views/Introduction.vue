@@ -10,6 +10,7 @@ export default {
     },
     data() {
         return {
+            authenticated: false,
             projects: [],
             cardStyles: [],
             moduleShown: false,
@@ -22,6 +23,17 @@ export default {
         }
     },
     methods: {
+        authentication(password) {
+            axios.post(import.meta.env.VITE_API_URL + '/authentication', {
+                "password": password
+            })
+                .then(response => {
+                    this.authenticated = response.data
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         fetchProjects() {
             axios.get(import.meta.env.VITE_API_URL + '/projects')
                 .then(response => {
@@ -79,6 +91,7 @@ export default {
     mounted() {
         this.fetchProjects();
         this.extra = import.meta.env.VITE_EXTRA
+        this.authenticated = this.authentication(this.$route.params["password"])
     },
     computed: {
         filteredProjects() {
@@ -119,12 +132,12 @@ export default {
 
             <div class="project-container">
                 <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in filteredProjects" :key="index" :index="index" :id="i.id" :vote="i.vote"
+                    v-for="(i, index) in filteredProjects" :key="index" :authenticated="authenticated" :index="index" :id="i.id" :vote="i.vote"
                     :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
                     @card-selected="showModule" />
             </div>
 
-            <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
+            <Module v-if="moduleShown && !authenticated" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
                 :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
                 :project_name="filteredProjects[shownId].project_name"
                 :project_space="filteredProjects[shownId].project_space"

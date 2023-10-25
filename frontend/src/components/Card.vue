@@ -9,6 +9,7 @@ export default {
         team_name: String,
         project_name: String,
         imagePath: String,
+        authenticated: Boolean,
         child_style: {
             type: Object,
             required: false,
@@ -23,6 +24,7 @@ export default {
     data() {
         return {
             url: "",
+            noteContent: "",
             isVoteButtonDisabled: false,
             votedProjects: []
         }
@@ -81,6 +83,10 @@ export default {
         </div>
         <div class="info">
             <div class="project-name"><budoux-ja>{{ project_name }}</budoux-ja></div>
+            <div v-if="authenticated">
+                {{ noteContent }}
+                <textarea rows="6" v-model="noteContent"></textarea>
+            </div>
         </div>
     </div>
 </template>
@@ -88,7 +94,6 @@ export default {
 <style scoped>
 /* 'Mochiy Pop One' */
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
-
 .card {
     position: relative;
     display: flex;
@@ -141,7 +146,7 @@ export default {
 .info {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* padding: 1rem; */
