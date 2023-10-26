@@ -125,7 +125,7 @@ li {
 }
 
 .section {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
 }
 
 @keyframes stretch {
