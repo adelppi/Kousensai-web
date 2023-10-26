@@ -26,7 +26,7 @@ const router = createRouter({
         },
         {
             path: '/wordpress',
-            redirect: '/Preparing'
+            redirect: '/Home'
         },
         {
             path: '/Preview',
