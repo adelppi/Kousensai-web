@@ -107,6 +107,7 @@ export default {
 </template>
   
 <style scoped>
+
 .module {
     box-sizing: border-box;
     position: fixed;
@@ -178,6 +179,8 @@ export default {
 .image-container {
     position: relative;
     overflow: hidden;
+    max-height: 30vh;
+    border: solid 1px black;
     /* 4:3 aspect ratio ?*/
 }
 
@@ -185,7 +188,6 @@ export default {
     height: 100%;
     width: 100%;
     object-fit: contain;
-    border: solid 1px black;
 }
 
 .team-name {
