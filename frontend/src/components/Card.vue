@@ -65,7 +65,7 @@ export default {
             }
         },
         updateNote(id, note) {
-            console.log(id, note)
+            // console.log(id, note)
             if (note === "") return
             const data = {
                 "id": id,
@@ -79,7 +79,19 @@ export default {
                     console.log(error);
                 });
             this.noteContent = note
-            this.editMessageModuleShown = false
+        },
+        deleteNote(id, note) {
+            const data = {
+                "id": id,
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/deleteNote', data)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            this.noteContent = note
         },
         syncNote() {
             this.noteContent = this.current_note
@@ -109,10 +121,11 @@ export default {
                 </div>
             </div>
             <!-- 編集 -->
-            <div v-if="authenticated" style="display: flex; flex-direction: column;">
+            <div v-if="authenticated" class="edit-note">
                 備考欄:
                 <textarea rows="6" v-model="noteContent"></textarea>
                 <button class="confirm-button" @click="updateNote(id, noteContent)">内容を更新</button>
+                <button class="delete-button" @click="deleteNote(id)">削除</button>
             </div>
         </div>
     </div>
@@ -142,10 +155,16 @@ export default {
     text-align: center;
     width: 80%;
 }
+
 .note {
     font-size: 1rem;
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
+}
+
+.edit-note {
+    display: flex;
+    flex-direction: column;
 }
 
 .pin-container {
@@ -213,6 +232,21 @@ export default {
 .confirm-button:hover {
     background-color: #2a6fb8;
 }
+.delete-button {
+    font-family: 'M PLUS Rounded 1c';
+    background-color: #ff3333;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #b02424;
+}
 
 textarea {
     width: 12rem;
@@ -243,8 +277,13 @@ textarea {
     .project-name {
         font-size: 0.8rem;
     }
+
     .note {
         font-size: 0.5rem;
+    }
+
+    .edit-note {
+        width: 6rem;
     }
 
     textarea {

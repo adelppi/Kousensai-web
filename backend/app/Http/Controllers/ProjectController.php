@@ -34,4 +34,8 @@ class ProjectController extends Controller
     {
         return Project::updateNote($request);
     }
+    public function deleteNote(Request $request)
+    {
+        return Project::deleteNote($request);
+    }
 }

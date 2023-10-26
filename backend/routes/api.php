@@ -23,6 +23,7 @@ Route::post('/projects/{id}/increment-vote', 'App\Http\Controllers\ProjectContro
 Route::post('/projects/{id}/decrement-vote', 'App\Http\Controllers\ProjectController@decrementVote');
 Route::get('/getTopThreeProjects', 'App\Http\Controllers\ProjectController@getTopThreeProjects');
 Route::post('/updateNote', 'App\Http\Controllers\ProjectController@updateNote');
+Route::post('/deleteNote', 'App\Http\Controllers\ProjectController@deleteNote');
 Route::get('/getLostItems', 'App\Http\Controllers\LostFoundController@getLostItems');
 Route::post('/addLostItem', 'App\Http\Controllers\LostFoundController@addLostItem');
 Route::post('/deleteLostItem', 'App\Http\Controllers\LostFoundController@deleteLostItem');
