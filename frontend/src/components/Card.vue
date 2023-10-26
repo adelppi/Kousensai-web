@@ -143,6 +143,7 @@ export default {
     width: 80%;
 }
 .note {
+    font-size: 1rem;
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
 }
@@ -241,6 +242,9 @@ textarea {
 
     .project-name {
         font-size: 0.8rem;
+    }
+    .note {
+        font-size: 0.5rem;
     }
 
     textarea {
