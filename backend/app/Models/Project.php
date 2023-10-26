@@ -54,4 +54,16 @@ class Project extends Model
 
         return $note;
     }
+    public static function deleteNote($request)
+    {
+        $jsonData = $request->json()->all();
+
+        $id = $jsonData["id"];
+
+        $project = self::where("id", "=", $id)->first();
+        $project->note = "";
+        $project->save();
+
+        return "deleted note(id = $id)";
+    }
 }
