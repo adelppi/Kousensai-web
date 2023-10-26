@@ -12,7 +12,7 @@ export default {
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
                 { path: "/Access", label: "アクセス", icon: "location_on" },
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" },
-                { path: "/Help", label:"お困りの際は", icon: "help" }
+                { path: "/Help", label: "お困りの際は", icon: "help" }
             ],
             isMobile: false,
             navListShown: false,
@@ -64,7 +64,8 @@ export default {
         </div>
     </div>
     <div class="nav-list" tabindex="0">
-        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item" :class="{ 'nav-item-selected': nav.path === currentPage }" @click="hideNavList($event)">
+        <RouterLink v-for="nav in navs" :to="nav.path" class="nav-item"
+            :class="{ 'nav-item-selected': nav.path === currentPage }" @click="hideNavList($event)">
             <div class="nav-icon">
                 <span class="material-symbols-outlined">{{ nav.icon }}</span>
             </div>
@@ -72,10 +73,7 @@ export default {
         </RouterLink>
     </div>
 </template>
-
-
 <style scoped>
-
 .top-bar {
     position: fixed;
     top: 0;
@@ -122,20 +120,21 @@ export default {
     align-items: center;
     background-color: #f8f9fa;
     box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .nav-list * {
-    width: 0%;
+    width: 0;
     margin: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    text-wrap: nowrap;
+    white-space: nowrap;
     opacity: 0;
-    transition: all 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .nav-item {
@@ -146,15 +145,13 @@ export default {
     flex-direction: row;
     padding: 1rem;
     color: #222;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .nav-icon {
     color: #222;
     padding: 10px;
-}
-
-.nav-item * {
-    height: 100%;
 }
 
 .nav-list-shown {
@@ -163,7 +160,7 @@ export default {
 
 .nav-list-shown * {
     width: 100%;
-    opacity: 100%;
+    opacity: 1;
 }
 
 .nav-list-shown .nav-icon {
@@ -172,7 +169,7 @@ export default {
 }
 
 .nav-list-shown .nav-item {
-    width: 60%;
+    width: 100%;
 }
 
 .nav-item-selected {
@@ -188,7 +185,4 @@ export default {
 .nav-item-selected .t {
     color: white;
 }
-
-/* モバイルのとき */
-@media only screen and (max-width: 600px) {}
 </style>
