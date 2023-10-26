@@ -31,12 +31,12 @@ export default {
 <template>
     <div class="card">
         <div class="card-header">
-            <div class="card-title">{{ title }}</div>
+            <div class="card-title"><budoux-ja>{{ title }}</budoux-ja></div>
             <div class="card-timestamp">{{ formattedTimestamp }}</div>
         </div>
         <div class="line-break"></div>
         <div class="card-body">
-            <p class="card-content">{{ content }}</p>
+            <p class="card-content"><budoux-ja>{{ content }}</budoux-ja></p>
         </div>
     </div>
 </template>

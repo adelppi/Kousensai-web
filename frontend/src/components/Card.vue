@@ -5,10 +5,10 @@ export default {
     props: {
         id: Number,
         index: Number,
-        vote: Number,
-        team_name: String,
+        current_note: String,
         project_name: String,
         imagePath: String,
+        authenticated: Boolean,
         child_style: {
             type: Object,
             required: false,
@@ -23,6 +23,7 @@ export default {
     data() {
         return {
             url: "",
+            noteContent: "",
             isVoteButtonDisabled: false,
             votedProjects: []
         }
@@ -62,9 +63,30 @@ export default {
             } else {
                 this.isVoteButtonDisabled = false
             }
+        },
+        updateNote(id, note) {
+            console.log(id, note)
+            if (note === "") return
+            const data = {
+                "id": id,
+                "note": this.noteContent
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/updateNote', data)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            this.noteContent = note
+            this.editMessageModuleShown = false
+        },
+        syncNote() {
+            this.noteContent = this.current_note
         }
     },
     mounted() {
+        this.syncNote()
         this.getVotedProjects()
         this.checkIfVoted()
     }
@@ -81,6 +103,17 @@ export default {
         </div>
         <div class="info">
             <div class="project-name"><budoux-ja>{{ project_name }}</budoux-ja></div>
+            <div class="note-container" v-if="current_note">
+                <div class="note">
+                    <budoux-ja>{{ current_note }}</budoux-ja>
+                </div>
+            </div>
+            <!-- 編集 -->
+            <div v-if="authenticated" style="display: flex; flex-direction: column;">
+                備考欄:
+                <textarea rows="6" v-model="noteContent"></textarea>
+                <button class="confirm-button" @click="updateNote(id, noteContent)">内容を更新</button>
+            </div>
         </div>
     </div>
 </template>
@@ -103,6 +136,15 @@ export default {
     /* background-color: rgb(255, 255, 159); */
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+}
+
+.note-container {
+    text-align: center;
+    width: 80%;
+}
+.note {
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
 }
 
 .pin-container {
@@ -141,7 +183,7 @@ export default {
 .info {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* padding: 1rem; */
@@ -153,6 +195,26 @@ export default {
     color: rgb(0, 0, 0);
     margin-bottom: 0.5rem;
     text-align: center;
+}
+
+.confirm-button {
+    font-family: 'M PLUS Rounded 1c';
+    background-color: #419dff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.confirm-button:hover {
+    background-color: #2a6fb8;
+}
+
+textarea {
+    width: 12rem;
 }
 
 @media only screen and (max-width: 800px) {
@@ -179,6 +241,10 @@ export default {
 
     .project-name {
         font-size: 0.8rem;
+    }
+
+    textarea {
+        width: inherit;
     }
 }
 

@@ -24,7 +24,7 @@ class Project extends Model
     public static function decrementVote($id)
     {
         $project = self::find($id);
-        
+
         if (!$project) {
             return response()->json(['message' => 'Couldnt find the project.'], 404);
         }
@@ -40,5 +40,18 @@ class Project extends Model
             ->get();
         // dd($topThreeProjects);
         return $topThreeProjects;
+    }
+    public static function updateNote($request)
+    {
+        $jsonData = $request->json()->all();
+
+        $note = $jsonData["note"];
+        $id = $jsonData["id"];
+
+        $project = self::where("id", "=", $id)->first();
+        $project->note = $note;
+        $project->save();
+
+        return $note;
     }
 }
