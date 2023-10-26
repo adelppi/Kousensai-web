@@ -62,7 +62,7 @@ class ProjectSeeder extends Seeder
             ['id' => 45, 'team_name' => '山の博覧会', 'project_name' => '山の博覧会', 'project_description' => '山での活動記録等を展示しています。ぜひお越しください。', 'project_space' => 'R2', 'note' => '', 'vote' => 0],
             ['id' => 46, 'team_name' => 'ベビーカステラ', 'project_name' => 'ベビーカステラ', 'project_description' => '出来立てのベビーカステラを7階にて販売！海底の底の味をご賞味ください。', 'project_space' => '第1講義室 A703', 'note' => '', 'vote' => 0],
             ['id' => 47, 'team_name' => 'シャドウバースポケカ大会', 'project_name' => 'シャドウバースポケカ大会', 'project_description' => 'シャドウバースとポケカ大会をします。学校にいるシャドウバースプレイヤーポケカプレイヤーの皆さんはぜひともこの機会に大会に参加していただき優勝をもぎ取っていただきたい', 'project_space' => 'W5', 'note' => '', 'vote' => 0],
-            ['id' => 48, 'team_name' => '折り紙同好会', 'project_name' => 'レーザーシューティング', 'project_description' => '3階の第５講義室で折り紙同好会がゲームをやっています。景品もあるので是非お越しください！', 'project_space' => '第5講義室 A311', 'note' => '', 'vote' => 0],
+            ['id' => 48, 'team_name' => '折り紙同好会', 'project_name' => 'シューティング', 'project_description' => '3階の第５講義室で折り紙同好会がゲームをやっています。景品もあるので是非お越しください！', 'project_space' => '第5講義室 A311', 'note' => '', 'vote' => 0],
             ['id' => 49, 'team_name' => '星研究室', 'project_name' => '星研究室のアートフェスティバル2023', 'project_description' => '工学はアートです', 'project_space' => '医用電子回路実験室 A619.2', 'note' => '', 'vote' => 0],
             ['id' => 50, 'team_name' => '卓球部', 'project_name' => '焼きそば', 'project_description' => '卓球部長年の伝統である焼きそばをどうぞご賞味ください！！', 'project_space' => '屋外屋台', 'note' => '', 'vote' => 0],
             ['id' => 51, 'team_name' => '天文学愛好会', 'project_name' => '宇宙ノ彼方', 'project_description' => '天文に関する展示をしています！初の企画展示なのでどうぞよろしくです！ﾍ(ﾟ∀ﾟﾍ)', 'project_space' => '専攻科室2', 'note' => '', 'vote' => 0],

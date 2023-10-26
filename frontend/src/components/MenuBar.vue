@@ -79,7 +79,7 @@ export default {
 }
 @media only screen and (max-width: 1100px) {
     .navbar{
-        font-size: 0.6rem;
+        font-size: 0.75rem;
     }
 }
 </style>
