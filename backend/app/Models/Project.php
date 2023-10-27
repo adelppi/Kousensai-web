@@ -33,13 +33,12 @@ class Project extends Model
         return response()->json(['message' => "decremented vote (id: $id)"]);
     }
 
-    public static function getTopThreeProjects()
+    public static function getTopTenProjects()
     {
-        $topThreeProjects = self::orderBy('vote', 'desc')
-            ->take(3)
+        $topTenProjects = self::orderBy('vote', 'desc')
+            ->take(10)
             ->get();
-        // dd($topThreeProjects);
-        return $topThreeProjects;
+        return $topTenProjects;
     }
     public static function updateNote($request)
     {

@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('projects', 'App\Http\Controllers\ProjectController');
 Route::post('/projects/{id}/increment-vote', 'App\Http\Controllers\ProjectController@incrementVote');
 Route::post('/projects/{id}/decrement-vote', 'App\Http\Controllers\ProjectController@decrementVote');
-Route::get('/getTopThreeProjects', 'App\Http\Controllers\ProjectController@getTopThreeProjects');
+Route::get('/getTopTenProjects', 'App\Http\Controllers\ProjectController@getTopTenProjects');
 Route::post('/updateNote', 'App\Http\Controllers\ProjectController@updateNote');
 Route::post('/deleteNote', 'App\Http\Controllers\ProjectController@deleteNote');
 Route::get('/getLostItems', 'App\Http\Controllers\LostFoundController@getLostItems');
