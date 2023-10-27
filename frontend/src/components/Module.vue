@@ -180,7 +180,7 @@ export default {
     position: relative;
     overflow: hidden;
     max-height: 30vh;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     /* 4:3 aspect ratio ?*/
 }
 
