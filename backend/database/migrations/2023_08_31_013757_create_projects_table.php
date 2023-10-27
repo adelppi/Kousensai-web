@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('project_name', 255);
             $table->text('project_description');
             $table->string('project_space', 32);
+            $table->string('project_floor', 32);
             $table->text('note');
             $table->integer('vote');
             $table->timestamps();
