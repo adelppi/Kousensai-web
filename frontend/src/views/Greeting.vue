@@ -77,4 +77,10 @@ img {
     max-width: 25rem;
     white-space: fill;
 }
+
+@media only screen and (max-width: 800px) {
+    img{
+        width: 10rem;
+    }
+}
 </style>

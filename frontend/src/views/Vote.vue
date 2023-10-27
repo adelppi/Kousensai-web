@@ -44,18 +44,4 @@ export default {
 </template>
 
 <style scoped>
-.project-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-image: url('../assets/corkboard.png');
-    border: 10px solid black;
-    border-image-source: url('../assets/corkboardborder.png');
-    border-image-repeat: repeat;
-    border-image-slice: 200;
-    border-image-width: 25px;
-}
 </style>

@@ -53,9 +53,9 @@ export default {
                 </thead>
                 <tbody>
                     <tr v-for="(item) in lostItems" :key="item">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.place }}</td>
-                        <td>{{ item.property }}</td>
+                        <td><budoux-ja>{{ item.name }}</budoux-ja></td>
+                        <td><budoux-ja>{{ item.place }}</budoux-ja></td>
+                        <td><budoux-ja>{{ item.property }}</budoux-ja></td>
                     </tr>
                 </tbody>
             </table>
@@ -70,7 +70,7 @@ export default {
 }
 
 table {
-    width: 100%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
@@ -101,6 +101,9 @@ p {
 @media only screen and (max-width: 800px) {
     p {
         font-size: 0.8rem;
+    }
+    table {
+        font-size: 0.6rem;
     }
 }
 </style>
