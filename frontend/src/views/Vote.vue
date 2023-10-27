@@ -49,6 +49,7 @@ export default {
 <style scoped>
 .project-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 </style>
