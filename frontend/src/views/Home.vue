@@ -43,6 +43,12 @@ export default {
                         今年度の高専祭は3年ぶりの「一般公開」となります。どなたでもご来場いただけます。<br>
                         コロナ渦を乗り越えて復活した飲食企画など、たくさんの企画が皆様をお待ちしております。<br>
                     </budoux-ja>
+                    <br>
+                    <router-link to="/Greeting" style="display: inline-block;">ごあいさつ
+                                <span class="material-symbols-outlined">
+                                    open_in_new
+                                </span>
+                            </router-link>
                 </p>
             </div>
 
@@ -53,17 +59,33 @@ export default {
                     <li>10月28日 9:00~16:00</li>
                     <li>10月29日 9:00~16:00</li>
                     <br>
-                <div style="width: 100%; display: flex; justify-content: center;">
+                    <!-- 注意 -->
+                <div style="width: 100%; display: flex; justify-content: center;margin-bottom: 0.5rem;">
                     <div style="background-color: rgba(255, 255, 32, 0.617);text-align: center; width: 75%;">
                         <span class="note"><budoux-ja>※車やバイクでのご来場はご遠慮ください。</budoux-ja></span><br>
-                        <span class="note">※アクセスについては
-                            <router-link to="/Access" style="display: inline-block;">こちら
+                        <span class="note">アクセスについては
+                            <router-link to="/Access" style="display: inline-block;">アクセス
                                 <span class="material-symbols-outlined">
                                     open_in_new
                                 </span>
                             </router-link>
                             <budoux-ja>
                                 をご確認ください。
+                            </budoux-ja>
+                        </span>
+                    </div>
+                </div>
+                <!-- 落とし物 -->
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <div style="background-color: #00c8ffb9;;text-align: center; width: 75%;">
+                        <span class="note">落とし物をお探しの場合は
+                            <router-link to="/LostFound" style="display: inline-block;">落とし物一覧
+                                <span class="material-symbols-outlined">
+                                    open_in_new
+                                </span>
+                            </router-link>
+                            <budoux-ja>
+                                をご覧ください。
                             </budoux-ja>
                         </span>
                     </div>
