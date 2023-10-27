@@ -7,11 +7,12 @@ export default {
         return {
             menus: [
                 { path: "/Home", label: "ホーム", icon: "home" },
-                { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
+                // { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
                 { path: "/Access", label: "アクセス", icon: "location_on" },
                 { path: "/Vote", label: "人気企画投票", icon: "social_leaderboard" },
+                { path: "/LostFound", label:"落とし物一覧", icon: "category" },
                 { path: "/Help", label:"お困りの際は", icon: "help" }
             ]
         }
@@ -79,7 +80,7 @@ export default {
 }
 @media only screen and (max-width: 1100px) {
     .navbar{
-        font-size: 0.6rem;
+        font-size: 0.75rem;
     }
 }
 </style>

@@ -5,8 +5,7 @@ export default {
     props: {
         id: Number,
         index: Number,
-        vote: Number,
-        team_name: String,
+        current_note: String,
         project_name: String,
         imagePath: String,
         authenticated: Boolean,
@@ -64,9 +63,42 @@ export default {
             } else {
                 this.isVoteButtonDisabled = false
             }
+        },
+        updateNote(id, note) {
+            // console.log(id, note)
+            if (note === "") return
+            const data = {
+                "id": id,
+                "note": this.noteContent
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/updateNote', data)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            this.noteContent = note
+        },
+        deleteNote(id, note) {
+            const data = {
+                "id": id,
+            }
+            axios.post(import.meta.env.VITE_API_URL + '/deleteNote', data)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            this.noteContent = note
+        },
+        syncNote() {
+            this.noteContent = this.current_note
         }
     },
     mounted() {
+        this.syncNote()
         this.getVotedProjects()
         this.checkIfVoted()
     }
@@ -83,9 +115,17 @@ export default {
         </div>
         <div class="info">
             <div class="project-name"><budoux-ja>{{ project_name }}</budoux-ja></div>
-            <div v-if="authenticated">
-                {{ noteContent }}
+            <div class="note-container" v-if="current_note">
+                <div class="note">
+                    <budoux-ja>{{ current_note }}</budoux-ja>
+                </div>
+            </div>
+            <!-- 編集 -->
+            <div v-if="authenticated" class="edit-note">
+                備考欄:
                 <textarea rows="6" v-model="noteContent"></textarea>
+                <button class="confirm-button" @click="updateNote(id, noteContent)">内容を更新</button>
+                <button class="delete-button" @click="deleteNote(id)">削除</button>
             </div>
         </div>
     </div>
@@ -94,6 +134,7 @@ export default {
 <style scoped>
 /* 'Mochiy Pop One' */
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
 .card {
     position: relative;
     display: flex;
@@ -108,6 +149,22 @@ export default {
     /* background-color: rgb(255, 255, 159); */
     box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+}
+
+.note-container {
+    text-align: center;
+    width: 80%;
+}
+
+.note {
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.edit-note {
+    display: flex;
+    flex-direction: column;
 }
 
 .pin-container {
@@ -160,6 +217,41 @@ export default {
     text-align: center;
 }
 
+.confirm-button {
+    font-family: 'M PLUS Rounded 1c';
+    background-color: #419dff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.confirm-button:hover {
+    background-color: #2a6fb8;
+}
+.delete-button {
+    font-family: 'M PLUS Rounded 1c';
+    background-color: #ff3333;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #b02424;
+}
+
+textarea {
+    width: 12rem;
+}
+
 @media only screen and (max-width: 800px) {
 
     .card {
@@ -184,6 +276,18 @@ export default {
 
     .project-name {
         font-size: 0.8rem;
+    }
+
+    .note {
+        font-size: 0.5rem;
+    }
+
+    .edit-note {
+        width: 6rem;
+    }
+
+    textarea {
+        width: inherit;
     }
 }
 

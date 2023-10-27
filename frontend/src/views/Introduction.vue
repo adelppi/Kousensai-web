@@ -86,7 +86,7 @@ export default {
             this.shownId = Number;
             console.log(this.shownId)
             this.moduleShown = true;
-        }
+        },
     },
     mounted() {
         this.fetchProjects();
@@ -118,12 +118,13 @@ export default {
 <template>
     <body>
         <main>
-            <div class="title">企画紹介</div>
+            <div class="title" v-if="authenticated">企画紹介 (管理者用)</div>
+            <div class="title" v-else>企画紹介</div>
             <div class="input-container">
                 <div style="display: flex; flex-direction: row; align-items: center;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
-                    <span class="material-symbols-outlined shuffle-button" @click="shuffleArray(projects)">sync</span>
+                    <span v-if="!authenticated" class="material-symbols-outlined shuffle-button" @click="shuffleArray(projects);">sync</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件
@@ -132,14 +133,13 @@ export default {
 
             <div class="project-container">
                 <Card :style="cardStyles[index]['parentStyle']" :child_style="cardStyles[index]['childStyle']"
-                    v-for="(i, index) in filteredProjects" :key="index" :authenticated="authenticated" :index="index" :id="i.id" :vote="i.vote"
-                    :project_name="i.project_name" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
-                    @card-selected="showModule" />
+                    v-for="(i, index) in filteredProjects" :key="index" :authenticated="authenticated" :index="index"
+                    :id="i.id" :project_name="i.project_name" :current_note="i.note"
+                    :imagePath="`${extra}/assets/thumbnails/${i.id}.png`" @card-selected="showModule" />
             </div>
-
-            <Module v-if="moduleShown && !authenticated" @close-module-event="moduleShown = false" :id="filteredProjects[shownId].id"
-                :shownId="shownId" :vote="filteredProjects[shownId].vote" :team_name="filteredProjects[shownId].team_name"
-                :project_name="filteredProjects[shownId].project_name"
+            <Module v-if="moduleShown && !authenticated" @close-module-event="moduleShown = false"
+                :id="filteredProjects[shownId].id" :shownId="shownId" :vote="filteredProjects[shownId].vote"
+                :team_name="filteredProjects[shownId].team_name" :project_name="filteredProjects[shownId].project_name"
                 :project_space="filteredProjects[shownId].project_space"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
@@ -150,7 +150,7 @@ export default {
 <style scoped>
 .shuffle-button {
     margin-left: 0.5rem;
-    background-color: #ffffff;
+    background-color: white;
     border: 2px solid #ddd;
     border-radius: 8px;
     width: 3rem;

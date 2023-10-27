@@ -28,7 +28,7 @@
 
             <div class="container">
 
-                <img src="../assets/logo.svg" alt="校長写真">
+                <img src="../assets/ogachan.jpeg" alt="校長写真">
 
                 <div class="text">
                     <p>
@@ -69,11 +69,18 @@ img {
     width: 100%;
     max-width: 20rem;
     height: auto;
+    border-radius: 3rem;
 }
 
 .text {
     width: 100%;
     max-width: 25rem;
     white-space: fill;
+}
+
+@media only screen and (max-width: 800px) {
+    img{
+        width: 10rem;
+    }
 }
 </style>
