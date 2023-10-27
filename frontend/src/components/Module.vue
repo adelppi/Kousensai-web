@@ -10,6 +10,7 @@ export default {
         project_name: String,
         project_description: String,
         project_space: String,
+        project_floor: String,
         imagePath: String
     },
     data() {
@@ -85,11 +86,14 @@ export default {
         </div>
 
         <div class="module-footer">
-            <div class="project-space">
+            <div class="place-holder">
                 <span class="material-symbols-outlined">
                     location_on
                 </span>
-                {{ project_space }}
+                <div class="place-details">
+                    {{ project_space }} <br>
+                    {{ project_floor }}
+                </div>
             </div>
             <div class="fav-button">
                 <div v-if="isVoteButtonDisabled">
@@ -207,8 +211,17 @@ button {
     margin-bottom: 0.5rem;
 }
 
-.project-space {
+.place-holder {
     margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.place-details {
+    box-sizing: border-box;
+    margin-left: 0.5rem;
 }
 
 .project-description {
@@ -266,6 +279,10 @@ button {
 
     .project-name {
         font-size: 1.25rem;
+    }
+
+    .place-holder * {
+        font-size: 0.8rem;
     }
 }
 </style>
