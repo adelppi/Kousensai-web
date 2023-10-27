@@ -55,7 +55,7 @@ export default {
             <div class="project-container">
                 <div v-for="(i, index) in topTenProjects" :key="index">
                 <Card class="card" :id="i.id" :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name"
-                    :project_space="i.project_space" :project_description="i.project_description" :index="index"
+                    :project_space="i.project_space" :project_description="i.project_description" :index="index" :project_floor="i.project_floor"
                     :imagePath="`${extra}/assets/thumbnails/${i.id}.png`" @card-selected="showModule"/>
                 </div>
             </div>

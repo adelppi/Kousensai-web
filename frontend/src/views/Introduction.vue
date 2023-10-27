@@ -140,7 +140,7 @@ export default {
             <Module v-if="moduleShown && !authenticated" @close-module-event="moduleShown = false"
                 :id="filteredProjects[shownId].id" :shownId="shownId" :vote="filteredProjects[shownId].vote"
                 :team_name="filteredProjects[shownId].team_name" :project_name="filteredProjects[shownId].project_name"
-                :project_space="filteredProjects[shownId].project_space"
+                :project_space="filteredProjects[shownId].project_space" :project_floor="filteredProjects[shownId].project_floor"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
         </main>
