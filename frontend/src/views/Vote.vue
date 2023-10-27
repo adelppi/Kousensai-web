@@ -47,6 +47,11 @@ export default {
     <body>
         <main>
             <div class="title">人気企画TOP10</div>
+            <p>
+                <budoux-ja>
+                    投票を行っております。好きな企画のハートボタンを押して投票しましょう！
+                </budoux-ja>
+            </p>
             <div class="project-container">
                 <div v-for="(i, index) in topTenProjects" :key="index">
                 <Card class="card" :id="i.id" :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name"
@@ -65,6 +70,10 @@ export default {
 </template>
 
 <style scoped>
+
+p {
+    text-align: center;
+}
 
 .project-container {
     margin-top: 2rem;
