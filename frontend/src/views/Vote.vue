@@ -13,8 +13,8 @@ export default {
         }
     },
     methods: {
-        fetchTopThreeProjects() {
-            axios.get(import.meta.env.VITE_API_URL + '/getTopThreeProjects')
+        fetchTopTenProjects() {
+            axios.get(import.meta.env.VITE_API_URL + '/getTopTenProjects')
                 .then(response => {
                     this.topThreeProjects = response.data
                 })
@@ -24,7 +24,7 @@ export default {
         }
     },
     mounted() {
-        this.fetchTopThreeProjects()
+        this.fetchTopTenProjects()
         this.extra = import.meta.env.VITE_EXTRA
     }
 

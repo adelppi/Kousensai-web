@@ -25,9 +25,9 @@ class ProjectController extends Controller
         return Project::decrementVote($id);
     }
     
-    public function getTopThreeProjects()
+    public function getTopTenProjects()
     {
-        return Project::getTopThreeProjects();
+        return Project::getTopTenProjects();
     }
 
     public function updateNote(Request $request)
