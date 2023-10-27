@@ -57,6 +57,7 @@ export default {
                         :project_space="i.project_space" :project_description="i.project_description" :index="index"
                         :project_floor="i.project_floor" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
                         @card-selected="showModule" />
+                    <span class="vote">{{ i.vote }}票</span>
                 </div>
             </div>
             <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="topTenProjects[shownId].id"
@@ -86,14 +87,29 @@ export default {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     margin-top: 2rem;
     margin-left: 2rem;
+}
+
+.vote {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    text-align: center;
+    font-size: 2rem;
 }
 
 @media only screen and (max-width: 800px) {
     .card {
         margin-top: 1rem;
         margin-left: 1rem;
+    }
+
+    .vote {
+        font-size: 1.2rem;
     }
 
     .medal {
