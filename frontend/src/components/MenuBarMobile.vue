@@ -7,7 +7,7 @@ export default {
         return {
             navs: [
                 { path: "/Home", label: "ホーム", icon: "home" },
-                // { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
+                { path: "/Greeting", label: "ごあいさつ", icon: "waving_hand" },
                 { path: "/Introduction", label: "企画紹介", icon: "storefront" },
                 { path: "/Vote", label: "人気企画TOP10", icon: "social_leaderboard" },
                 { path: "/Brochure", label: "パンフレット", icon: "map" },
@@ -108,12 +108,13 @@ export default {
 }
 
 .nav-list {
+    box-sizing: border-box;
     position: fixed;
-    top: 4rem;
+    top: 0;
     right: 0;
     height: 100vh;
     width: 0;
-    padding-top: 0.5rem;
+    padding-top: 4.5rem;
     padding-left: 0;
     display: flex;
     flex-direction: column;
@@ -124,6 +125,7 @@ export default {
     transition: width 0.2s ease-in-out;
     z-index: 1000;
     overflow: hidden;
+    overflow-y: scroll;
 }
 
 .nav-list * {
