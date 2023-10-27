@@ -63,7 +63,7 @@ export default {
             <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="topTenProjects[shownId].id"
                 :shownId="shownId" :vote="topTenProjects[shownId].vote" :team_name="topTenProjects[shownId].team_name"
                 :project_name="topTenProjects[shownId].project_name" :project_space="topTenProjects[shownId].project_space"
-                :project_description="topTenProjects[shownId].project_description"
+                :project_floor="topTenProjects[shownId].project_floor" :project_description="topTenProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${topTenProjects[shownId].id}.png`" />
         </main>
     </body>
