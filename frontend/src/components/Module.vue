@@ -91,15 +91,17 @@ export default {
                 </span>
                 {{ project_space }}
             </div>
-            <div v-if="isVoteButtonDisabled">
-                <button v-on:click.stop="decrementVote(id)" class="vote-button button-voted">
-                    <span class="material-symbols-outlined">favorite</span>
-                </button>
-            </div>
-            <div v-else>
-                <button v-on:click.stop="incrementVote(id)" class="vote-button">
-                    <span class="material-symbols-outlined">favorite</span>
-                </button>
+            <div class="fav-button">
+                <div v-if="isVoteButtonDisabled">
+                    <button v-on:click.stop="decrementVote(id)" class="vote-button button-voted">
+                        <span class="material-symbols-outlined"><span style="font-size: 2rem;">favorite</span></span>
+                    </button>
+                </div>
+                <div v-else>
+                    <button v-on:click.stop="incrementVote(id)" class="vote-button">
+                        <span class="material-symbols-outlined"><span style="font-size: 2rem;">favorite</span></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -107,7 +109,18 @@ export default {
 </template>
   
 <style scoped>
-
+button {
+    cursor: pointer;
+}
+.fav-button{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rem;
+    background-color: #ffee32;
+}
 .module {
     box-sizing: border-box;
     position: fixed;
@@ -152,7 +165,6 @@ export default {
     color: rgb(0, 0, 0);
     margin-right: 2.5rem;
 }
-
 .close-module-button {
     position: absolute;
     top: 1rem;
