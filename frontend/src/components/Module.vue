@@ -192,14 +192,14 @@ button {
     position: relative;
     overflow: hidden;
     max-height: 30vh;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     /* 4:3 aspect ratio ?*/
 }
 
 .image {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .team-name {
