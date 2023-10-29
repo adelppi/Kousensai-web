@@ -47,6 +47,8 @@ export default {
     <body>
         <main>
             <div class="title">人気企画TOP10</div>
+            現在アクセスログを解析しています。<br>
+            後日、不正票を取り除いた投票結果に更新されますので、ご安心ください。
             <div class="project-container">
                 <div v-for="(i, index) in topTenProjects" :key="index" class="card">
                     <img v-if="index === 0" class="medal" src="../assets/medal_1st.png">
