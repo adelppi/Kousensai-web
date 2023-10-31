@@ -120,11 +120,17 @@ export default {
         <main>
             <div class="title" v-if="authenticated">企画紹介 (管理者用)</div>
             <div class="title" v-else>企画紹介</div>
+            <p v-if="!authenticated" style="text-align: center;">
+                <budoux-ja>
+                    投票を行っております。好きな企画のハートボタンを押して投票しましょう！
+                </budoux-ja>
+            </p>
             <div class="input-container">
                 <div style="display: flex; flex-direction: row; align-items: center;">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" class="search-box" placeholder="屋台, 実験, ステージ, ..." v-model="keyword">
-                    <span v-if="!authenticated" class="material-symbols-outlined shuffle-button" @click="shuffleArray(projects);">sync</span>
+                    <span v-if="!authenticated" class="material-symbols-outlined shuffle-button"
+                        @click="shuffleArray(projects);">sync</span>
                 </div>
                 <div v-if="keyword" style="left: 0;">
                     検索結果: {{ filteredProjects.length }}件
@@ -140,7 +146,8 @@ export default {
             <Module v-if="moduleShown && !authenticated" @close-module-event="moduleShown = false"
                 :id="filteredProjects[shownId].id" :shownId="shownId" :vote="filteredProjects[shownId].vote"
                 :team_name="filteredProjects[shownId].team_name" :project_name="filteredProjects[shownId].project_name"
-                :project_space="filteredProjects[shownId].project_space" :project_floor="filteredProjects[shownId].project_floor"
+                :project_space="filteredProjects[shownId].project_space"
+                :project_floor="filteredProjects[shownId].project_floor"
                 :project_description="filteredProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${filteredProjects[shownId].id}.png`" />
         </main>

@@ -17,12 +17,14 @@ class ProjectController extends Controller
     
     public function incrementVote($id)
     {
-        return Project::incrementVote($id);
+        return 0;
+        // return Project::incrementVote($id);
     }
 
     public function decrementVote($id)
     {
-        return Project::decrementVote($id);
+        return 0;
+        // return Project::decrementVote($id);
     }
     
     public function getTopTenProjects()

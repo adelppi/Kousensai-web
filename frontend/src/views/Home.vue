@@ -32,7 +32,7 @@ export default {
 <template>
     <body>
         <header>
-            <img src="../assets/banner.png">
+            <img src="../assets/banner.jpg">
         </header>
         <main>
 

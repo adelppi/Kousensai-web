@@ -47,32 +47,35 @@ export default {
     <body>
         <main>
             <div class="title">人気企画TOP10</div>
-            <p>
-                <budoux-ja>
-                    投票を行っております。好きな企画のハートボタンを押して投票しましょう！
-                </budoux-ja>
-            </p>
+            現在アクセスログを解析しています。<br>
+            後日、不正票を取り除いた投票結果に更新されますので、ご安心ください。
             <div class="project-container">
-                <div v-for="(i, index) in topTenProjects" :key="index">
-                <Card class="card" :id="i.id" :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name"
-                    :project_space="i.project_space" :project_description="i.project_description" :index="index" :project_floor="i.project_floor"
-                    :imagePath="`${extra}/assets/thumbnails/${i.id}.png`" @card-selected="showModule"/>
+                <div v-for="(i, index) in topTenProjects" :key="index" class="card">
+                    <img v-if="index === 0" class="medal" src="../assets/medal_1st.png">
+                    <img v-if="index === 1" class="medal" src="../assets/medal_2nd.png">
+                    <img v-if="index === 2" class="medal" src="../assets/medal_3rd.png">
+                    <span v-if="!(index in [0, 1, 2])" style="font-size: 1.5rem;">{{ index + 1 }}位</span>
+                    <Card :id="i.id" :vote="i.vote" :team_name="i.team_name" :project_name="i.project_name"
+                        :project_space="i.project_space" :project_description="i.project_description" :index="index"
+                        :project_floor="i.project_floor" :imagePath="`${extra}/assets/thumbnails/${i.id}.png`"
+                        @card-selected="showModule" />
+                    <span class="vote">{{ i.vote }}票</span>
                 </div>
             </div>
-            <Module v-if="moduleShown" @close-module-event="moduleShown = false"
-                :id="topTenProjects[shownId].id" :shownId="shownId" :vote="topTenProjects[shownId].vote"
-                :team_name="topTenProjects[shownId].team_name" :project_name="topTenProjects[shownId].project_name"
-                :project_space="topTenProjects[shownId].project_space"
-                :project_description="topTenProjects[shownId].project_description"
+            <Module v-if="moduleShown" @close-module-event="moduleShown = false" :id="topTenProjects[shownId].id"
+                :shownId="shownId" :vote="topTenProjects[shownId].vote" :team_name="topTenProjects[shownId].team_name"
+                :project_name="topTenProjects[shownId].project_name" :project_space="topTenProjects[shownId].project_space"
+                :project_floor="topTenProjects[shownId].project_floor" :project_description="topTenProjects[shownId].project_description"
                 :imagePath="`${extra}/assets/thumbnails/${topTenProjects[shownId].id}.png`" />
         </main>
     </body>
 </template>
 
 <style scoped>
-
-p {
-    text-align: center;
+.medal {
+    position: absolute;
+    width: 8rem;
+    z-index: 1;
 }
 
 .project-container {
@@ -85,4 +88,34 @@ p {
     gap: 1rem;
 }
 
-</style>
+.card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.vote {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .card {
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+
+    .vote {
+        font-size: 1.2rem;
+    }
+
+    .medal {
+        /* width: 5rem; */
+        width: 18%;
+    }
+}</style>
